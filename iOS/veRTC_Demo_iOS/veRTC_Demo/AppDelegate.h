@@ -1,0 +1,17 @@
+#import <UIKit/UIKit.h>
+typedef NS_ENUM(NSInteger, ScreenOrientation) {
+    ScreenOrientationLandscapeAndPortrait = 1,
+    ScreenOrientationLandscape,
+    ScreenOrientationPortrait,
+};
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (nonatomic, strong) UIWindow *window;
+
+@property (nonatomic, assign) ScreenOrientation screenOrientation;
+
+@property (nonatomic, assign) BOOL isScreenShareing;
+
+@end
+
