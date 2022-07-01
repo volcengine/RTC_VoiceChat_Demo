@@ -18,9 +18,6 @@
                                            NetworkingResponse * _Nonnull response) {
         BOOL result = response.result;
         if (response.result) {
-            if (loginToken.length > 0) {
-                [TokenCompoments updateToken:loginToken];
-            }
             [LocalUserComponents updateLocalUserModel:userModel];
         }
         if (block) {

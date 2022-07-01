@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginExpiredNotificate) name:NotificationLoginExpired object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginExpiredNotificate:) name:NotificationLoginExpired object:nil];
     
     [self addChildViewController:self.userViewController];
     [self.view addSubview:self.userViewController.view];
@@ -62,7 +62,7 @@
     }];
     
     [self scenesButtonAction];
-    if (IsEmptyStr([TokenCompoments token])) {
+    if (IsEmptyStr([LocalUserComponents userModel].loginToken)) {
         [self showLoginVC:NO];
     }
     [[NetworkReachabilityManager sharedManager] startMonitoring];
@@ -79,10 +79,19 @@
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
-- (void)loginExpiredNotificate {
-    [TokenCompoments updateToken:@""];
+- (void)loginExpiredNotificate:(NSNotification *)sender {
+    NSString *key = (NSString *)sender.object;
+    if ([key isKindOfClass:[NSString class]] &&
+        [key isEqualToString:@"logout"]) {
+        [[AlertActionManager shareAlertActionManager] dismiss:^{
+            [self showLoginVC:YES];
+        }];
+        [[ToastComponents shareToastComponents] showWithMessage:@"相同ID用户已登录，您已被强制下线！" delay:2];
+    } else {
+        [self showLoginVC:YES];
+    }
+    [LocalUserComponents userModel].loginToken = @"";
     [LocalUserComponents updateLocalUserModel:nil];
-    [self showLoginVC:YES];
 }
 
 #pragma mark - Private Action

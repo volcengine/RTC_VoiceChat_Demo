@@ -18,6 +18,7 @@
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:self.uid forKey:@"uid"];
     [coder encodeObject:self.name forKey:@"name"];
+    [coder encodeObject:self.loginToken forKey:@"loginToken"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
@@ -25,17 +26,16 @@
     if (self) {
         self.uid = [coder decodeObjectOfClass:[NSString class] forKey:@"uid"];
         self.name = [coder decodeObjectOfClass:[NSString class] forKey:@"name"];
+        self.loginToken = [coder decodeObjectOfClass:[NSString class] forKey:@"loginToken"];
     }
     return self;
 }
 
 + (NSDictionary *)modelCustomPropertyMapper {
     return @{@"uid" : @"user_id",
-             @"name" : @"user_name"};
-}
-
-- (NSString *)voiceUid {
-    return self.uid;
+             @"name" : @"user_name",
+             @"loginToken" : @"login_token"
+    };
 }
 
 @end

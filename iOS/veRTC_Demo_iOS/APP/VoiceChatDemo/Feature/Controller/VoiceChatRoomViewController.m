@@ -18,6 +18,7 @@
 #import "VoiceChatRoomUserListCompoments.h"
 #import "VoiceChatIMCompoments.h"
 #import "VoiceChatRTCManager.h"
+#import "NetworkingTool.h"
 
 @interface VoiceChatRoomViewController () <VoiceChatRoomBottomViewDelegate, VoiceChatRTCManagerDelegate, VoiceChatSeatDelegate>
 
@@ -65,6 +66,11 @@
     [self addSocketListener];
     [self addSubviewAndConstraints];
     [self joinRoom];
+    
+    __weak __typeof(self) wself = self;
+    [VoiceChatRTCManager shareRtc].rtcJoinRoomBlock = ^(NSString * _Nonnull roomId, NSInteger errorCode, NSInteger joinType) {
+        [wself receivedJoinRoom:roomId errorCode:errorCode joinType:joinType];
+    };
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -79,8 +85,7 @@
 
 #pragma mark - Notification
 
-- (void)voiceControlChange:(NSNotification *)notification {
-    NSDictionary *dic = (NSDictionary *)notification.object;
+- (void)voiceControlChange:(NSDictionary *)dic {
     if ([dic isKindOfClass:[NSDictionary class]]) {
         NSString *type = dic[@"type"];
         if ([type isEqualToString:@"resume"]) {
@@ -348,6 +353,45 @@
     }];
 }
 
+- (void)reconnectVoiceChatRoom {
+    __weak __typeof(self) wself = self;
+    [VoiceChatRTMManager reconnectWithBlock:^(NSString * _Nonnull RTCToken, VoiceChatRoomModel * _Nonnull roomModel, VoiceChatUserModel * _Nonnull userModel, VoiceChatUserModel * _Nonnull hostUserModel, NSArray<VoiceChatSeatModel *> * _Nonnull seatList, RTMACKModel * _Nonnull model) {
+        NSString *type = @"";
+        if (model.result) {
+            type = @"resume";
+        } else if (model.code == RTMStatusCodeUserIsInactive ||
+                   model.code == RTMStatusCodeRoomDisbanded ||
+                   model.code == RTMStatusCodeUserNotFound) {
+            type = @"exit";
+        } else {
+            
+        }
+        if (NOEmptyStr(type)) {
+            NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+            [dic setValue:type forKey:@"type"];
+            
+            NSMutableDictionary *mutabledic = [[NSMutableDictionary alloc] init];
+            [mutabledic setValue:roomModel forKey:@"roomModel"];
+            [mutabledic setValue:userModel forKey:@"userModel"];
+            [mutabledic setValue:hostUserModel forKey:@"hostUserModel"];
+            [mutabledic setValue:seatList forKey:@"seatList"];
+            [mutabledic setValue:RTCToken forKey:@"RTCToken"];
+            [dic setValue:[mutabledic copy] forKey:@"data"];
+            [wself voiceControlChange:dic];
+        }
+    }];
+}
+
+- (void)loadDataWithReplyInvite:(NSInteger)type {
+    [VoiceChatRTMManager replyInvite:self.roomModel.roomID
+                                      reply:type
+                                      block:^(RTMACKModel * _Nonnull model) {
+        if (!model.result) {
+            [[ToastComponents shareToastComponents] showWithMessage:model.message];
+        }
+    }];
+}
+
 #pragma mark - VoiceChatRoomBottomViewDelegate
 
 - (void)voiceChatRoomBottomView:(VoiceChatRoomBottomView *_Nonnull)voiceChatRoomBottomView
@@ -409,18 +453,6 @@
         [self.hostAvatarView updateHostVolume:volumeValue];
         [self.seatCompoments updateSeatVolume:volumeInfo];
     }
-}
-
-#pragma mark - Network request
-
-- (void)loadDataWithReplyInvite:(NSInteger)type {
-    [VoiceChatRTMManager replyInvite:self.roomModel.roomID
-                                      reply:type
-                                      block:^(RTMACKModel * _Nonnull model) {
-        if (!model.result) {
-            [[ToastComponents shareToastComponents] showWithMessage:model.message];
-        }
-    }];
 }
 
 #pragma mark - Private Action
@@ -530,6 +562,16 @@
     return [list copy];
 }
 
+- (void)receivedJoinRoom:(NSString *)roomId
+               errorCode:(NSInteger)errorCode
+                joinType:(NSInteger)joinType {
+    if ([roomId isEqualToString:self.roomModel.roomID]) {
+        if (joinType != 0 && errorCode == 0) {
+            [self reconnectVoiceChatRoom];
+        }
+    }
+}
+
 #pragma mark - Getter
 
 - (VoiceChatTextInputCompoments *)textInputCompoments {
@@ -591,7 +633,9 @@
 }
 
 - (void)dealloc {
-    [[AlertActionManager shareAlertActionManager] dismiss];
+    [[AlertActionManager shareAlertActionManager] dismiss:^{
+        
+    }];
 }
 
 

@@ -14,7 +14,7 @@
 - (void)pushDemoViewControllerBlock:(void (^)(BOOL result))block {
     [VoiceChatRTCManager shareRtc].networkDelegate = [NetworkReachabilityManager sharedManager];
     [[VoiceChatRTCManager shareRtc] connect:@"svc"
-                                 loginToken:[TokenCompoments token]
+                                 loginToken:[LocalUserComponents userModel].loginToken
                                       block:^(BOOL result) {
         if (result) {
             VoiceChatRoomListsViewController *next = [[VoiceChatRoomListsViewController alloc] init];

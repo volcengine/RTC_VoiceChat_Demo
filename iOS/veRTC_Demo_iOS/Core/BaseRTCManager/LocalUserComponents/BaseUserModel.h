@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *uid;
 
-@property (nonatomic, copy, readonly) NSString *voiceUid;
+@property (nonatomic, copy) NSString *loginToken;
 
 @property (nonatomic, copy) NSString *name;
 

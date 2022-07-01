@@ -58,11 +58,26 @@
     });
 }
 
+- (void)dismiss:(void (^)(void))completion {
+    if (_alert) {
+        [self stopTimer];
+        [_alert dismissViewControllerAnimated:YES completion:^{
+            if (completion) {
+                completion();
+            }
+        }];
+    } else {
+        if (completion) {
+            completion();
+        }
+    }
+}
+
 - (void)dismiss {
     if (_alert) {
         [self stopTimer];
         [_alert dismissViewControllerAnimated:YES completion:^{
-                    
+
         }];
     }
 }

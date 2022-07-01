@@ -17,8 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Base
 
-+ (NetworkingManager *)shareManager;
-
 + (void)postWithEventName:(NSString *)eventName
                   content:(NSDictionary *)content
                     block:(void (^ __nullable)(NetworkingResponse *response))block;
@@ -35,7 +33,25 @@ NS_ASSUME_NONNULL_BEGIN
             loginToken:(NSString *)loginToken
                  block:(void (^ __nullable)(NetworkingResponse *response))block;
 
+#pragma mark -setAppInfo
+/*
+ * setAppInfo
+ * @param appId appId
+ * @param appKey appKey
+ * @param volcAk volc_ak
+ * @param volc_sk volc_sk
+ * @param block Callback
+ */
++ (void)setAppInfoWithAppId:(NSString *)appId
+                     appKey:(NSString *)appKey
+                     volcAk:(NSString *)volcAk
+                     volcSk:(NSString *)volcSk
+              volcAccountID:(NSString *)volcAccountID
+                   vodSpace:(NSString *)vodSpace
+                      block:(void (^ __nullable)(NetworkingResponse *response))block;
+
 #pragma mark - RTM
+
 
 /*
  * Join RTM

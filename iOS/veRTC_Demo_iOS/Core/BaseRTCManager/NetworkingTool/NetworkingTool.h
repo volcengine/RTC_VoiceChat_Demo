@@ -30,6 +30,8 @@ typedef NS_ENUM(NSInteger, RTMStatusCode) {
     RTMStatusCodeNotAuthorized = 416,
     // 断线时间过长，无法重连
     RTMStatusCodeDisconnectTimeout = 418,
+    // 用户已不活跃
+    RTMStatusCodeUserIsInactive = 419,
     // 房间已经解散/房间不存在
     RTMStatusCodeRoomDisbanded = 422,
     // 输入内容包含敏感词
@@ -60,6 +62,18 @@ typedef NS_ENUM(NSInteger, RTMStatusCode) {
     RTMStatusCodeUserIsInviting = 622,
     // 场景冲突(观众连麦时调用主播连麦接口，主播连麦时调用观众连麦接）
     RTMStatusCodeRoomLinkmicSceneConflict = 630,
+    
+    // 主播正在发起双主播连线
+    RTMStatusCodeAudienceApplyOthersHost = 632,
+    
+    // 与观众连线中，无法发起主播连线
+    RTMStatusCodeHostLinkOtherAudience = 643,
+    
+    // 与主播连线中，无法发起主播连线
+    RTMStatusCodeHostLinkOtherHost = 644,
+    
+    // 正在等待被邀主播的应答
+    RTMStatusHostInviteOtherHost = 645,
     
     // Token生成错误
     RTMStatusCodeBuildTokenFaild = 702,

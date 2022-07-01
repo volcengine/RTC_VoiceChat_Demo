@@ -15,7 +15,6 @@
 		2B1FCC8B26FB192D004E286C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1FCC7826FB18B7004E286C /* AVFoundation.framework */; };
 		2B1FCC8C26FB1933004E286C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1FCC7A26FB18BE004E286C /* AudioToolbox.framework */; };
 		2B1FCC8D26FB1939004E286C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1FCC7C26FB18C3004E286C /* Accelerate.framework */; };
-		2B1FCC8E26FB193E004E286C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1FCC7E26FB18C9004E286C /* GLKit.framework */; };
 		2B1FCC8F26FB1945004E286C /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1FCC8026FB18D5004E286C /* MetalPerformanceShaders.framework */; };
 		2B1FCC9026FB194B004E286C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1FCC8226FB18DD004E286C /* libz.tbd */; };
 		2BA1715F26084B22002F8365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BA1715D26084B22002F8365 /* Assets.xcassets */; };
@@ -79,6 +78,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		11DCCAECB45A2E375C40F4BD /* libPods-MeetingScreenShare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeetingScreenShare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B1FCC7226FB1894004E286C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		2B1FCC7426FB18A1004E286C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2B1FCC7626FB18A8004E286C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -88,6 +88,7 @@
 		2B1FCC7E26FB18C9004E286C /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		2B1FCC8026FB18D5004E286C /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = SDKROOT; };
 		2B1FCC8226FB18DD004E286C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		2B34BDF52840F88800E85418 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2BA060E8261F430400C816E6 /* veRTC_DemoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = veRTC_DemoTests.m; sourceTree = "<group>"; };
 		2BA060E9261F430400C816E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BA060ED261F438200C816E6 /* veRTC_DemoUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = veRTC_DemoUITests.m; sourceTree = "<group>"; };
@@ -127,8 +128,12 @@
 		2BEA42A22499BDEE001C0A2D /* veRTC_DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = veRTC_DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BEFEB3026DC8734007B6C83 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		2BEFEB3226DC8739007B6C83 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		3B5394BE38D59F0574C2CF51 /* Pods-MeetingScreenShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingScreenShare.debug.xcconfig"; path = "Target Support Files/Pods-MeetingScreenShare/Pods-MeetingScreenShare.debug.xcconfig"; sourceTree = "<group>"; };
 		911A93E9E910D87F089E43EE /* Pods-veRTC_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-veRTC_Demo.debug.xcconfig"; path = "Target Support Files/Pods-veRTC_Demo/Pods-veRTC_Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		A627BAB67CAF5B239A99AFAE /* Pods-veRTC_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-veRTC_Demo.release.xcconfig"; path = "Target Support Files/Pods-veRTC_Demo/Pods-veRTC_Demo.release.xcconfig"; sourceTree = "<group>"; };
+		B8D77B4008564196D8535646 /* Pods-veRTC_Demo-MeetingScreenShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-veRTC_Demo-MeetingScreenShare.release.xcconfig"; path = "Target Support Files/Pods-veRTC_Demo-MeetingScreenShare/Pods-veRTC_Demo-MeetingScreenShare.release.xcconfig"; sourceTree = "<group>"; };
+		DAD0F66B59B4F4EC70CDA500 /* Pods-MeetingScreenShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingScreenShare.release.xcconfig"; path = "Target Support Files/Pods-MeetingScreenShare/Pods-MeetingScreenShare.release.xcconfig"; sourceTree = "<group>"; };
+		F29B93F04D95B33F9E2EF9BF /* Pods-veRTC_Demo-MeetingScreenShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-veRTC_Demo-MeetingScreenShare.debug.xcconfig"; path = "Target Support Files/Pods-veRTC_Demo-MeetingScreenShare/Pods-veRTC_Demo-MeetingScreenShare.debug.xcconfig"; sourceTree = "<group>"; };
 		F9838313799F8FF1200A6EDB /* libPods-veRTC_Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-veRTC_Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -139,7 +144,6 @@
 			files = (
 				2B1FCC9026FB194B004E286C /* libz.tbd in Frameworks */,
 				2B1FCC8F26FB1945004E286C /* MetalPerformanceShaders.framework in Frameworks */,
-				2B1FCC8E26FB193E004E286C /* GLKit.framework in Frameworks */,
 				2B1FCC8D26FB1939004E286C /* Accelerate.framework in Frameworks */,
 				2B1FCC8C26FB1933004E286C /* AudioToolbox.framework in Frameworks */,
 				2B1FCC8B26FB192D004E286C /* AVFoundation.framework in Frameworks */,
@@ -291,6 +295,10 @@
 			children = (
 				911A93E9E910D87F089E43EE /* Pods-veRTC_Demo.debug.xcconfig */,
 				A627BAB67CAF5B239A99AFAE /* Pods-veRTC_Demo.release.xcconfig */,
+				F29B93F04D95B33F9E2EF9BF /* Pods-veRTC_Demo-MeetingScreenShare.debug.xcconfig */,
+				B8D77B4008564196D8535646 /* Pods-veRTC_Demo-MeetingScreenShare.release.xcconfig */,
+				3B5394BE38D59F0574C2CF51 /* Pods-MeetingScreenShare.debug.xcconfig */,
+				DAD0F66B59B4F4EC70CDA500 /* Pods-MeetingScreenShare.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -310,6 +318,8 @@
 				2BEFEB3226DC8739007B6C83 /* VideoToolbox.framework */,
 				2BEFEB3026DC8734007B6C83 /* ReplayKit.framework */,
 				F9838313799F8FF1200A6EDB /* libPods-veRTC_Demo.a */,
+				2B34BDF52840F88800E85418 /* UIKit.framework */,
+				11DCCAECB45A2E375C40F4BD /* libPods-MeetingScreenShare.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -328,8 +338,8 @@
 				2B56D21324DC0E4D00A3A383 /* ShellScript */,
 				2B6E11602541D21F0077888A /* Embed Frameworks */,
 				2BA6B318261C3AB9005316D2 /* Embed App Extensions */,
-				78729475951CC16345FA36D2 /* [CP] Copy Pods Resources */,
 				79F3CC05F49A726794CBE89E /* [CP] Embed Pods Frameworks */,
+				79BE0FA878792F5C0AB3DB33 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -489,7 +499,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		78729475951CC16345FA36D2 /* [CP] Copy Pods Resources */ = {
+		79BE0FA878792F5C0AB3DB33 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -744,7 +754,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/libyuv-iOS/lib",
 				);
-				MARKETING_VERSION = 7.2.0.7;
+				MARKETING_VERSION = 8.0.2.13;
 				PRODUCT_BUNDLE_IDENTIFIER = vertc.veRTCDemo.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = veRTC_Development_20211117;
@@ -791,7 +801,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/libyuv-iOS/lib",
 				);
-				MARKETING_VERSION = 7.2.0.7;
+				MARKETING_VERSION = 8.0.2.13;
 				PRODUCT_BUNDLE_IDENTIFIER = rtc.veRTCDemo.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = VERTCDemoInHouseDist;

@@ -15,6 +15,9 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:menuVC];
     self.window.rootViewController = nav;
     [self.window makeKeyWindow];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAllowAutoRotateNotification:) name:@"SetAllowAutoRotateNotification" object:nil];
+    
     return YES;
 }
 
@@ -23,6 +26,13 @@
 }
 
 #pragma mark - UISceneSession lifecycle
+
+- (void)setAllowAutoRotateNotification:(NSNotification *)sender {
+    if ([sender.object isKindOfClass:[NSNumber class]]) {
+        NSNumber *number = sender.object;
+        self.screenOrientation =  number.integerValue;
+    }
+}
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
     if (self.screenOrientation == ScreenOrientationLandscapeAndPortrait) {

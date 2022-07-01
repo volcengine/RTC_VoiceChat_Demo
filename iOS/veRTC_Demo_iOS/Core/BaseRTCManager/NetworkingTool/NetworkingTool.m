@@ -71,6 +71,18 @@
         case RTMStatusCodeRoomLinkmicSceneConflict:
             message = @"主播正在连线中";
             break;
+        case RTMStatusCodeAudienceApplyOthersHost:
+            message = @"主播正在发起双主播连线";
+            break;
+        case RTMStatusCodeHostLinkOtherAudience:
+            message = @"与观众连线中，无法发起主播连线";
+            break;
+        case RTMStatusCodeHostLinkOtherHost:
+            message = @"主播连线中，无法发起主播连线";
+            break;
+        case RTMStatusHostInviteOtherHost:
+            message = @"正在等待被邀主播的应答";
+            break;
         default:
             break;
     }

@@ -72,8 +72,8 @@
 
 - (void)showSocketIsDisconnect:(BOOL)isDisconnect {
     if (isDisconnect) {
-        UIViewController *windowVC = [DeviceInforTool topViewController];
-        [[ToastComponents shareToastComponents] showWithMessage:@"网络链接已断开，请检查设置" view:windowVC.view keep:YES block:^(BOOL result) {
+        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+        [[ToastComponents shareToastComponents] showWithMessage:@"网络链接已断开，请检查设置" view:keyWindow keep:YES block:^(BOOL result) {
             
         }];
     } else {

@@ -11,7 +11,5 @@ typedef NS_ENUM(NSInteger, ScreenOrientation) {
 
 @property (nonatomic, assign) ScreenOrientation screenOrientation;
 
-@property (nonatomic, assign) BOOL isScreenShareing;
-
 @end
 

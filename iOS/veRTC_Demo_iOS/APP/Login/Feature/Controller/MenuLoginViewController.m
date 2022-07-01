@@ -10,6 +10,7 @@
 #import "MenuCreateTextFieldView.h"
 #import "PhonePrivacyView.h"
 #import "LoginControlCompoments.h"
+#import "BuildConfig.h"
 
 @interface MenuLoginViewController ()
 
@@ -71,7 +72,7 @@
 
 - (void)loginButtonAction:(UIButton *)sender {
     if (IsEmptyStr(LoginUrl)) {
-        NSString *errorMessage = @"请在 Constants.h 配置 url 信息";
+        NSString *errorMessage = @"请在 BuildConfig.h 配置 url 信息";
         [[ToastComponents shareToastComponents] showWithMessage:errorMessage];
         return;
     }

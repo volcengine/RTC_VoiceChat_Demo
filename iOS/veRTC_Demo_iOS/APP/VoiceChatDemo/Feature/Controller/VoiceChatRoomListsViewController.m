@@ -135,6 +135,7 @@
 
 - (void)dealloc {
     [[VoiceChatRTCManager shareRtc] disconnect];
+    [PublicParameterCompoments clear];
 }
 
 

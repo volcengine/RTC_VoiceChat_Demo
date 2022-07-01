@@ -161,6 +161,7 @@
     if (stats.audio_stats.audioLossRate > 0) {
         self.paramInfoModel.receivedLossRate = [NSString stringWithFormat:@"%.0f",stats.audio_stats.audioLossRate];
     }
+    [self updateRoomParamInfoModel];
 }
 
 - (void)rtcEngine:(ByteRTCEngineKit * _Nonnull)engine onAudioVolumeIndication:(NSArray<ByteRTCAudioVolumeInfo *> * _Nonnull)speakers totalRemoteVolume:(NSInteger)totalRemoteVolume {

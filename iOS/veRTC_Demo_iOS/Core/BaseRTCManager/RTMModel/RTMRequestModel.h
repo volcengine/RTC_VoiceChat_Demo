@@ -15,7 +15,7 @@ typedef void (^RTCSendServerMessageBlock)(RTMACKModel *ackModel);
 
 @interface RTMRequestModel : NSObject
 
-@property (nonatomic, copy) NSString *appID;
+@property (nonatomic, copy) NSString *app_id;
 @property (nonatomic, copy) NSString *roomID;
 @property (nonatomic, copy) NSString *userID;
 @property (nonatomic, copy) NSString *requestID;

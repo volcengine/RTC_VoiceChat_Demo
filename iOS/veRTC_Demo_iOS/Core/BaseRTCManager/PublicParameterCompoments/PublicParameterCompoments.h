@@ -1,5 +1,5 @@
 //
-//  TokenCompoments.h
+//  PublicParameterCompoments.h
 //  veRTC_Demo
 //
 //  Created by bytedance on 2021/7/2.
@@ -10,13 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TokenCompoments : NSObject
+@interface PublicParameterCompoments : NSObject
 
-+ (void)updateToken:(NSString *)token;
+@property (nonatomic, copy) NSString *appId;
 
-+ (NSString *)token;
+@property (nonatomic, copy) NSString *roomId;
+
++ (PublicParameterCompoments *)share;
 
 + (NSDictionary *)addTokenToParams:(NSDictionary * _Nullable)dic;
+
++ (void)clear;
 
 @end
 

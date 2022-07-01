@@ -121,6 +121,33 @@
     if (_dataArray == nil) {
         _dataArray = [NSMutableArray array];
         
+        NSObject *feedShareDemo = [[NSClassFromString(@"FeedShareDemo") alloc] init];
+        if (feedShareDemo) {
+            SceneButtonModel *model = [[SceneButtonModel alloc] init];
+            model.title = @"一起看";
+            model.iconName = @"menu_feedshare";
+            model.scenes = feedShareDemo;
+            [_dataArray addObject:model];
+        }
+        
+        NSObject *videoChatDemo = [[NSClassFromString(@"VideoChatDemo") alloc] init];
+        if (videoChatDemo) {
+            SceneButtonModel *model = [[SceneButtonModel alloc] init];
+            model.title = @"视频互动";
+            model.iconName = @"menu_videochat";
+            model.scenes = videoChatDemo;
+            [_dataArray addObject:model];
+        }
+        
+        NSObject *ktvDemo = [[NSClassFromString(@"KTVDemo") alloc] init];
+        if (ktvDemo) {
+            SceneButtonModel *model = [[SceneButtonModel alloc] init];
+            model.title = @"在线KTV";
+            model.iconName = @"menu_ktv";
+            model.scenes = ktvDemo;
+            [_dataArray addObject:model];
+        }
+        
         NSObject *liveDemo = [[NSClassFromString(@"LiveDemo") alloc] init];
         if (liveDemo) {
             SceneButtonModel *model = [[SceneButtonModel alloc] init];
@@ -147,6 +174,26 @@
             model.iconName = @"menu_voice";
             model.bgName = @"menu_voice_icon_bg";
             model.scenes = voiceDemo;
+            [_dataArray addObject:model];
+        }
+        
+        NSObject *meetingDemo = [[NSClassFromString(@"MeetingDemo") alloc] init];
+        if (meetingDemo) {
+            SceneButtonModel *model = [[SceneButtonModel alloc] init];
+            model.title = @"视频会议";
+            model.iconName = @"menu_metting";
+            model.bgName = @"menu_meeting_icon_bg";
+            model.scenes = meetingDemo;
+            [_dataArray addObject:model];
+        }
+        
+        NSObject *eduDemo = [[NSClassFromString(@"EduDemo") alloc] init];
+        if (eduDemo) {
+            SceneButtonModel *model = [[SceneButtonModel alloc] init];
+            model.title = @"在线课堂";
+            model.iconName = @"menu_edu";
+            model.bgName = @"menu_edu_icon_bg";
+            model.scenes = eduDemo;
             [_dataArray addObject:model];
         }
     }

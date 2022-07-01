@@ -40,7 +40,7 @@
     if (!userName || userName.length <= 0) {
         return YES;
     }
-    NSString *match = @"^[\u4e00-\u9fa5_a-zA-Z0-9]+$";
+    NSString *match = @"^[\u4e00-\u9fa5a-zA-Z0-9]+$";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF matches %@", match];
     return [predicate evaluateWithObject:userName];
 }

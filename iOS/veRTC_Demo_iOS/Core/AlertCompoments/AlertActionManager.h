@@ -38,7 +38,7 @@
  * @param message Prompt information
  * @param actions Button model
  */
-- (void)dismiss;
+- (void)dismiss:(void (^)(void))completion;
 
 @end
 

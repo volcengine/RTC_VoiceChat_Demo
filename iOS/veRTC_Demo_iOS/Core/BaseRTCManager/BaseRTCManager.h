@@ -14,13 +14,14 @@
 #import "RTMACKModel.h"
 #import "RTMNoticeModel.h"
 #import "LocalUserComponents.h"
-#import "TokenCompoments.h"
+#import "PublicParameterCompoments.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol RTCNetworkProtocol <NSObject>
 
 @optional
+
 - (void)networkTypeChangedToType:(ByteRTCNetworkType)type;
 
 - (void)didStartNetworkMonitoring;
@@ -34,7 +35,6 @@ typedef void (^RTCRoomMessageBlock)(RTMNoticeModel *noticeModel);
 @interface BaseRTCManager : NSObject <ByteRTCEngineDelegate, ByteRTCRoomDelegate>
 
 @property (nonatomic, strong, nullable) ByteRTCEngineKit *rtcEngineKit;
-@property (nonatomic, copy) NSString *roomID;
 
 @property (nonatomic, copy, nullable) void (^rtcJoinRoomBlock)(NSString *roomId, NSInteger errorCode, NSInteger joinType);
 
@@ -43,6 +43,13 @@ typedef void (^RTCRoomMessageBlock)(RTMNoticeModel *noticeModel);
 // 开启连接
 - (void)connect:(NSString *)scenes
      loginToken:(NSString *)loginToken
+          block:(void (^)(BOOL result))block;
+
+// 开启连接
+- (void)connect:(NSString *)scenes
+     loginToken:(NSString *)loginToken
+  volcAccountID:(NSString *)volcAccountID
+       vodSpace:(NSString *)vodSpace
           block:(void (^)(BOOL result))block;
 
 // 关闭连接

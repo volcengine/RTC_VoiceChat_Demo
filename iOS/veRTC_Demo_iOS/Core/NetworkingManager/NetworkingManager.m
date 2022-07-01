@@ -10,6 +10,7 @@
 #import "NetworkingManager.h"
 #import "NetworkingTool.h"
 #import <YYModel/YYModel.h>
+#import "BuildConfig.h"
 
 @interface NetworkingManager ()
 
@@ -51,6 +52,24 @@
     [self postWithEventName:@"changeUserName" content:content block:block];
 }
 
+#pragma mark - SetAppInfo
+
++ (void)setAppInfoWithAppId:(NSString *)appId
+                     appKey:(NSString *)appKey
+                     volcAk:(NSString *)volcAk
+                     volcSk:(NSString *)volcSk
+              volcAccountID:(NSString *)volcAccountID
+                   vodSpace:(NSString *)vodSpace
+                      block:(void (^ __nullable)(NetworkingResponse *response))block {
+    NSDictionary *content = @{@"app_id" : appId ?: @"",
+                              @"app_key" : appKey ?: @"",
+                              @"volc_ak" : volcAk ?: @"",
+                              @"volc_sk" : volcSk ?: @"",
+                              @"account_id" : volcAccountID ?: @"",
+                              @"vod_space" : vodSpace ?: @""};
+    [self postWithEventName:@"setAppInfo" content:content block:block];
+}
+
 #pragma mark - RTM
 
 + (void)joinRTM:(NSString *)scenes
@@ -85,9 +104,11 @@
 + (void)postWithEventName:(NSString *)eventName
                   content:(NSDictionary *)content
                     block:(void (^ __nullable)(NetworkingResponse *response))block {
+    NSString *appid = [PublicParameterCompoments share].appId;
     NSDictionary *parameters = @{@"event_name" : eventName ?: @"",
                                  @"content" : [content yy_modelToJSONString] ?: @{},
-                                 @"device_id" : [NetworkingTool getDeviceId] ?: @""};
+                                 @"device_id" : [NetworkingTool getDeviceId] ?: @"",
+                                 @"app_id" : appid ? appid : @""};
     [[self shareManager].sessionManager POST:LoginUrl
                                   parameters:parameters
                                      headers:nil

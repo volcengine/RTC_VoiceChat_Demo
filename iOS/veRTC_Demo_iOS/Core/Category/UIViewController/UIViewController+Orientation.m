@@ -18,8 +18,8 @@
 }
 
 - (void)setAllowAutoRotate:(ScreenOrientation)screenOrientation {
-//    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-//    delegate.screenOrientation = screenOrientation;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SetAllowAutoRotateNotification" object:@(screenOrientation)];
+    // 更新 AppDelegate -supportedInterfaceOrientationsForWindow 代理信息
 }
 
 - (void)onDeviceOrientationDidChange {

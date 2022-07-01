@@ -6,7 +6,7 @@
 //
 
 #import "VoiceChatRTMManager.h"
-#import "TokenCompoments.h"
+#import "PublicParameterCompoments.h"
 #import "VoiceChatRTCManager.h"
 
 @implementation VoiceChatRTMManager
@@ -23,7 +23,7 @@
     NSDictionary *dic = @{@"room_name" : roomName ?: @"",
                           @"background_image_name" : bgImageName ?: @"",
                           @"user_name" : userName ?: @""};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcStartLive"
                                        with:dic
@@ -48,7 +48,7 @@
                   block:(void (^)(NSArray<VoiceChatUserModel *> *userLists,
                                   RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @""};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcGetAudienceList"
                                        with:dic
@@ -74,7 +74,7 @@
                        block:(void (^)(NSArray<VoiceChatUserModel *> *userLists,
                                        RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @""};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcGetApplyAudienceList"
     with:dic block:^(RTMACKModel * _Nonnull ackModel) {
@@ -102,7 +102,7 @@
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"audience_user_id" : uid ?: @"",
                           @"seat_id" : @(seatID.integerValue)};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcInviteInteract"
                                        with:dic
@@ -119,7 +119,7 @@
              block:(void (^)(RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"audience_user_id" : uid ?: @""};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcAgreeApply"
                                        with:dic
@@ -136,7 +136,7 @@
                        block:(void (^)(RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"type" : @(type)};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcManageInteractApply"
                                        with:dic
@@ -155,7 +155,7 @@
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"seat_id" : @(seatID.integerValue),
                           @"type" : @(type)};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcManageSeat"
                                        with:dic
@@ -172,7 +172,7 @@
         return;
     }
     NSDictionary *dic = @{@"room_id" : roomID ?: @""};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcFinishLive"
                                        with:dic
@@ -194,7 +194,7 @@
                                RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"user_name" : userName ?: @""};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcJoinLiveRoom"
                                        with:dic
@@ -236,7 +236,7 @@
               block:(void (^)(RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"reply" : @(reply)};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcReplyInvite"
                                        with:dic
@@ -253,7 +253,7 @@
                  block:(void (^)(RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"seat_id" : @(seatID.integerValue)};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcFinishInteract"
                                        with:dic
@@ -271,7 +271,7 @@
                                 RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"seat_id" : @(seatID.integerValue)};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcApplyInteract"
                                        with:dic
@@ -290,7 +290,7 @@
 
 + (void)leaveLiveRoom:(NSString *)roomID {
     NSDictionary *dic = @{@"room_id" : roomID ?: @""};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcLeaveLiveRoom"
                                        with:dic
@@ -304,7 +304,7 @@
 
 + (void)getActiveLiveRoomListWithBlock:(void (^)(NSArray<VoiceChatRoomModel *> *roomList,
                                                  RTMACKModel *model))block {
-    NSDictionary *dic = [TokenCompoments addTokenToParams:nil];
+    NSDictionary *dic = [PublicParameterCompoments addTokenToParams:nil];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcGetActiveLiveRoomList"
                                        with:dic
@@ -326,7 +326,7 @@
 }
 
 + (void)clearUser:(void (^)(RTMACKModel *model))block {
-    NSDictionary *dic = [TokenCompoments addTokenToParams:nil];
+    NSDictionary *dic = [PublicParameterCompoments addTokenToParams:nil];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcClearUser"
                                        with:dic
@@ -344,7 +344,7 @@
     NSString *encodedString = [message stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSDictionary *dic = @{@"room_id" : roomID,
                           @"message" : encodedString};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcSendMessage"
                                        with:dic
@@ -361,7 +361,7 @@
                     block:(void (^)(RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID,
                           @"mic" : @(mic)};
-    dic = [TokenCompoments addTokenToParams:dic];
+    dic = [PublicParameterCompoments addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcUpdateMediaStatus"
                                        with:dic
@@ -379,7 +379,7 @@
                                      VoiceChatUserModel *hostUserModel,
                                      NSArray<VoiceChatSeatModel *> *seatList,
                                      RTMACKModel *model))block {
-    NSDictionary *dic = [TokenCompoments addTokenToParams:nil];
+    NSDictionary *dic = [PublicParameterCompoments addTokenToParams:nil];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcReconnect"
                                        with:dic

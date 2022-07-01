@@ -75,7 +75,9 @@
     __weak __typeof(self) wself = self;
     BaseUserModel *userModel = [LocalUserComponents userModel];
     userModel.name = self.userNameTextFieldView.text;
-    [NetworkingManager changeUserName:userModel.name loginToken:[TokenCompoments token] block:^(NetworkingResponse * _Nonnull response) {
+    [NetworkingManager changeUserName:userModel.name
+                           loginToken:[LocalUserComponents userModel].loginToken
+                                block:^(NetworkingResponse * _Nonnull response) {
         if (response.result) {
             [LocalUserComponents updateLocalUserModel:userModel];
             [wself.navigationController popViewControllerAnimated:YES];

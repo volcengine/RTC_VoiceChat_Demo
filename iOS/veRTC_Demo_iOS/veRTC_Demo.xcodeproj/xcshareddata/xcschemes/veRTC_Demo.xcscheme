@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2BEA42962499BDEE001C0A2D"
+               BuildableName = "veRTC_DemoTests.xctest"
+               BlueprintName = "veRTC_DemoTests"
+               ReferencedContainer = "container:veRTC_Demo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2BEA42A12499BDEE001C0A2D"
+               BuildableName = "veRTC_DemoUITests.xctest"
+               BlueprintName = "veRTC_DemoUITests"
+               ReferencedContainer = "container:veRTC_Demo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
