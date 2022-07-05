@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#338AFF</item>
+        <item name="colorPrimaryDark">#0672FF</item>
+        <item name="colorAccent">#A1CAFF</item>
+        <item name="android:windowBackground">@drawable/activity_background</item>
+    </style>
+</resources>

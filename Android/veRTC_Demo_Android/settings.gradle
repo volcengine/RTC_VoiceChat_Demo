@@ -1,0 +1,6 @@
+include ':app'
+include ':scene-core'
+rootProject.name = "veRTC_Demo"
+include ':login'
+
+include ':voicechat'

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.volcengine.vertcdemo.voicechat">
+
+    <application>
+        <activity
+            android:name="com.volcengine.vertcdemo.voicechatdemo.feature.roomlist.VoiceChatListActivity"
+            android:exported="false"
+            android:icon="@drawable/ic_voice_chat"
+            android:label="@string/scene_voice_chat"
+            android:screenOrientation="portrait"
+            tools:ignore="IntentFilterExportedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="${applicationId}.category.SCENE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="scene_name_abbr"
+                android:value="svc" />
+
+            <meta-data
+                android:name="scene_sort"
+                android:value="40" />
+        </activity>
+        <activity
+            android:name="com.volcengine.vertcdemo.voicechatdemo.feature.createroom.CreateVoiceChatRoomActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.volcengine.vertcdemo.voicechatdemo.feature.roommain.VoiceChatRoomMainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+    </application>
+</manifest>

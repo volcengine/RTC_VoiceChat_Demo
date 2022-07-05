@@ -1,0 +1,134 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileSdkVersion project.compileSdkVersion
+
+    defaultConfig {
+        applicationId "rtc.vertcdemo.android"
+        minSdkVersion project.minSdkVersion
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion project.targetSdkVersion
+
+        versionCode 1
+        versionName project.APP_VERSION_NAME
+        buildConfigField('boolean', 'isTestEnv', project.IS_TEST_ENV)
+
+        ndk { abiFilters 'arm64-v8a', 'armeabi-v7a' }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders.put("APPLOG_SCHEME", "".toLowerCase())
+
+        multiDexEnabled true
+
+        ensureProperty('APP_ID')
+        buildConfigField('String', 'APP_ID', "\"${project.APP_ID}\"")
+
+        ensureProperty('APP_KEY')
+        buildConfigField('String', 'APP_KEY', "\"${project.APP_KEY}\"")
+
+        ensureProperty('VOLC_AK')
+        buildConfigField('String', 'VOLC_AK', "\"${project.VOLC_AK}\"")
+
+        ensureProperty('VOLC_SK')
+        buildConfigField('String', 'VOLC_SK', "\"${project.VOLC_SK}\"")
+
+        ensureProperty('ACCOUNT_ID')
+        buildConfigField('String', 'ACCOUNT_ID', "\"${project.ACCOUNT_ID}\"")
+
+        ensureProperty('VOD_SPACE')
+        buildConfigField('String', 'VOD_SPACE', "\"${project.VOD_SPACE}\"")
+
+        buildConfigField('String', 'URL_PRIVACY_AGREEMENT', '"https://www.volcengine.com/docs/6348/68918"')
+        buildConfigField('String', 'URL_SERVICE_AGREEMENT', '"https://www.volcengine.com/docs/6348/68917"')
+        buildConfigField('String', 'URL_DISCLAIMER', '"https://www.volcengine.com/docs/6348/68916"')
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("bytertc.jks")
+            storePassword "bytertc"
+            keyAlias "bytertc"
+            keyPassword "bytertc"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            jniLibs {
+                srcDir {
+                    "libs/jniLibs"
+                }
+            }
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                String versionStr = project.APP_VERSION_NAME
+                String suffix = versionStr.replace('.', '')
+                outputFileName = "veRTC_Demo${suffix}.apk"
+                println('产物地址: ' + outputFile.path)
+            }
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs', project(':scene-core').files('libs')
+    }
+}
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "androidx.appcompat:appcompat:$AppCompatVersion"
+    implementation "androidx.recyclerview:recyclerview:$RecyclerViewVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$ConstraintLayoutVersion"
+    implementation "com.google.android.material:material:$MaterialVersion"
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation "org.greenrobot:eventbus:$EventBusVersion"
+
+    implementation 'commons-net:commons-net:3.6'
+    implementation 'com.bytedance.applog:RangersAppLog-Lite-cn:5.3.0'
+
+    implementation "com.github.bumptech.glide:glide:$GlideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$GlideVersion"
+
+    implementation project(":login")
+
+    implementation project(":scene-core")
+
+    implementation project(":voicechat")
+}
+
+private def ensureProperty(String propertyName) {
+    if (!project.hasProperty(propertyName) || project[propertyName].isEmpty()) {
+        throw new GradleException("NO ${propertyName} defined in gradle.properties!")
+    }
+}

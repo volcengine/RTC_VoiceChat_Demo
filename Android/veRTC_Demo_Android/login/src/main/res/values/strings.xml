@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
+    <string name="login_input_length_id_waring">输入长度不能超过18位</string>
+    <string name="login_input_wrong_content_waring">仅支持中文、字母、数字、1~18位</string>
+    <string name="login_input_user_name_hint">请输入用户名</string>
+    <string name="login_response_empty">登陆响应数据为空</string>
+
+</resources>
