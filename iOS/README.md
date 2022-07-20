@@ -92,8 +92,9 @@
 
 3.2 在 **Team** 中选择 Personal Team。
 
-<img src="https://lf6-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_21fe86687eb139125a9cb6e15938d4e7" width="500px" >
-3.3 **修改 Bundle** **Identifier****。** 
+<img src="https://lf3-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_c09156899e72fcb2e947852e97398172" width="500px" >
+
+3.3 **修改 Bundle Identifier。**
 
 默认的 `vertc.veRTCDemo.ios` 已被注册， 将其修改为其他 Bundle ID，格式为 `vertc.xxx`。
 

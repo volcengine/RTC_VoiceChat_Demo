@@ -52,7 +52,7 @@
 
 > ACCOUNT\_ID 和 VOD\_SPACE 为录制相关功能配置参数，此 Demo 无录制功能，填 `1` 即可。
 
-<img src="https://lf6-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_73e66cb03b06babeb4b306f5772bbc61" width="500px" >
+<img src="https://lf3-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_f4267cf5d85af43dafb3fcbf28eb360a" width="500px" >
 
 ### 步骤 4：编译运行
 
