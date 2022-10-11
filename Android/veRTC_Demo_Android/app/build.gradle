@@ -114,9 +114,6 @@ dependencies {
 
     implementation "org.greenrobot:eventbus:$EventBusVersion"
 
-    implementation 'commons-net:commons-net:3.6'
-    implementation 'com.bytedance.applog:RangersAppLog-Lite-cn:5.3.0'
-
     implementation "com.github.bumptech.glide:glide:$GlideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$GlideVersion"
 
