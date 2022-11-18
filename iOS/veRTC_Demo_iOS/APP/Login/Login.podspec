@@ -10,6 +10,7 @@ Pod::Spec.new do |spec|
   spec.source       = { :path => './'}
   spec.ios.deployment_target = '9.0'
   
+  spec.pod_target_xcconfig = {'CODE_SIGN_IDENTITY' => ''}
   spec.source_files = '**/*.{h,m,c,mm}'
   spec.resource_bundles = {
     'Login' => ['Resource/*.xcassets']

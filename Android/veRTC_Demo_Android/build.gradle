@@ -3,10 +3,10 @@ ext {
     RtcAppVersion = "1.0"
 
     compileSdkVersion = 29
-    minSdkVersion = 19
+    minSdkVersion = 21
     targetSdkVersion = 29
 
-    VOLCENGINE = '3.41.105'
+    VOLCENGINE = '3.46.103'
 
     // region Third part libraries
     GlideVersion = '4.12.0'
@@ -22,6 +22,8 @@ ext {
     MaterialVersion = '1.4.0'
     // end region
 
+    JOIN_RTS_MODULE = 'joinrtsparams'
+    LOGIN_MODULE = 'login'
 }
 
 buildscript {
@@ -43,7 +45,6 @@ allprojects {
         }
         mavenCentral()
         maven { url 'https://artifact.bytedance.com/repository/Volcengine/' }
-        maven { url 'https://maven.byted.org/repository/android_public/' }
         google()
     }
 }

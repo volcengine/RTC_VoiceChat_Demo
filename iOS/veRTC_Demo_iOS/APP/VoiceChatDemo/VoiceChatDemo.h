@@ -2,7 +2,7 @@
 //  VoiceChatDemo.h
 //  AFNetworking
 //
-//  Created by bytedance on 2022/4/21.
+//  Created by on 2022/4/21.
 //
 
 #import <Foundation/Foundation.h>

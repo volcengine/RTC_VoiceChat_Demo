@@ -2,12 +2,13 @@
 //  VoiceChatRTMManager.m
 //  SceneRTCDemo
 //
-//  Created by bytedance on 2021/3/16.
+//  Created by on 2021/3/16.
 //
 
 #import "VoiceChatRTMManager.h"
-#import "PublicParameterCompoments.h"
+#import "PublicParameterComponent.h"
 #import "VoiceChatRTCManager.h"
+#import "JoinRTSParams.h"
 
 @implementation VoiceChatRTMManager
 
@@ -23,7 +24,7 @@
     NSDictionary *dic = @{@"room_name" : roomName ?: @"",
                           @"background_image_name" : bgImageName ?: @"",
                           @"user_name" : userName ?: @""};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcStartLive"
                                        with:dic
@@ -40,7 +41,6 @@
         if (block) {
             block(RTCToken, roomModel, hostUserModel, ackModel);
         }
-        NSLog(@"[%@]-svcStartLive %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -48,7 +48,7 @@
                   block:(void (^)(NSArray<VoiceChatUserModel *> *userLists,
                                   RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @""};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcGetAudienceList"
                                        with:dic
@@ -66,7 +66,6 @@
         if (block) {
             block([userLists copy], ackModel);
         }
-        NSLog(@"[%@]-svcGetAudienceList %@ | %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -74,7 +73,7 @@
                        block:(void (^)(NSArray<VoiceChatUserModel *> *userLists,
                                        RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @""};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcGetApplyAudienceList"
     with:dic block:^(RTMACKModel * _Nonnull ackModel) {
@@ -91,7 +90,6 @@
         if (block) {
             block([userLists copy], ackModel);
         }
-        NSLog(@"[%@]-svcGetApplyAudienceList %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -102,7 +100,7 @@
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"audience_user_id" : uid ?: @"",
                           @"seat_id" : @(seatID.integerValue)};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcInviteInteract"
                                        with:dic
@@ -110,7 +108,6 @@
         if (block) {
             block(ackModel);
         }
-        NSLog(@"[%@]-svcInviteInteract %@ | %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -119,7 +116,7 @@
              block:(void (^)(RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"audience_user_id" : uid ?: @""};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcAgreeApply"
                                        with:dic
@@ -127,7 +124,6 @@
         if (block) {
             block(ackModel);
         }
-        NSLog(@"[%@]-svcAgreeApply %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -136,7 +132,7 @@
                        block:(void (^)(RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"type" : @(type)};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcManageInteractApply"
                                        with:dic
@@ -144,7 +140,6 @@
         if (block) {
             block(ackModel);
         }
-        NSLog(@"[%@]-svcManagerInteractApply %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -155,7 +150,7 @@
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"seat_id" : @(seatID.integerValue),
                           @"type" : @(type)};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcManageSeat"
                                        with:dic
@@ -163,7 +158,6 @@
         if (block) {
             block(ackModel);
         }
-        NSLog(@"[%@]-svcManageSeat %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -172,12 +166,11 @@
         return;
     }
     NSDictionary *dic = @{@"room_id" : roomID ?: @""};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcFinishLive"
                                        with:dic
                                       block:^(RTMACKModel * _Nonnull ackModel) {
-        NSLog(@"[%@]-svcFinishLive %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -194,7 +187,7 @@
                                RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"user_name" : userName ?: @""};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcJoinLiveRoom"
                                        with:dic
@@ -227,7 +220,6 @@
                   [seatList copy],
                   ackModel);
         }
-        NSLog(@"[%@]-svcJoinLiveRoom %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -236,7 +228,7 @@
               block:(void (^)(RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"reply" : @(reply)};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcReplyInvite"
                                        with:dic
@@ -244,7 +236,6 @@
         if (block) {
             block(ackModel);
         }
-        NSLog(@"[%@]-svcReplyInvite %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -253,7 +244,7 @@
                  block:(void (^)(RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"seat_id" : @(seatID.integerValue)};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcFinishInteract"
                                        with:dic
@@ -261,7 +252,6 @@
         if (block) {
             block(ackModel);
         }
-        NSLog(@"[%@]-svcFinishInteract %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -271,7 +261,7 @@
                                 RTMACKModel *model))block {
     NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"seat_id" : @(seatID.integerValue)};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcApplyInteract"
                                        with:dic
@@ -284,18 +274,17 @@
         if (block) {
             block(isNeedApply, ackModel);
         }
-        NSLog(@"[%@]-svcApplyInteract %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
 + (void)leaveLiveRoom:(NSString *)roomID {
     NSDictionary *dic = @{@"room_id" : roomID ?: @""};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcLeaveLiveRoom"
                                        with:dic
                                       block:^(RTMACKModel * _Nonnull ackModel) {
-        NSLog(@"[%@]-svcLeaveLiveRoom %@ \n %@", [self class], dic, ackModel.response);
+
     }];
 }
 
@@ -304,7 +293,7 @@
 
 + (void)getActiveLiveRoomListWithBlock:(void (^)(NSArray<VoiceChatRoomModel *> *roomList,
                                                  RTMACKModel *model))block {
-    NSDictionary *dic = [PublicParameterCompoments addTokenToParams:nil];
+    NSDictionary *dic = [JoinRTSParams addTokenToParams:nil];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcGetActiveLiveRoomList"
                                        with:dic
@@ -321,12 +310,11 @@
         if (block) {
             block([roomModelList copy], ackModel);
         }
-        NSLog(@"[%@]-svcGetActiveLiveRoomList %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
 + (void)clearUser:(void (^)(RTMACKModel *model))block {
-    NSDictionary *dic = [PublicParameterCompoments addTokenToParams:nil];
+    NSDictionary *dic = [JoinRTSParams addTokenToParams:nil];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcClearUser"
                                        with:dic
@@ -334,7 +322,6 @@
         if (block) {
             block(ackModel);
         }
-        NSLog(@"[%@]-svcClearUser %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -342,9 +329,9 @@
             message:(NSString *)message
               block:(void (^)(RTMACKModel *model))block {
     NSString *encodedString = [message stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSDictionary *dic = @{@"room_id" : roomID,
-                          @"message" : encodedString};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    NSDictionary *dic = @{@"room_id" : roomID ?: @"",
+                          @"message" : encodedString ?: @""};
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcSendMessage"
                                        with:dic
@@ -352,16 +339,15 @@
         if (block) {
             block(ackModel);
         }
-        NSLog(@"[%@]-svcSendMessage %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
 + (void)updateMediaStatus:(NSString *)roomID
                       mic:(NSInteger)mic
                     block:(void (^)(RTMACKModel *model))block {
-    NSDictionary *dic = @{@"room_id" : roomID,
+    NSDictionary *dic = @{@"room_id" : roomID ?: @"",
                           @"mic" : @(mic)};
-    dic = [PublicParameterCompoments addTokenToParams:dic];
+    dic = [JoinRTSParams addTokenToParams:dic];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcUpdateMediaStatus"
                                        with:dic
@@ -369,7 +355,6 @@
         if (block) {
             block(ackModel);
         }
-        NSLog(@"[%@]-svcUpdateMediaStatus %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -379,7 +364,7 @@
                                      VoiceChatUserModel *hostUserModel,
                                      NSArray<VoiceChatSeatModel *> *seatList,
                                      RTMACKModel *model))block {
-    NSDictionary *dic = [PublicParameterCompoments addTokenToParams:nil];
+    NSDictionary *dic = [JoinRTSParams addTokenToParams:nil];
     
     [[VoiceChatRTCManager shareRtc] emitWithAck:@"svcReconnect"
                                        with:dic
@@ -411,7 +396,6 @@
                   [seatList copy],
                   ackModel);
         }
-        NSLog(@"[%@]-svcReconnect %@ \n %@", [self class], dic, ackModel.response);
     }];
 }
 
@@ -432,7 +416,6 @@
         if (block) {
             block(model, count);
         }
-        NSLog(@"[%@]-svcOnAudienceJoinRoom %@", [self class], noticeModel.data);
     }];
 }
 
@@ -451,7 +434,6 @@
         if (block) {
             block(model, count);
         }
-        NSLog(@"[%@]-svcOnAudienceLeaveRoom %@", [self class], noticeModel.data);
     }];
 }
 
@@ -469,7 +451,6 @@
         if (block) {
             block(rommID, type);
         }
-        NSLog(@"[%@]-svcOnFinishLive %@", [self class], noticeModel.data);
     }];
 }
 
@@ -487,7 +468,6 @@
         if (block) {
             block(model, seatID);
         }
-        NSLog(@"[%@]-svcOnJoinInteract %@", [self class], noticeModel.data);
     }];
 }
 
@@ -509,7 +489,6 @@
         if (block) {
             block(model, seatID, type);
         }
-        NSLog(@"[%@]-svcOnFinishInteract %@", [self class], noticeModel.data);
     }];
 }
 
@@ -528,7 +507,6 @@
         if (block) {
             block(seatID, type);
         }
-        NSLog(@"[%@]-svcOnSeatStatusChange %@", [self class], noticeModel.data);
     }];
 }
 
@@ -550,7 +528,6 @@
         if (block) {
             block(model, seatID, mic);
         }
-        NSLog(@"[%@]-svcOnMediaStatusChange %@", [self class], noticeModel.data);
     }];
 }
 
@@ -568,7 +545,6 @@
         if (block) {
             block(model, message);
         }
-        NSLog(@"[%@]-svcOnMessage %@", [self class], noticeModel.data);
     }];
 }
 
@@ -589,7 +565,6 @@
         if (block) {
             block(model, seatID);
         }
-        NSLog(@"[%@]-svcOnInviteInteract %@", [self class], noticeModel.data);
     }];
 }
 
@@ -608,7 +583,6 @@
         if (block) {
             block(model, reply);
         }
-        NSLog(@"[%@]-svcOnInviteResult %@", [self class], noticeModel.data);
     }];
 }
 
@@ -626,7 +600,6 @@
         if (block) {
             block(model, seatID);
         }
-        NSLog(@"[%@]-svcOnApplyInteract %@", [self class], noticeModel.data);
     }];
 }
 
@@ -642,7 +615,6 @@
         if (block) {
             block(mic);
         }
-        NSLog(@"[%@]-svcOnMediaOperate %@", [self class], noticeModel.data);
     }];
 }
 
@@ -657,7 +629,6 @@
         if (block) {
             block(uid);
         }
-        NSLog(@"[%@]-svcOnClearUser %@", [self class], noticeModel.data);
     }];
 }
 

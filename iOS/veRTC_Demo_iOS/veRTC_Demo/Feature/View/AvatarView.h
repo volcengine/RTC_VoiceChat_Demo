@@ -2,7 +2,7 @@
 //  AvatarView.h
 //  SceneRTCDemo
 //
-//  Created by bytedance on 2021/3/10.
+//  Created by on 2021/3/10.
 //
 
 #import <UIKit/UIKit.h>

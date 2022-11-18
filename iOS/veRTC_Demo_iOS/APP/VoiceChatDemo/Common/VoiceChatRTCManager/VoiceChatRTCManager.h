@@ -1,6 +1,6 @@
 #import "BaseRTCManager.h"
 #import "VoiceChatRTCManager.h"
-#import <VolcEngineRTC/objc/rtc/ByteRTCEngineKit.h>
+#import <VolcEngineRTC/objc/ByteRTCVideo.h>
 #import "VoiceChatRoomParamInfoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN

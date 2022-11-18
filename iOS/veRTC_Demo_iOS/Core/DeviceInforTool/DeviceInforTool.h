@@ -37,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIViewController *)topViewController;
 
++ (void)backToRootViewController;
+
 @end
 
 NS_ASSUME_NONNULL_END

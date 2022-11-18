@@ -57,7 +57,7 @@
 5. 填写 **LoginUrl**
 	
 
-当前你可以使用 **`http://rtc-test.bytedance.com/rtc_demo_special/login`** 作为测试服务器域名，仅提供跑通测试服务，无法保障正式需求。
+当前你可以使用 **`https://common.rtc.volcvideo.com/rtc_demo_special/login`** 作为测试服务器域名，仅提供跑通测试服务，无法保障正式需求。
 
 <img src="https://lf6-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_e49c507052a0a510410457eed3ccce4b" width="500px" >
 

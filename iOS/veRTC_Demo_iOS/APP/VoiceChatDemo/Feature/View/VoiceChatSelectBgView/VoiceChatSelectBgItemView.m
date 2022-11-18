@@ -2,8 +2,8 @@
 //  VoiceChatSelectBgItemView.m
 //  veRTC_Demo
 //
-//  Created by bytedance on 2021/11/26.
-//  Copyright © 2021 . All rights reserved.
+//  Created by on 2021/11/26.
+//  
 //
 
 #import "VoiceChatSelectBgItemView.h"

@@ -2,8 +2,8 @@
 //  ScenesViewController.m
 //  veRTC_Demo
 //
-//  Created by bytedance on 2021/5/21.
-//  Copyright © 2021 . All rights reserved.
+//  Created by on 2021/5/21.
+//  
 //
 
 #import "ScenesViewController.h"
@@ -78,8 +78,11 @@
 - (void)sceneButtonAction:(ScenesItemButton *)button {
     button.enabled = NO;
     BaseHomeDemo *scenes = (BaseHomeDemo *)button.model.scenes;
+    // Open the corresponding scene home page
+    [[ToastComponent shareToastComponent] showLoading];
     [scenes pushDemoViewControllerBlock:^(BOOL result) {
         button.enabled = YES;
+        [[ToastComponent shareToastComponent] dismiss];
     }];
 }
 
@@ -121,15 +124,51 @@
     if (_dataArray == nil) {
         _dataArray = [NSMutableArray array];
         
+        NSObject *chorusDemo = [[NSClassFromString(@"ChorusDemo") alloc] init];
+        if (chorusDemo) {
+            SceneButtonModel *model = [[SceneButtonModel alloc] init];
+            model.title = @"双人合唱";
+            model.iconName = @"menu_chorus";
+            model.scenes = chorusDemo;
+            [_dataArray addObject:model];
+        }
+        
+        NSObject *liveShareDemo = [[NSClassFromString(@"LiveShareDemo") alloc] init];
+        if (liveShareDemo) {
+            SceneButtonModel *model = [[SceneButtonModel alloc] init];
+            model.title = @"一起看直播";
+            model.iconName = @"menu_live_share";
+            model.scenes = liveShareDemo;
+            [_dataArray addObject:model];
+        }
+        
         NSObject *feedShareDemo = [[NSClassFromString(@"FeedShareDemo") alloc] init];
         if (feedShareDemo) {
             SceneButtonModel *model = [[SceneButtonModel alloc] init];
-            model.title = @"一起看";
+            model.title = @"一起看抖音";
             model.iconName = @"menu_feedshare";
             model.scenes = feedShareDemo;
             [_dataArray addObject:model];
         }
+
+        NSObject *videoCallDemo = [[NSClassFromString(@"VideoCallDemo") alloc] init];
+        if (videoCallDemo) {
+            SceneButtonModel *model = [[SceneButtonModel alloc] init];
+            model.title = @"音视频通话";
+            model.iconName = @"menu_videocall";
+            model.scenes = videoCallDemo;
+            [_dataArray addObject:model];
+        }
         
+        NSObject *gameRoomDemo = [[NSClassFromString(@"GameRoomDemo") alloc] init];
+        if (gameRoomDemo) {
+            SceneButtonModel *model = [[SceneButtonModel alloc] init];
+            model.title = @"游戏房";
+            model.iconName = @"menu_game";
+            model.scenes = gameRoomDemo;
+            [_dataArray addObject:model];
+        }
+
         NSObject *videoChatDemo = [[NSClassFromString(@"VideoChatDemo") alloc] init];
         if (videoChatDemo) {
             SceneButtonModel *model = [[SceneButtonModel alloc] init];
@@ -196,6 +235,7 @@
             model.scenes = eduDemo;
             [_dataArray addObject:model];
         }
+        
     }
     return _dataArray;
 }

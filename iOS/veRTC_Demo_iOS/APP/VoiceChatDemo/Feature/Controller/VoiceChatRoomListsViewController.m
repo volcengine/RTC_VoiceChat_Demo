@@ -2,8 +2,8 @@
 //  VoiceChatRoomViewController.m
 //  veRTC_Demo
 //
-//  Created by bytedance on 2021/5/18.
-//  Copyright © 2021 . All rights reserved.
+//  Created by on 2021/5/18.
+//  
 //
 
 #import "VoiceChatRoomListsViewController.h"
@@ -72,7 +72,7 @@
                 wself.roomTableView.dataLists = roomList;
             } else {
                 wself.roomTableView.dataLists = @[];
-                [[ToastComponents shareToastComponents] showWithMessage:model.message];
+                [[ToastComponent shareToastComponent] showWithMessage:model.message];
             }
         }];
     }];
@@ -135,7 +135,7 @@
 
 - (void)dealloc {
     [[VoiceChatRTCManager shareRtc] disconnect];
-    [PublicParameterCompoments clear];
+    [PublicParameterComponent clear];
 }
 
 

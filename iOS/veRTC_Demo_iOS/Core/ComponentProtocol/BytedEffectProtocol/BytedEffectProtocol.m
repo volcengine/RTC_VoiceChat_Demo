@@ -2,7 +2,7 @@
 //  BytedEffectProtocol.m
 //  AFNetworking
 //
-//  Created by bytedance on 2022/5/7.
+//  Created by on 2022/5/7.
 //
 
 #import "BytedEffectProtocol.h"
@@ -15,10 +15,12 @@
 
 @implementation BytedEffectProtocol
 
-- (instancetype)initWithRTCEngineKit:(ByteRTCEngineKit *)rtcEngineKit {
-    NSObject<BytedEffectDelegate> *effectBeautyCompoments = [[NSClassFromString(@"EffectBeautyCompoments") alloc] init];
-    if (effectBeautyCompoments) {
-        self.bytedEffectDelegate = effectBeautyCompoments;
+- (instancetype)initWithRTCEngineKit:(ByteRTCVideo *)rtcEngineKit {
+    // 开源代码暂不支持美颜相关功能，体验效果请下载Demo
+    // Open source code does not support beauty related functions, please download Demo to experience the effect
+    NSObject<BytedEffectDelegate> *effectBeautyComponent = [[NSClassFromString(@"EffectBeautyComponent") alloc] init];
+    if (effectBeautyComponent) {
+        self.bytedEffectDelegate = effectBeautyComponent;
     }
     
     if ([self.bytedEffectDelegate respondsToSelector:@selector(protocol:initWithRTCEngineKit:)]) {

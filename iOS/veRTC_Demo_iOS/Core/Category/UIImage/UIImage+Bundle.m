@@ -2,7 +2,7 @@
 //  UIImage+Bundle.m
 //  veRTCDemo
 //
-//  Created by bytedance on 2022/4/2.
+//  Created by on 2022/4/2.
 //
 
 #import "UIImage+Bundle.h"

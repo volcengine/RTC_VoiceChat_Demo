@@ -2,10 +2,12 @@
 #import "AlertActionManager.h"
 #import "SystemAuthority.h"
 
-@interface VoiceChatRTCManager () <ByteRTCEngineDelegate>
+@interface VoiceChatRTCManager () <ByteRTCVideoDelegate>
 
 @property (nonatomic, strong) VoiceChatRoomParamInfoModel *paramInfoModel;
 @property (nonatomic, assign) int audioMixingID;
+@property (nonatomic, assign) BOOL isEnableAudioCapture;
+
 @end
 
 @implementation VoiceChatRTCManager
@@ -32,6 +34,10 @@
 - (void)joinRTCRoomWithToken:(NSString *)token
                       roomID:(NSString *)roomID
                          uid:(NSString *)uid {
+    self.rtcRoom = [self.rtcEngineKit createRTCRoom:roomID];
+    self.rtcRoom.delegate = self;
+    self.isEnableAudioCapture = NO;
+    
     //关闭 本地音频/视频采集
     //Turn on/off local audio capture
     [self.rtcEngineKit stopAudioCapture];
@@ -39,15 +45,21 @@
 
     //设置音频路由模式，YES 扬声器/NO 听筒
     //Set the audio routing mode, YES speaker/NO earpiece
-    [self.rtcEngineKit setAudioPlaybackDevice:ByteRTCAudioPlaybackDeviceSpeakerphone];
-    
+    [self.rtcEngineKit setDefaultAudioRoute:ByteRTCAudioRouteSpeakerphone];
+
     //开启/关闭发言者音量键控
     //Turn on/off speaker volume keying
-    [self.rtcEngineKit setAudioVolumeIndicationInterval:300];
+    ByteRTCAudioPropertiesConfig *audioPropertiesConfig = [[ByteRTCAudioPropertiesConfig alloc] init];
+    audioPropertiesConfig.interval = 300;
+    [self.rtcEngineKit enableAudioPropertiesReport:audioPropertiesConfig];
+    
+    //设置本地渲染和编码镜像(本地和远端相同)
+    //Set up the local rendering and encoding mirror (the same local and remote)
+    [self.rtcEngineKit setLocalVideoMirrorType:ByteRTCMirrorTypeRenderAndEncoder];
     
     //设置用户为隐身状态
     //Set user to incognito state
-    [self.rtcEngineKit setUserVisibility:NO];
+    [self.rtcRoom setUserVisibility:NO];
 
     //加入房间，开始连麦,需要申请AppId和Token
     //Join the room, start connecting the microphone, you need to apply for AppId and Token
@@ -55,14 +67,11 @@
     userInfo.userId = uid;
     
     ByteRTCRoomConfig *config = [[ByteRTCRoomConfig alloc] init];
-    config.profile = ByteRTCRoomProfileLiveBroadcasting;
+    config.profile = ByteRTCRoomProfileInteractivePodcast;
     config.isAutoPublish = YES;
     config.isAutoSubscribeAudio = YES;
     
-    [self.rtcEngineKit joinRoomByKey:token
-                        roomId:roomID
-                      userInfo:userInfo
-                 rtcRoomConfig:config];
+    [self.rtcRoom joinRoomByToken:token userInfo:userInfo roomConfig:config];
 }
 
 #pragma mark - rtc method
@@ -75,13 +84,15 @@
                                                block:^(BOOL isAuthorize) {
             if (isAuthorize) {
                 [self.rtcEngineKit startAudioCapture];
+                [self.rtcRoom setUserVisibility:YES];
                 [self muteLocalAudioStream:NO];
-                [self.rtcEngineKit setUserVisibility:YES];
+                self.isEnableAudioCapture = YES;
             }
         }];
     } else {
         [self.rtcEngineKit stopAudioCapture];
-        [self.rtcEngineKit setUserVisibility:NO];
+        [self.rtcRoom setUserVisibility:NO];
+        self.isEnableAudioCapture = NO;
     }
 }
 
@@ -89,9 +100,9 @@
     //开启/关闭 本地音频推流
     //Turn on/off local audio stream
     if (isMute) {
-        [self.rtcEngineKit muteLocalAudio:ByteRTCMuteStateOn];
+        [self.rtcRoom unpublishStream:ByteRTCMediaStreamTypeAudio];
     } else {
-        [self.rtcEngineKit muteLocalAudio:ByteRTCMuteStateOff];
+        [self.rtcRoom publishStream:ByteRTCMediaStreamTypeAudio];
     }
 }
 
@@ -100,7 +111,9 @@
     //Leave the channel
     [self makeCoHost:NO];
     [self muteLocalAudioStream:YES];
-    [self.rtcEngineKit leaveRoom];
+    [self.rtcRoom leaveRoom];
+    [self.rtcRoom destroy];
+    self.rtcRoom = nil;
 }
 
 #pragma mark - Background Music Method
@@ -145,30 +158,28 @@
     [audioMixingManager setAudioMixingVolume:_audioMixingID volume:(int)volume type:ByteRTCAudioMixingTypePlayoutAndPublish];
 }
 
-#pragma mark - ByteRTCEngineDelegate
+#pragma mark - ByteRTCVideoDelegate
 
-- (void)rtcEngine:(ByteRTCEngineKit *_Nonnull)engine onLocalStreamStats:(const ByteRTCLocalStreamStats * _Nonnull)stats {
-    if (stats.audio_stats.audioLossRate > 0) {
-        self.paramInfoModel.sendLossRate = [NSString stringWithFormat:@"%.0f",stats.audio_stats.audioLossRate];
+- (void)rtcRoom:(ByteRTCRoom *)rtcRoom onNetworkQuality:(ByteRTCNetworkQualityStats *)localQuality remoteQualities:(NSArray<ByteRTCNetworkQualityStats *> *)remoteQualities {
+    if (self.isEnableAudioCapture) {
+        // 开启音频采集的用户，数据传输往返时延。
+        self.paramInfoModel.rtt = [NSString stringWithFormat:@"%.0ld",(long)localQuality.rtt];
+    } else {
+        // 关闭音频采集的用户，数据传输往返时延。
+        self.paramInfoModel.rtt = [NSString stringWithFormat:@"%.0ld",(long)remoteQualities.firstObject.rtt];
     }
-    if (stats.audio_stats.rtt > 0) {
-        self.paramInfoModel.rtt = [NSString stringWithFormat:@"%.0ld",(long)stats.audio_stats.rtt];
-    }
+    // 下行网络质量评分
+    self.paramInfoModel.rxQuality = localQuality.rxQuality;
+    // 上行网络质量评分
+    self.paramInfoModel.txQuality = localQuality.txQuality;
     [self updateRoomParamInfoModel];
 }
 
-- (void)rtcEngine:(ByteRTCEngineKit * _Nonnull)engine onRemoteStreamStats:(const ByteRTCRemoteStreamStats * _Nonnull)stats {
-    if (stats.audio_stats.audioLossRate > 0) {
-        self.paramInfoModel.receivedLossRate = [NSString stringWithFormat:@"%.0f",stats.audio_stats.audioLossRate];
-    }
-    [self updateRoomParamInfoModel];
-}
-
-- (void)rtcEngine:(ByteRTCEngineKit * _Nonnull)engine onAudioVolumeIndication:(NSArray<ByteRTCAudioVolumeInfo *> * _Nonnull)speakers totalRemoteVolume:(NSInteger)totalRemoteVolume {
+- (void)rtcEngine:(ByteRTCVideo *)engine onRemoteAudioPropertiesReport:(NSArray<ByteRTCRemoteAudioPropertiesInfo *> *)audioPropertiesInfos totalRemoteVolume:(NSInteger)totalRemoteVolume {
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    for (int i = 0; i < speakers.count; i++) {
-        ByteRTCAudioVolumeInfo *model = speakers[i];
-        [dic setValue:@(model.linearVolume) forKey:model.uid];
+    for (int i = 0; i < audioPropertiesInfos.count; i++) {
+        ByteRTCRemoteAudioPropertiesInfo *model = audioPropertiesInfos[i];
+        [dic setValue:@(model.audioPropertiesInfo.linearVolume) forKey:model.streamKey.userId];
     }
     if ([self.delegate respondsToSelector:@selector(voiceChatRTCManager:reportAllAudioVolume:)]) {
         [self.delegate voiceChatRTCManager:self reportAllAudioVolume:dic];

@@ -1,7 +1,7 @@
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import "NetworkReachabilityManager.h"
-#import "ToastComponents.h"
+#import "ToastComponent.h"
 #import "DeviceInforTool.h"
 
 @interface NetworkReachabilityManager ()
@@ -73,28 +73,12 @@
 - (void)showSocketIsDisconnect:(BOOL)isDisconnect {
     if (isDisconnect) {
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-        [[ToastComponents shareToastComponents] showWithMessage:@"网络链接已断开，请检查设置" view:keyWindow keep:YES block:^(BOOL result) {
+        [[ToastComponent shareToastComponent] showWithMessage:@"网络连接已断开，请检查设置" view:keyWindow keep:YES block:^(BOOL result) {
             
         }];
     } else {
-        [[ToastComponents shareToastComponents] dismiss];
+        [[ToastComponent shareToastComponent] dismiss];
     }
-}
-
-@end
-
-@implementation NetworkReachabilityManager (RTCNetworking)
-
-- (void)networkTypeChangedToType:(ByteRTCNetworkType)type {
-    [self showSocketIsDisconnect:type == ByteRTCNetworkTypeDisconnected];
-}
-
-- (void)didStartNetworkMonitoring {
-    [self stopMonitoring];
-}
-
-- (void)didStopNetworkMonitoring {
-    [self startMonitoring];
 }
 
 @end

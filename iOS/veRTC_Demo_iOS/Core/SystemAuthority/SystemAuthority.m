@@ -12,13 +12,14 @@
 + (void)authorizationStatusWithType:(AuthorizationType)type block:(void (^)(BOOL isAuthorize))block {
     AVAuthorizationStatus authStatus = [[self class] getAuthStatusWithType:type];
     if (authStatus == AVAuthorizationStatusNotDetermined) {
-        [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
-          // CALL YOUR METHOD HERE - as this assumes being called only once from user interacting with permission alert!
+        AVMediaType mediaType = (type == AuthorizationTypeAudio) ? AVMediaTypeAudio : AVMediaTypeVideo;
+        // CALL YOUR METHOD HERE - as this assumes being called only once from user interacting with permission alert!
+        [AVCaptureDevice requestAccessForMediaType:mediaType completionHandler:^(BOOL granted) {
             dispatch_queue_async_safe(dispatch_get_main_queue(), ^{
-            if (block) {
-                block(granted);
-            }
-          });
+                if (block) {
+                    block(granted);
+                }
+            });
         }];
     } else if (authStatus == AVAuthorizationStatusRestricted ||
                authStatus == AVAuthorizationStatusDenied) {

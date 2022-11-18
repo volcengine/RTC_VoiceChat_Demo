@@ -76,4 +76,51 @@
     return nil;
 }
 
++ (void)backToRootViewController {
+    UIViewController *rootViewController = [[UIApplication sharedApplication].keyWindow rootViewController];
+    UIViewController *presentedViewController = nil;
+    
+    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+        rootViewController = [(UITabBarController *)rootViewController selectedViewController];
+    }
+    
+    presentedViewController = rootViewController;
+    NSMutableArray<UIViewController *> *presentedViewControllers = [NSMutableArray array];
+    while (presentedViewController.presentedViewController) {
+        [presentedViewControllers addObject:presentedViewController.presentedViewController];
+        presentedViewController = presentedViewController.presentedViewController;
+    }
+    
+    if (presentedViewControllers.count > 0) {
+        [self dismissViewControllers:presentedViewControllers topIndex:presentedViewControllers.count - 1 complete:^{
+            [self popToRootViewController:rootViewController];
+        }];
+    }
+    else {
+        [self popToRootViewController:rootViewController];
+    }
+}
+
++ (void)dismissViewControllers:(NSArray<UIViewController *> *)array topIndex:(NSInteger)index complete:(void(^)(void))complete {
+    if (index < 0) {
+        if (complete) {
+            complete();
+        }
+    }
+    else {
+        [array[index] dismissViewControllerAnimated:NO completion:^{
+            [self dismissViewControllers:array topIndex:index - 1 complete:complete];
+        }];
+    }
+}
+
++ (void)popToRootViewController:(UIViewController *)viewController {
+    if ([viewController isKindOfClass:[UINavigationController class]]) {
+        [(UINavigationController *)viewController popToRootViewControllerAnimated:YES];
+    }
+    else if ([viewController isKindOfClass:[UIViewController class]]) {
+        [viewController.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
+
 @end

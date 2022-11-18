@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scene_voice_chat">语音聊天室</string>
+    <string name="accept">接受</string>
+    <string name="reject">拒绝</string>
+</resources>

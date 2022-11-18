@@ -2,8 +2,8 @@
 //  UserCell.m
 //  veRTC_Demo
 //
-//  Created by bytedance on 2021/5/23.
-//  Copyright © 2021 . All rights reserved.
+//  Created by on 2021/5/23.
+//  
 //
 
 #import "UserCell.h"
@@ -27,7 +27,7 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.contentView.backgroundColor = [UIColor clearColor];
-        [self createUIComponents];
+        [self createUIComponent];
     }
     return self;
 }
@@ -36,7 +36,7 @@
     _model = model;
     self.titleLabel.text = model.title;
     if ([model.title isEqualToString:@"用户名"]) {
-        self.desTitleLabel.text = [LocalUserComponents userModel].name;
+        self.desTitleLabel.text = [LocalUserComponent userModel].name;
     } else {
         self.desTitleLabel.text = model.desTitle;
     }
@@ -57,7 +57,7 @@
 
 #pragma mark - Private Action
 
-- (void)createUIComponents {
+- (void)createUIComponent {
     [self.contentView addSubview:self.titleLabel];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(16);
@@ -68,6 +68,7 @@
     [self.desTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-16);
         make.centerY.equalTo(self.titleLabel);
+        make.width.mas_lessThanOrEqualTo(150);
     }];
     
     [self.contentView addSubview:self.moreImageView];

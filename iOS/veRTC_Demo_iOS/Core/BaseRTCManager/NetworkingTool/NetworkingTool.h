@@ -2,8 +2,8 @@
 //  NetworkingTool.h
 //  veRTC_Demo
 //
-//  Created by bytedance on 2021/12/17.
-//  Copyright © 2021 bytedance. All rights reserved.
+//  Created by on 2021/12/17.
+//  
 //
 
 #import <Foundation/Foundation.h>
@@ -60,6 +60,8 @@ typedef NS_ENUM(NSInteger, RTMStatusCode) {
     RTMStatusCodeUserRoleNotAuthorized = 620,
     // 正在邀请用户中
     RTMStatusCodeUserIsInviting = 622,
+    // 正在邀请用户中
+    RTMStatusCodeUserIsNewInviting = 481,
     // 场景冲突(观众连麦时调用主播连麦接口，主播连麦时调用观众连麦接）
     RTMStatusCodeRoomLinkmicSceneConflict = 630,
     
@@ -77,6 +79,21 @@ typedef NS_ENUM(NSInteger, RTMStatusCode) {
     
     // Token生成错误
     RTMStatusCodeBuildTokenFaild = 702,
+    
+    // 获取appInfo错误
+    RTMStatusCodeAPPInfoFaild = 800,
+    // redis中不存在appInfo
+    RTMStatusCodeAPPInfoExistFaild = 801,
+    // 检查流量appID错误
+    RTMStatusCodeTrafficAPPIDFaild = 802,
+    // 查看流量上限
+    RTMStatusCodeTrafficFaild = 803,
+    // 点播配置错误
+    RTMStatusCodeVodFaild = 804,
+    // 一起看配置错误
+    RTMStatusCodeTWFaild = 805,
+    // bid配置错误
+    RTMStatusCodeBIDFaild = 806,
 };
 
 @interface NetworkingTool : NSObject

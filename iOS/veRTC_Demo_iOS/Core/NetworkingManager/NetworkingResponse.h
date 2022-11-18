@@ -2,8 +2,8 @@
 //  NetworkingResponse.h
 //  veRTC_Demo
 //
-//  Created by bytedance on 2021/12/17.
-//  Copyright © 2021 bytedance. All rights reserved.
+//  Created by on 2021/12/17.
+//  
 //
 
 #import <Foundation/Foundation.h>
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign, readonly) BOOL result;
 
-@property (nonatomic, strong) NSDictionary *response;
+@property (nonatomic, copy) NSDictionary *response;
 
 + (instancetype)dataToResponseModel:(id _Nullable)data;
 

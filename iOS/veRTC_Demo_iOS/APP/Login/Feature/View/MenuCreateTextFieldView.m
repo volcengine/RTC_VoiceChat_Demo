@@ -144,9 +144,9 @@
     
     NSInteger maxLimit = self.maxLimit;
     NSInteger minLimit = self.minLimit;
-    BOOL isIllega = ![LocalUserComponents isMatchUserName:textField.text];
+    BOOL isIllega = ![LocalUserComponent isMatchUserName:textField.text];
     if (self.isOnlyNumber) {
-        isIllega = ![LocalUserComponents isMatchNumber:textField.text];
+        isIllega = ![LocalUserComponent isMatchNumber:textField.text];
     }
     BOOL isMaxLimit = textField.text.length > maxLimit;
     BOOL isMinLimit = textField.text.length < minLimit;

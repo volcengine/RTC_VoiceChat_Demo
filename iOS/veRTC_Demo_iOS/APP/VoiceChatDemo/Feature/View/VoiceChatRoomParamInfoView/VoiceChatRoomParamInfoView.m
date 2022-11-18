@@ -2,8 +2,8 @@
 //  VoiceChatRoomParamInfoView.m
 //  veRTC_Demo
 //
-//  Created by bytedance on 2021/4/9.
-//  Copyright © 2021 . All rights reserved.
+//  Created by on 2021/4/9.
+//  
 //
 
 #import "VoiceChatRoomParamInfoView.h"
@@ -36,11 +36,11 @@
 - (void)setParamInfoModel:(VoiceChatRoomParamInfoModel *)paramInfoModel {
     _paramInfoModel = paramInfoModel;
     
-    self.messageLabel.text = [NSString stringWithFormat:@"延迟 %@ms  上行丢包率 %@%%  下行丢包率 %@%%",
-                              paramInfoModel.rtt,
-                              paramInfoModel.sendLossRate,
-                              paramInfoModel.receivedLossRate];
-    
+    if (IsEmptyStr(paramInfoModel.rtt)) {
+        paramInfoModel.rtt = @"0";
+    }
+    self.messageLabel.text = [NSString stringWithFormat:@"延迟 %@ms",
+                              paramInfoModel.rtt];
 }
 
 #pragma mark - Private Action

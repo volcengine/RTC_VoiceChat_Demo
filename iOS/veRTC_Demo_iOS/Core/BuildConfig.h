@@ -2,15 +2,15 @@
 //  BuildConfig.h
 //  Pods
 //
-//  Created by bytedance on 2022/6/13.
+//  Created by on 2022/6/13.
 //
 
 #ifndef BuildConfig_h
 #define BuildConfig_h
 
 /*
- 可以填入提供的测试服务器域名，上线正式时，
- 需要部署自己的服务端并更换为自己的服务端域名。
+ 使用 RTS 作为业务服务器时需要。
+ 上线正式服务时，需要在自己服务端部署。
  */
 #define LoginUrl @""
 

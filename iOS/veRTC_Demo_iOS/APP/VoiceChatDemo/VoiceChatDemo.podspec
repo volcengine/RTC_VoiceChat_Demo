@@ -15,6 +15,7 @@ Pod::Spec.new do |spec|
   spec.resource_bundles = {
     'VoiceChatDemo' => ['Resource/*.{xcassets}']
   }
+  spec.pod_target_xcconfig = {'CODE_SIGN_IDENTITY' => ''}
   spec.prefix_header_contents = '#import "Masonry.h"',
                                 '#import "Core.h"',
                                 '#import "VoiceChatDemoConstants.h"'

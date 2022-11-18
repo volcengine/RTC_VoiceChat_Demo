@@ -27,6 +27,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="一起看" />
+        tools:text="一起看抖音" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

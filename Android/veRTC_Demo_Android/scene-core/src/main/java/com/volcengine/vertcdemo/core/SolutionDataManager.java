@@ -1,6 +1,7 @@
 package com.volcengine.vertcdemo.core;
 
 import static com.volcengine.vertcdemo.core.SolutionConstants.SP_KEY_DEVICE_ID;
+import static com.volcengine.vertcdemo.core.SolutionConstants.SP_KEY_VERSION_NAME;
 
 import android.text.TextUtils;
 
@@ -60,15 +61,21 @@ public class SolutionDataManager {
                 did = SPUtils.getString(SP_KEY_DEVICE_ID, "");
                 if (TextUtils.isEmpty(did)) {
                     String uuid = UUID.randomUUID().toString();
-                    did = HashUtil.encrypt(uuid);
-                    if (did.length() > 16) {
-                        did = did.substring(0, 16);
-                    }
+                    int deviceId = Math.abs(uuid.hashCode());
+                    did = String.valueOf(deviceId);
                     SPUtils.putString(SP_KEY_DEVICE_ID, did);
                 }
             }
         }
         return did;
+    }
+
+    public void setAppVersionName(String versionName) {
+       SPUtils.putString(SP_KEY_VERSION_NAME, versionName);
+    }
+
+    public String getAppVersionName() {
+        return SPUtils.getString(SolutionConstants.SP_KEY_VERSION_NAME, "");
     }
 
     public void logout() {

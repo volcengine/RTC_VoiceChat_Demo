@@ -37,8 +37,6 @@
 	<string>veRTC想访问你的摄像头，如果不允许，你将无法在veRTC中进行视频通话</string>
 	<key>NSHumanReadableCopyright</key>
 	<string></string>
-	<key>NSLocalNetworkUsageDescription</key>
-	<string>veRTC想访问你的网络，直播中展示网络状态</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>veRTC想访问你的麦克风，如果不允许，你将无法在veRTC中进行语音通话</string>
 	<key>UIBackgroundModes</key>

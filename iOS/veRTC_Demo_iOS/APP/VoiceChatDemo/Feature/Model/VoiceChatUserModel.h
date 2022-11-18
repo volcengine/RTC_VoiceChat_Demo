@@ -2,7 +2,7 @@
 //  VoiceChatUserModel.h
 //  SceneRTCDemo
 //
-//  Created by bytedance on 2021/3/16.
+//  Created by on 2021/3/16.
 //
 
 #import "BaseUserModel.h"

@@ -2,8 +2,8 @@
 //  VoiceChatRoomBottomView.m
 //  quickstart
 //
-//  Created by bytedance on 2021/3/23.
-//  Copyright © 2021 . All rights reserved.
+//  Created by on 2021/3/23.
+//  
 //
 
 #import "VoiceChatRoomBottomView.h"
@@ -73,7 +73,7 @@
                                               mic:isEnable ? 1 : 0
                                             block:^(RTMACKModel * _Nonnull model) {
         if (!model.result) {
-            [[ToastComponents shareToastComponents] showWithMessage:@"操作失败，请重试"];
+            [[ToastComponent shareToastComponent] showWithMessage:@"操作失败，请重试"];
         }
     }];
 }

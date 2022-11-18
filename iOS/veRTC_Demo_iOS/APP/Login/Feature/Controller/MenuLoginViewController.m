@@ -9,7 +9,7 @@
 #import "MenuLoginViewController.h"
 #import "MenuCreateTextFieldView.h"
 #import "PhonePrivacyView.h"
-#import "LoginControlCompoments.h"
+#import "LoginControlComponent.h"
 #import "BuildConfig.h"
 
 @interface MenuLoginViewController ()
@@ -73,18 +73,20 @@
 - (void)loginButtonAction:(UIButton *)sender {
     if (IsEmptyStr(LoginUrl)) {
         NSString *errorMessage = @"请在 BuildConfig.h 配置 url 信息";
-        [[ToastComponents shareToastComponents] showWithMessage:errorMessage];
+        [[ToastComponent shareToastComponent] showWithMessage:errorMessage];
         return;
     }
     __weak __typeof(self) wself = self;
-    [LoginControlCompoments passwordFreeLogin:self.userNameTextFieldView.text
+    [[ToastComponent shareToastComponent] showLoading];
+    [LoginControlComponent passwordFreeLogin:self.userNameTextFieldView.text
                                         block:^(BOOL result, NSString * _Nullable errorStr) {
+        [[ToastComponent shareToastComponent] dismiss];
         if (result) {
             [wself dismissViewControllerAnimated:YES completion:^{
                 
             }];
         } else {
-            [[ToastComponents shareToastComponents] showWithMessage:errorStr];
+            [[ToastComponent shareToastComponent] showWithMessage:errorStr];
         }
     }];
 }

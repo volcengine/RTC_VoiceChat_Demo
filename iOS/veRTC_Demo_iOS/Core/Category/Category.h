@@ -2,7 +2,7 @@
 //  Category.h
 //  Pods
 //
-//  Created by bytedance on 2022/4/18.
+//  Created by on 2022/4/18.
 //
 
 #ifndef Category_h

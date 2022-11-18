@@ -2,8 +2,8 @@
 //  UserNameViewController.m
 //  veRTC_Demo
 //
-//  Created by bytedance on 2021/5/18.
-//  Copyright © 2021 . All rights reserved.
+//  Created by on 2021/5/18.
+//  
 //
 
 #import "UserViewController.h"
@@ -13,6 +13,8 @@
 #import "BaseRTCManager.h"
 #import "Masonry.h"
 #import "Core.h"
+#import "NetworkingManager.h"
+#import "MenuLoginHome.h"
 
 @interface UserViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -20,6 +22,7 @@
 @property (nonatomic, copy) NSArray *dataLists;
 @property (nonatomic, strong) UserHeadView *headView;
 @property (nonatomic, strong) BaseButton *logoutButton;
+@property (nonatomic, strong) BaseButton *deletAccountButton;
 
 @end
 
@@ -37,10 +40,18 @@
         make.right.equalTo(self.view).offset(-16);
     }];
     
+    [self.view addSubview:self.deletAccountButton];
+    [self.deletAccountButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(44);
+        make.bottom.equalTo(self.logoutButton.mas_top).offset(-15);
+        make.left.equalTo(self.view).offset(16);
+        make.right.equalTo(self.view).offset(-16);
+    }];
+    
     [self.view addSubview:self.roomTableView];
     [self.roomTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset([DeviceInforTool getStatusBarHight]);
-        make.bottom.equalTo(self.logoutButton.mas_top).offset(-5);
+        make.bottom.equalTo(self.deletAccountButton.mas_top).offset(-5);
         make.left.right.equalTo(self.view);
     }];
 }
@@ -48,7 +59,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.headView.nameString = [LocalUserComponents userModel].name;
+    self.headView.nameString = [LocalUserComponent userModel].name;
     [self.roomTableView reloadData];
 }
 
@@ -71,10 +82,16 @@
             [self.navigationController pushViewController:next animated:YES];
         } else if ([model.title isEqualToString:@"隐私协议"]) {
             [self jumpToWeb:@"https://www.volcengine.com/docs/6348/68918"];
+        } else if ([model.title isEqualToString:@"用户协议"]) {
+            [self jumpToWeb:@"https://www.volcengine.com/docs/6348/128955"];
         } else if ([model.title isEqualToString:@"服务协议"]) {
             [self jumpToWeb:@"https://www.volcengine.com/docs/6348/68917"];
         } else if ([model.title isEqualToString:@"免责声明"]) {
             [self jumpToWeb:@"https://www.volcengine.com/docs/6348/68916"];
+        } else if ([model.title isEqualToString:@"关联方SDK列表"]) {
+            [self jumpToWeb:@"https://www.volcengine.com/docs/6348/133654"];
+        } else if ([model.title isEqualToString:@"权限申请清单"]) {
+            [self jumpToWeb:@"https://www.volcengine.com/docs/6348/71438"];
         } else {
             
         }
@@ -104,6 +121,24 @@
     }
 }
 
+- (void)deleteAccountButtonClick {
+    AlertActionModel *alertCancelModel = [[AlertActionModel alloc] init];
+    alertCancelModel.title = @"确认";
+    __weak typeof(self) weakSelf = self;
+    alertCancelModel.alertModelClickBlock = ^(UIAlertAction * _Nonnull action) {
+        [MenuLoginHome logout:^(BOOL result) {
+            [weakSelf onClickLogoutRoom];
+        }];
+    };
+    
+    AlertActionModel *alertModel = [[AlertActionModel alloc] init];
+    alertModel.title = @"取消";
+    alertModel.alertModelClickBlock = ^(UIAlertAction * _Nonnull action) {
+        
+    };
+    [[AlertActionManager shareAlertActionManager] showWithMessage:@"注销后，当前账号的相关数据将会被删除且无法找回。" actions:@[alertCancelModel, alertModel]];
+}
+
 #pragma mark - Private Action
 
 - (void)onClickLogoutRoom {
@@ -127,6 +162,11 @@
         model2.isMore = YES;
         [lists addObject:model2];
         
+        MenuCellModel *model8 = [[MenuCellModel alloc] init];
+        model8.title = @"用户协议";
+        model8.isMore = YES;
+        [lists addObject:model8];
+        
         MenuCellModel *model3 = [[MenuCellModel alloc] init];
         model3.title = @"服务协议";
         model3.isMore = YES;
@@ -136,6 +176,16 @@
         model4.title = @"免责声明";
         model4.isMore = YES;
         [lists addObject:model4];
+        
+        MenuCellModel *model9 = [[MenuCellModel alloc] init];
+        model9.title = @"关联方SDK列表";
+        model9.isMore = YES;
+        [lists addObject:model9];
+        
+        MenuCellModel *model7 = [[MenuCellModel alloc] init];
+        model7.title = @"权限申请清单";
+        model7.isMore = YES;
+        [lists addObject:model7];
         
         NSString *sdkVer = [BaseRTCManager getSdkVersion];
         NSString *appVer = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
@@ -183,6 +233,22 @@
         [_logoutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }
     return _logoutButton;
+}
+
+- (BaseButton *)deletAccountButton {
+    if (!_deletAccountButton) {
+        _deletAccountButton = [[BaseButton alloc] init];
+        _deletAccountButton.backgroundColor = [UIColor clearColor];
+        _deletAccountButton.layer.masksToBounds = YES;
+        _deletAccountButton.layer.cornerRadius = 44/2;
+        _deletAccountButton.layer.borderWidth = 1;
+        [_deletAccountButton setTitle:@"注销账户" forState:UIControlStateNormal];
+        _deletAccountButton.titleLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
+        [_deletAccountButton addTarget:self action:@selector(deleteAccountButtonClick) forControlEvents:UIControlEventTouchUpInside];
+        _deletAccountButton.layer.borderColor = [UIColor colorFromHexString:@"#86909C"].CGColor;
+        [_deletAccountButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }
+    return _deletAccountButton;
 }
 
 - (UserHeadView *)headView {

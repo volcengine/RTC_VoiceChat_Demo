@@ -19,7 +19,6 @@ android {
 
         versionCode 1
         versionName project.APP_VERSION_NAME
-        buildConfigField('boolean', 'isTestEnv', project.IS_TEST_ENV)
 
         ndk { abiFilters 'arm64-v8a', 'armeabi-v7a' }
 
@@ -29,27 +28,13 @@ android {
 
         multiDexEnabled true
 
-        ensureProperty('APP_ID')
-        buildConfigField('String', 'APP_ID', "\"${project.APP_ID}\"")
-
-        ensureProperty('APP_KEY')
-        buildConfigField('String', 'APP_KEY', "\"${project.APP_KEY}\"")
-
-        ensureProperty('VOLC_AK')
-        buildConfigField('String', 'VOLC_AK', "\"${project.VOLC_AK}\"")
-
-        ensureProperty('VOLC_SK')
-        buildConfigField('String', 'VOLC_SK', "\"${project.VOLC_SK}\"")
-
-        ensureProperty('ACCOUNT_ID')
-        buildConfigField('String', 'ACCOUNT_ID', "\"${project.ACCOUNT_ID}\"")
-
-        ensureProperty('VOD_SPACE')
-        buildConfigField('String', 'VOD_SPACE', "\"${project.VOD_SPACE}\"")
-
         buildConfigField('String', 'URL_PRIVACY_AGREEMENT', '"https://www.volcengine.com/docs/6348/68918"')
-        buildConfigField('String', 'URL_SERVICE_AGREEMENT', '"https://www.volcengine.com/docs/6348/68917"')
+        buildConfigField('String', 'URL_USER_AGREEMENT', '"https://www.volcengine.com/docs/6348/128955"')
         buildConfigField('String', 'URL_DISCLAIMER', '"https://www.volcengine.com/docs/6348/68916"')
+        buildConfigField('String', 'URL_SERVICE_AGREEMENT', '"https://www.volcengine.com/docs/6348/68917"')
+        buildConfigField('String', 'URL_USED_PERMISSIONS', '"https://www.volcengine.com/docs/6348/71438"')
+        buildConfigField('String', 'URL_SDK_LIST', '"https://www.volcengine.com/docs/6348/66812"')
+        buildConfigField('String', 'SOLUTION_ORDER', "\"${project.SOLUTION_ORDER}\"")
     }
 
     signingConfigs {
@@ -62,6 +47,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
         release {
             signingConfig signingConfigs.release
             minifyEnabled false
@@ -101,8 +89,8 @@ repositories {
         dirs 'libs', project(':scene-core').files('libs')
     }
 }
+
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "androidx.appcompat:appcompat:$AppCompatVersion"
     implementation "androidx.recyclerview:recyclerview:$RecyclerViewVersion"
     implementation "androidx.constraintlayout:constraintlayout:$ConstraintLayoutVersion"
@@ -117,15 +105,8 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$GlideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$GlideVersion"
 
-    implementation project(":login")
-
+    implementation project(":component:$project.LOGIN_MODULE")
     implementation project(":scene-core")
 
-    implementation project(":voicechat")
-}
-
-private def ensureProperty(String propertyName) {
-    if (!project.hasProperty(propertyName) || project[propertyName].isEmpty()) {
-        throw new GradleException("NO ${propertyName} defined in gradle.properties!")
-    }
+    implementation project(":solutions:voicechat")
 }

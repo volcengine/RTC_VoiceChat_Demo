@@ -737,7 +737,6 @@
 					"$(SRCROOT)",
 				);
 				HEADER_SEARCH_PATHS = (
-					"\"$(PROJECT_DIR)/libyuv-iOS/headers\"",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
@@ -752,9 +751,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/libyuv-iOS/lib",
 				);
-				MARKETING_VERSION = 8.0.2.13;
+				MARKETING_VERSION = 12.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = vertc.veRTCDemo.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = veRTC_Development_20211117;
@@ -784,7 +782,6 @@
 					"$(SRCROOT)",
 				);
 				HEADER_SEARCH_PATHS = (
-					"\"$(PROJECT_DIR)/libyuv-iOS/headers\"",
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
@@ -799,9 +796,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/libyuv-iOS/lib",
 				);
-				MARKETING_VERSION = 8.0.2.13;
+				MARKETING_VERSION = 12.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = rtc.veRTCDemo.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = VERTCDemoInHouseDist;

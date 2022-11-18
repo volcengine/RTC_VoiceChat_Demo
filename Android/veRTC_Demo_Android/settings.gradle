@@ -1,6 +1,11 @@
 include ':app'
 include ':scene-core'
 rootProject.name = "veRTC_Demo"
-include ':login'
 
-include ':voicechat'
+// 登录模块
+include ':component:login'
+
+// joinRTS 模块
+include ':component:joinrtsparams'
+
+include ':solutions:voicechat'

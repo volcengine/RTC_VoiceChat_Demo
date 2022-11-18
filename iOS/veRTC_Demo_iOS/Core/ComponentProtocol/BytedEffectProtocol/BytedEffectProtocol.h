@@ -2,11 +2,11 @@
 //  BytedEffectProtocol.h
 //  AFNetworking
 //
-//  Created by bytedance on 2022/5/7.
+//  Created by on 2022/5/7.
 //
 
 #import <Foundation/Foundation.h>
-#import <VolcEngineRTC/objc/rtc/ByteRTCEngineKit.h>
+#import <VolcEngineRTC/objc/ByteRTCVideo.h>
 @class BytedEffectProtocol;
 
 typedef NS_ENUM(NSUInteger, EffectBeautyRoleType) {
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol BytedEffectDelegate <NSObject>
 
 - (instancetype)protocol:(BytedEffectProtocol *)protocol
-    initWithRTCEngineKit:(ByteRTCEngineKit *)rtcEngineKit;
+    initWithRTCEngineKit:(ByteRTCVideo *)rtcEngineKit;
 
 - (void)protocol:(BytedEffectProtocol *)protocol
     showWithType:(EffectBeautyRoleType)type
@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Initialization
  * @param rtcEngineKit Rtc Engine
  */
-- (instancetype)initWithRTCEngineKit:(ByteRTCEngineKit *)rtcEngineKit;
+- (instancetype)initWithRTCEngineKit:(ByteRTCVideo *)rtcEngineKit;
 
 /**
  * Show effect beauty view

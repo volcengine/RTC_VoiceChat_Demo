@@ -2,8 +2,8 @@
 //  NetworkingTool.m
 //  veRTC_Demo
 //
-//  Created by bytedance on 2021/12/17.
-//  Copyright © 2021 bytedance. All rights reserved.
+//  Created by on 2021/12/17.
+//  
 //
 
 #import <CommonCrypto/CommonCrypto.h>
@@ -83,6 +83,24 @@
         case RTMStatusHostInviteOtherHost:
             message = @"正在等待被邀主播的应答";
             break;
+        case RTMStatusCodeAPPInfoFaild:
+        case RTMStatusCodeAPPInfoExistFaild:
+            message = @"setAppInfo接口错误，请检查配置信息";
+            break;
+        case RTMStatusCodeTrafficAPPIDFaild:
+        case RTMStatusCodeTrafficFaild:
+            message = @"触发限流，请稍后再试";
+            break;
+        case RTMStatusCodeVodFaild:
+            message = @"点播配置错误，请检查配置信息";
+            break;
+        case RTMStatusCodeTWFaild:
+            message = @"一起看配置错误，请检查配置信息";
+            break;
+        case RTMStatusCodeBIDFaild:
+            message = @"BID配置错误，请检查配置信息";
+            break;
+            
         default:
             break;
     }
@@ -98,8 +116,7 @@
 + (NSString *)getDeviceId {
     NSString *deviceId = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceId_key"];
     if (!deviceId || ![deviceId isKindOfClass:[NSString class]] || deviceId.length <= 0) {
-        NSString *wisd = [self getWisd];
-        deviceId = [self MD5ForLower16Bate:wisd];
+        deviceId = [self getWisd];
         [[NSUserDefaults standardUserDefaults] setValue:deviceId forKey:@"deviceId_key"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }

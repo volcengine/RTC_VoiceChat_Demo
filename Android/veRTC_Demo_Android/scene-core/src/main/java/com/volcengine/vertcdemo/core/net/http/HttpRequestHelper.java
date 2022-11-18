@@ -11,6 +11,9 @@ import com.google.gson.JsonSyntaxException;
 import com.ss.video.rtc.demo.basic_module.utils.AppExecutors;
 import com.ss.video.rtc.demo.basic_module.utils.GsonUtils;
 import com.volcengine.vertcdemo.core.BuildConfig;
+import com.volcengine.vertcdemo.core.eventbus.SolutionDemoEventManager;
+import com.volcengine.vertcdemo.core.eventbus.TokenExpiredEvent;
+import com.volcengine.vertcdemo.core.net.ErrorTool;
 import com.volcengine.vertcdemo.core.net.IRequestCallback;
 import com.volcengine.vertcdemo.core.net.ServerResponse;
 
@@ -35,7 +38,7 @@ public class HttpRequestHelper {
 
     private static final String TAG = "HttpRequestHelper";
 
-    private static final OkHttpClient DEFAULT_OKHTTP_CLIENT = new OkHttpClient();
+    public static final OkHttpClient DEFAULT_OKHTTP_CLIENT = new OkHttpClient();
 
     @AnyThread
     public static <T> void sendPost(JSONObject params,
@@ -73,6 +76,11 @@ public class HttpRequestHelper {
 
             final int code = json.optInt("code");
             final String message = json.optString("message");
+
+            // 全局拦截 450和451错误码
+            if (code == ErrorTool.ERROR_CODE_TOKEN_EXPIRED || code == ErrorTool.ERROR_CODE_TOKEN_EMPTY) {
+                SolutionDemoEventManager.post(new TokenExpiredEvent());
+            }
 
             if (code != 200) {
                 throw new NetworkException(code, message);

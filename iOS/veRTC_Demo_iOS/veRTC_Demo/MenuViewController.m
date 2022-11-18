@@ -2,17 +2,16 @@
 //  MenuViewController.m
 //  veRTC_Demo
 //
-//  Created by bytedance on 2021/5/18.
-//  Copyright © 2021 . All rights reserved.
+//  Created by on 2021/5/18.
+//  
 //
 
 #import "MenuViewController.h"
-#import "NetworkingManager.h"
-#import "MenuLoginViewController.h"
 #import "ScenesViewController.h"
 #import "UserViewController.h"
 #import "MenuItemButton.h"
 #import "BaseRTCManager.h"
+#import "MenuLoginHome.h"
 #import "Masonry.h"
 #import "Core.h"
 
@@ -62,10 +61,7 @@
     }];
     
     [self scenesButtonAction];
-    if (IsEmptyStr([LocalUserComponents userModel].loginToken)) {
-        [self showLoginVC:NO];
-    }
-    [[NetworkReachabilityManager sharedManager] startMonitoring];
+    [MenuLoginHome popLoginVC:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,28 +76,21 @@
 }
 
 - (void)loginExpiredNotificate:(NSNotification *)sender {
+    [LocalUserComponent userModel].loginToken = @"";
+    [LocalUserComponent updateLocalUserModel:nil];
+    
+    [DeviceInforTool backToRootViewController];
+    
     NSString *key = (NSString *)sender.object;
     if ([key isKindOfClass:[NSString class]] &&
         [key isEqualToString:@"logout"]) {
         [[AlertActionManager shareAlertActionManager] dismiss:^{
-            [self showLoginVC:YES];
+            [MenuLoginHome popLoginVC:YES];
         }];
-        [[ToastComponents shareToastComponents] showWithMessage:@"相同ID用户已登录，您已被强制下线！" delay:2];
+        [[ToastComponent shareToastComponent] showWithMessage:@"相同ID用户已登录，您已被强制下线！" delay:2];
     } else {
-        [self showLoginVC:YES];
+        [MenuLoginHome popLoginVC:YES];
     }
-    [LocalUserComponents userModel].loginToken = @"";
-    [LocalUserComponents updateLocalUserModel:nil];
-}
-
-#pragma mark - Private Action
-
-- (void)showLoginVC:(BOOL)isAnimation {
-    MenuLoginViewController *loginVC = [[MenuLoginViewController alloc] init];
-    loginVC.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self presentViewController:loginVC animated:isAnimation completion:^{
-
-    }];
 }
 
 #pragma mark - Touch Action

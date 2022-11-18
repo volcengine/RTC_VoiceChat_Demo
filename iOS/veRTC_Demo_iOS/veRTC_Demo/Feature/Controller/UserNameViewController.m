@@ -2,8 +2,8 @@
 //  UserNameViewController.m
 //  veRTC_Demo
 //
-//  Created by bytedance on 2021/5/23.
-//  Copyright © 2021 . All rights reserved.
+//  Created by on 2021/5/23.
+//  
 //
 
 #import "UserNameViewController.h"
@@ -64,25 +64,25 @@
     
     [self.userNameTextFieldView becomeFirstResponder];
     
-    self.userNameTextFieldView.text = [LocalUserComponents userModel].name;
+    self.userNameTextFieldView.text = [LocalUserComponent userModel].name;
 }
 
 - (void)rightButtonAction:(BaseButton *)sender {
-    if (![LocalUserComponents isMatchUserName:self.userNameTextFieldView.text] ||
+    if (![LocalUserComponent isMatchUserName:self.userNameTextFieldView.text] ||
         self.userNameTextFieldView.text.length <= 0) {
         return;
     }
     __weak __typeof(self) wself = self;
-    BaseUserModel *userModel = [LocalUserComponents userModel];
+    BaseUserModel *userModel = [LocalUserComponent userModel];
     userModel.name = self.userNameTextFieldView.text;
     [NetworkingManager changeUserName:userModel.name
-                           loginToken:[LocalUserComponents userModel].loginToken
+                           loginToken:[LocalUserComponent userModel].loginToken
                                 block:^(NetworkingResponse * _Nonnull response) {
         if (response.result) {
-            [LocalUserComponents updateLocalUserModel:userModel];
+            [LocalUserComponent updateLocalUserModel:userModel];
             [wself.navigationController popViewControllerAnimated:YES];
         } else {
-            [[ToastComponents shareToastComponents] showWithMessage:response.message];
+            [[ToastComponent shareToastComponent] showWithMessage:response.message];
         }
     }];
 }

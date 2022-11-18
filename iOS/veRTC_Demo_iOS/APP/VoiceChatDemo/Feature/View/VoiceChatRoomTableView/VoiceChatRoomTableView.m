@@ -2,8 +2,8 @@
 //  VoiceChatRoomTableView.m
 //  veRTC_Demo
 //
-//  Created by bytedance on 2021/5/18.
-//  Copyright © 2021 . All rights reserved.
+//  Created by on 2021/5/18.
+//  
 //
 
 #import "VoiceChatRoomTableView.h"
@@ -12,7 +12,7 @@
 @interface VoiceChatRoomTableView () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *roomTableView;
-@property (nonatomic, strong) VoiceChatEmptyView *emptyCompoments;
+@property (nonatomic, strong) VoiceChatEmptyView *emptyComponent;
 
 @end
 
@@ -38,9 +38,9 @@
     
     [self.roomTableView reloadData];
     if (dataLists.count <= 0) {
-        [self.emptyCompoments show];
+        [self.emptyComponent show];
     } else {
-        [self.emptyCompoments dismiss];
+        [self.emptyComponent dismiss];
     }
 }
 
@@ -84,12 +84,12 @@
     return _roomTableView;
 }
 
-- (VoiceChatEmptyView *)emptyCompoments {
-    if (!_emptyCompoments) {
-        _emptyCompoments = [[VoiceChatEmptyView alloc] initWithView:self
+- (VoiceChatEmptyView *)emptyComponent {
+    if (!_emptyComponent) {
+        _emptyComponent = [[VoiceChatEmptyView alloc] initWithView:self
                                                                   message:@"还没有人创建聊天室,快去创建吧"];
     }
-    return _emptyCompoments;
+    return _emptyComponent;
 }
 
 @end

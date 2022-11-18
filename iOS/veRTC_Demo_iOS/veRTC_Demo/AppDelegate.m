@@ -8,7 +8,8 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-        self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    application.applicationSupportsShakeToEdit = NO;
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MenuViewController *menuVC = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewControllerID"];

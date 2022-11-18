@@ -1,5 +1,6 @@
 package com.volcengine.vertcdemo.core;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
 public class HashUtil {
@@ -10,7 +11,7 @@ public class HashUtil {
         try {
             dataStr = dataStr + SALT;
             MessageDigest m = MessageDigest.getInstance("MD5");
-            m.update(dataStr.getBytes("UTF8"));
+            m.update(dataStr.getBytes(StandardCharsets.UTF_8));
             byte[] s = m.digest();
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < s.length; i++) {

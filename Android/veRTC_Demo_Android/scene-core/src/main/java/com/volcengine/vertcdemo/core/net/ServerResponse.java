@@ -45,7 +45,7 @@ public class ServerResponse<T> {
                     && !TextUtils.equals("{}", respObj.toString())) {
                 data = GsonUtils.gson().fromJson(respObj.toString(), clz);
             }
-            if (code == 450) {
+            if (code == ErrorTool.ERROR_CODE_TOKEN_EXPIRED || code == ErrorTool.ERROR_CODE_TOKEN_EMPTY) {
                 SolutionDemoEventManager.post(new TokenExpiredEvent());
             } else if (code == 430) {
                 msg = Utilities.getApplicationContext().getString(R.string.error_msg_sensitive_word_input);
@@ -65,7 +65,7 @@ public class ServerResponse<T> {
                     && !TextUtils.equals("{}", respObj.toString())) {
                 data = GsonUtils.gson().fromJson(respObj.toString(), type);
             }
-            if (code == 450) {
+            if (code == ErrorTool.ERROR_CODE_TOKEN_EXPIRED || code == ErrorTool.ERROR_CODE_TOKEN_EMPTY) {
                 SolutionDemoEventManager.post(new TokenExpiredEvent());
             } else if (code == 430) {
                 msg = Utilities.getApplicationContext().getString(R.string.error_msg_sensitive_word_input);

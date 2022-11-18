@@ -2,7 +2,7 @@
 //  Core.h
 //  Pods
 //
-//  Created by bytedance on 2022/4/18.
+//  Created by on 2022/4/18.
 //
 
 //ifndef Core_h
@@ -20,8 +20,8 @@
 //Alert wrapped
 #import "AlertActionManager.h"
 
-//RTM 封装
-//RTM wrapped
+//RTC 基类封装
+//RTC wrapped
 #import "BaseRTCManager.h"
 
 //设备相关 API 封装
@@ -32,9 +32,9 @@
 //Timer wrapped
 #import "GCDTimer.h"
 
-//Toat 封装
-//Toat wrapped
-#import "ToastComponents.h"
+//Toast 封装
+//Toast wrapped
+#import "ToastComponent.h"
 
 //系统权限 API 封装
 //System permission API wrapped
