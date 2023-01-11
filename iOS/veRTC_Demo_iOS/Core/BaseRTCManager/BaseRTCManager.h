@@ -35,10 +35,6 @@ typedef void (^RTCRoomMessageBlock)(RTMNoticeModel *noticeModel);
                                                                NSInteger errorCode,
                                                                NSInteger joinType);
 
-/// 相同用户进房，被踢下线
-/// The same user entered the room and was kicked off the line
-@property (nonatomic, copy, nullable) void (^rtcSameUserJoinRoomBlock)(NSString *roomId, NSInteger errorCode);
-
 /// 业务标识参数
 /// Business ID parameter
 @property (nonatomic, copy, readonly) NSString *businessId;

@@ -1,5 +1,6 @@
 package com.volcengine.vertcdemo.core.net.rts;
 
+import static com.ss.bytertc.engine.type.UserMessageSendResult.USER_MESSAGE_SEND_RESULT_NOT_LOGIN;
 import static com.ss.bytertc.engine.type.UserMessageSendResult.USER_MESSAGE_SEND_RESULT_SUCCESS;
 
 import android.text.TextUtils;
@@ -15,6 +16,7 @@ import com.ss.video.rtc.demo.basic_module.utils.AppExecutors;
 import com.ss.video.rtc.demo.basic_module.utils.Utilities;
 import com.volcengine.vertcdemo.core.R;
 import com.volcengine.vertcdemo.core.SolutionDataManager;
+import com.volcengine.vertcdemo.core.eventbus.RTSLogoutEvent;
 import com.volcengine.vertcdemo.core.eventbus.SolutionDemoEventManager;
 import com.volcengine.vertcdemo.core.eventbus.TokenExpiredEvent;
 import com.volcengine.vertcdemo.core.net.IBroadcastListener;
@@ -175,7 +177,10 @@ public abstract class RTSBaseClient {
      */
     public void onServerMessageSendResult(long messageId, int error) {
         IRequestCallback callback = mCallBacksWithMsgId.get(messageId);
-        if (callback != null && error != USER_MESSAGE_SEND_RESULT_SUCCESS) {
+        if (error == USER_MESSAGE_SEND_RESULT_NOT_LOGIN) {
+            // RTS 退出登录
+            SolutionDemoEventManager.post(new RTSLogoutEvent());
+        } else if (callback != null && error != USER_MESSAGE_SEND_RESULT_SUCCESS) {
             notifyRequestFail(ERROR_CODE_DEFAULT, "sendServerMessage fail error:" + error, callback);
         }
         mCallBacksWithMsgId.remove(messageId);

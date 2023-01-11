@@ -2,7 +2,7 @@
 //  ToastComponent.h
 //  quickstart
 //
-//  Created by bytedance on 2021/4/1.
+//  Created by   on 2021/4/1.
 //  Copyright © 2021 . All rights reserved.
 //
 

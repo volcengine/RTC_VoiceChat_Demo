@@ -13,7 +13,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.ss.video.rtc.demo.basic_module.utils.SafeToast;
 import com.volcengine.vertcdemo.core.SolutionDataManager;
+import com.volcengine.vertcdemo.core.eventbus.RTSLogoutEvent;
 import com.volcengine.vertcdemo.core.eventbus.SolutionDemoEventManager;
 import com.volcengine.vertcdemo.core.eventbus.TokenExpiredEvent;
 
@@ -119,6 +121,12 @@ public class MainFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onTokenExpiredEvent(TokenExpiredEvent event) {
         switchMainLayout(true);
+        startActivity(new Intent(Actions.LOGIN));
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onRTSLogoutEvent(RTSLogoutEvent event) {
+        SafeToast.show(R.string.same_account_logut);
         startActivity(new Intent(Actions.LOGIN));
     }
 }

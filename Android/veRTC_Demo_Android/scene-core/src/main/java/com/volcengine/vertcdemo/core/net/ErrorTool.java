@@ -117,6 +117,10 @@ public class ErrorTool {
         return message;
     }
 
+    public static boolean shouldLeaveRoom(int error) {
+        return error == 422 || error == 472;
+    }
+
     private static String getString(int res) {
         return Utilities.getApplicationContext().getString(res);
     }

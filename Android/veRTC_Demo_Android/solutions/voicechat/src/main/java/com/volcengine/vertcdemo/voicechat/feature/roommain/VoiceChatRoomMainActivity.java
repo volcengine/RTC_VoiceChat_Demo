@@ -20,6 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +36,7 @@ import com.volcengine.vertcdemo.core.SolutionDataManager;
 import com.volcengine.vertcdemo.core.eventbus.SocketConnectEvent;
 import com.volcengine.vertcdemo.core.eventbus.SolutionDemoEventManager;
 import com.volcengine.vertcdemo.core.net.IRequestCallback;
+import com.volcengine.vertcdemo.utils.PermissionUtil;
 import com.volcengine.vertcdemo.voicechat.R;
 import com.volcengine.vertcdemo.voicechat.bean.AudienceApplyBroadcast;
 import com.volcengine.vertcdemo.voicechat.bean.AudienceChangedBroadcast;
@@ -96,7 +98,8 @@ public class VoiceChatRoomMainActivity extends BaseActivity {
     private VCUserInfo mSelfUserInfo;
 
     private boolean isMicOn = true;
-    private boolean isLeaveByKickOut = false;
+    private boolean isLeaveByKickOut = false; // 是不是多端登录被服务端踢出
+    private boolean mHasAudioPermission; // 在前后台切换的时候记录和检查音频权限
 
     private final IRequestCallback<JoinRoomResponse> mJoinCallback = new IRequestCallback<JoinRoomResponse>() {
         @Override
@@ -233,6 +236,56 @@ public class VoiceChatRoomMainActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_voice_chat_demo_main);
+
+        mHasAudioPermission = PermissionUtil.hasAudioPermission(this);
+        if (checkIfPermissionChanged(savedInstanceState)) {
+            finish();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        recordMicPermission(outState);
+    }
+
+    /**
+     * 记录当前麦克风权限
+     * @param outState 系统提供的记录数据对象
+     */
+    private void recordMicPermission(@NonNull Bundle outState) {
+        int status = PermissionUtil.hasAudioPermission(this) ? 1 : 2;
+        outState.putInt("mic_permission", status);
+        Log.d(TAG, String.format("recordMicPermission: %d", status));
+    }
+
+    /**
+     * 检查权限变化情况
+     * @param savedInstanceState 系统保存的数据
+     * @return true：发生了变化
+     */
+    private boolean checkIfPermissionChanged(@Nullable Bundle savedInstanceState) {
+        if (savedInstanceState == null) {
+            return false;
+        }
+        int storeStatus = savedInstanceState.getInt("mic_permission", 0);
+        int curStatus = PermissionUtil.hasAudioPermission(this) ? 1 : 2;
+        Log.d(TAG, String.format("checkIfPermissionChanged: %d %d", storeStatus, curStatus));
+        return storeStatus == 1 && curStatus == 2;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mHasAudioPermission != PermissionUtil.hasAudioPermission(this)) {
+            finish();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mHasAudioPermission = PermissionUtil.hasAudioPermission(this);
     }
 
     @Override
@@ -370,8 +423,8 @@ public class VoiceChatRoomMainActivity extends BaseActivity {
     }
 
     @Override
-    public void finish() {
-        super.finish();
+    protected void onDestroy() {
+        super.onDestroy();
         closeInput();
         VoiceChatDataManager.ins().clearData();
         SolutionDemoEventManager.unregister(this);
@@ -442,9 +495,15 @@ public class VoiceChatRoomMainActivity extends BaseActivity {
     }
 
     private void closeInput() {
-        IMEUtils.closeIME(mInputEt);
-        mInputLayout.setVisibility(View.GONE);
-        mBottomOptionLayout.setVisibility(View.VISIBLE);
+        if (mInputEt != null) {
+            IMEUtils.closeIME(mInputEt);
+        }
+        if (mInputLayout != null) {
+            mInputLayout.setVisibility(View.GONE);
+        }
+        if (mBottomOptionLayout != null) {
+            mBottomOptionLayout.setVisibility(View.VISIBLE);
+        }
     }
 
     private void onReceivedMessage(String message) {
@@ -484,7 +543,7 @@ public class VoiceChatRoomMainActivity extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onAudienceChangedBroadcast(AudienceChangedBroadcast event) {
-        String suffix = event.isJoin ? " 进入了房间" : " 退出了房间";
+        String suffix = event.isJoin ? " 加入了房间" : " 退出了房间";
         onReceivedMessage(event.userInfo.userName + suffix);
         mAudienceCountTv.setText(String.valueOf(event.audienceCount + 1));
     }

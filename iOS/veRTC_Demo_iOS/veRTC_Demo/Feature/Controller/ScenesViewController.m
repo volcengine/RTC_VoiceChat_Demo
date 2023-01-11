@@ -3,10 +3,11 @@
 //  veRTC_Demo
 //
 //  Created by on 2021/5/21.
-//  
+//
 //
 
 #import "ScenesViewController.h"
+#import "FeedbackManagerProtocol.h"
 #import "ScenesItemButton.h"
 #import "Masonry.h"
 #import "Core.h"
@@ -16,6 +17,8 @@
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) FeedbackManagerProtocol *feedbackManager;
+
 @end
 
 @implementation ScenesViewController
@@ -67,6 +70,8 @@
         make.height.mas_equalTo(scrollviewHeight);
         make.width.equalTo(self.scrollView).offset(0);
     }];
+    
+    [self feedbackManager];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -239,4 +244,12 @@
     }
     return _dataArray;
 }
+
+- (FeedbackManagerProtocol *)feedbackManager {
+    if (!_feedbackManager) {
+        _feedbackManager = [[FeedbackManagerProtocol alloc] initWithSuperView:self.view];
+    }
+    return _feedbackManager;
+}
+
 @end

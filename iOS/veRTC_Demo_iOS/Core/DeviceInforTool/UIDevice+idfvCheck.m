@@ -2,8 +2,8 @@
 //  UIDevice+idfvCheck.m
 //  veRTC_Demo
 //
-//  Created by ByteDance on 2022/8/3.
-//  Copyright © 2022 bytedance. All rights reserved.
+//  Created by   on 2022/8/3.
+//  Copyright © 2022  . All rights reserved.
 //
 
 #import "UIDevice+idfvCheck.h"

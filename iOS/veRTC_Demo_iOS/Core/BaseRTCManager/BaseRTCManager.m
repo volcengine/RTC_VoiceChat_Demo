@@ -206,9 +206,7 @@ static RTMMessageType const RTMMessageTypeNotice = @"inform";
             self.rtcJoinRoomBlock(roomId, errorCode, joinType);
         }
         if (state == ByteRTCErrorCodeDuplicateLogin) {
-            if (self.rtcSameUserJoinRoomBlock) {
-                self.rtcSameUserJoinRoomBlock(roomId, state);
-            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationLoginExpired object:@"logout"];
         }
     });
 }
@@ -250,7 +248,7 @@ static RTMMessageType const RTMMessageTypeNotice = @"inform";
 }
 
 - (void)rtcEngine:(ByteRTCVideo *)engine connectionChangedToState:(ByteRTCConnectionState)state {
-    if (state == ByteRTCConnectionStateDisconnected){
+    if (state == ByteRTCConnectionStateDisconnected) {
         for (RTMRequestModel *requestModel in self.senderDic.allValues) {
             if (requestModel.requestBlock) {
                 RTMACKModel *ackModel = [[RTMACKModel alloc] init];

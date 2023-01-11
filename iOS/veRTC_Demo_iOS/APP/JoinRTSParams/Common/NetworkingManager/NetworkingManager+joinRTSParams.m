@@ -34,7 +34,7 @@
                               @"login_token" : loginToken ?: @"",
                               @"content_partner" : contentPartner ?: @"",
                               @"content_category" : contentCategory ?: @""};
-    [self postWithEventName:@"setAppInfo" content:content block:block];
+    [self postWithEventName:@"setAppInfo" space:@"login" content:content block:block];
 }
 
 @end

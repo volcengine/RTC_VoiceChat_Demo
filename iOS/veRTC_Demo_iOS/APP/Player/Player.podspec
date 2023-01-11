@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   spec.author       = { 'author' => 'volcengine rtc' }
   spec.source       = { :path => './'}
   spec.ios.deployment_target = '9.0'
-  
+  spec.pod_target_xcconfig = {'CODE_SIGN_IDENTITY' => ''}
   spec.source_files = '**/*.{h,m,c,mm,a}'
   spec.resource_bundles = {
     'BytePlayer' => ['Resource/*.xcassets']

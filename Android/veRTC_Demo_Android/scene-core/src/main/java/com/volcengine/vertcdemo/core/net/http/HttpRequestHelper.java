@@ -11,9 +11,6 @@ import com.google.gson.JsonSyntaxException;
 import com.ss.video.rtc.demo.basic_module.utils.AppExecutors;
 import com.ss.video.rtc.demo.basic_module.utils.GsonUtils;
 import com.volcengine.vertcdemo.core.BuildConfig;
-import com.volcengine.vertcdemo.core.eventbus.SolutionDemoEventManager;
-import com.volcengine.vertcdemo.core.eventbus.TokenExpiredEvent;
-import com.volcengine.vertcdemo.core.net.ErrorTool;
 import com.volcengine.vertcdemo.core.net.IRequestCallback;
 import com.volcengine.vertcdemo.core.net.ServerResponse;
 
@@ -34,7 +31,9 @@ public class HttpRequestHelper {
     /*
      可以填入提供的测试服务器域名，上线正式时，需要部署自己的服务端并更换为自己的服务端域名
      */
-    private static final String LOGIN_URL = BuildConfig.LOGIN_URL;
+    private static final String LOGIN_URL = BuildConfig.HEAD_URL + "/login";
+
+    private static final String COMMON_URL = BuildConfig.HEAD_URL + "/common";
 
     private static final String TAG = "HttpRequestHelper";
 
@@ -46,6 +45,14 @@ public class HttpRequestHelper {
                                     @NonNull IRequestCallback<ServerResponse<T>> callBack) {
         AppExecutors.networkIO().execute(() -> sendPost(LOGIN_URL, params, resultClass, callBack));
     }
+
+    @AnyThread
+    public static <T> void sendCommonPost(JSONObject params,
+                                    Class<T> resultClass,
+                                    @NonNull IRequestCallback<ServerResponse<T>> callBack) {
+        AppExecutors.networkIO().execute(() -> sendPost(COMMON_URL, params, resultClass, callBack));
+    }
+
 
     @WorkerThread
     public static <T> void sendPost(@NonNull String url,
@@ -76,11 +83,6 @@ public class HttpRequestHelper {
 
             final int code = json.optInt("code");
             final String message = json.optString("message");
-
-            // 全局拦截 450和451错误码
-            if (code == ErrorTool.ERROR_CODE_TOKEN_EXPIRED || code == ErrorTool.ERROR_CODE_TOKEN_EMPTY) {
-                SolutionDemoEventManager.post(new TokenExpiredEvent());
-            }
 
             if (code != 200) {
                 throw new NetworkException(code, message);

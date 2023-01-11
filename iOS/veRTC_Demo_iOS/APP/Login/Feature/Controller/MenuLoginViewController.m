@@ -71,7 +71,7 @@
 }
 
 - (void)loginButtonAction:(UIButton *)sender {
-    if (IsEmptyStr(LoginUrl)) {
+    if (IsEmptyStr(HeadUrl)) {
         NSString *errorMessage = @"请在 BuildConfig.h 配置 url 信息";
         [[ToastComponent shareToastComponent] showWithMessage:errorMessage];
         return;

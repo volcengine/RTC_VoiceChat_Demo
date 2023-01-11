@@ -111,7 +111,7 @@
     }
     [self hangUp:NO];
     if (type == 2) {
-        [[ToastComponent shareToastComponent] showWithMessage:@"本次体验时间已超过20mins" delay:0.8];
+        [[ToastComponent shareToastComponent] showWithMessage:@"本次体验时间已超过20分钟" delay:0.8];
     } else {
         if (![self isHost]) {
             [[ToastComponent shareToastComponent] showWithMessage:@"主播已关闭直播" delay:0.8];
@@ -445,12 +445,18 @@
     [[VoiceChatRTCManager shareRtc] joinRTCRoomWithToken:rtcToken
                                                   roomID:self.roomModel.roomID
                                                      uid:[LocalUserComponent userModel].uid];
-    if (userModel.userRole == UserRoleHost) {
-        [[VoiceChatRTCManager shareRtc] makeCoHost:userModel.mic == UserMicOn];
+    if (userModel.userRole == UserRoleHost ||
+        userModel.status == UserStatusActive) {
+        [[VoiceChatRTCManager shareRtc] makeCoHost:YES];
+        [[VoiceChatRTCManager shareRtc] muteLocalAudioStream:(userModel.mic == UserMicOn) ? NO : YES];
+    } else {
+        [[VoiceChatRTCManager shareRtc] makeCoHost:NO];
     }
+    
     self.hostAvatarView.userModel = self.hostUserModel;
     self.staticView.roomModel = self.roomModel;
     [self.bottomView updateBottomLists:userModel];
+    [self.bottomView updateButtonStatus:VoiceChatRoomBottomStatusLocalMic isSelect:(userModel.mic == UserMicOff) ? YES : NO];
     [self.seatComponent showSeatView:seatList loginUserModel:userModel];
 }
 
@@ -551,15 +557,6 @@
                                 userModel:userModel
                             hostUserModel:hostUserModel
                                  seatList:seatList];
-            
-            for (VoiceChatSeatModel *seatModel in seatList) {
-                if ([seatModel.userModel.uid isEqualToString:userModel.uid]) {
-                    // Reconnect after disconnection, I need to turn on the microphone to collect
-                    [[VoiceChatRTCManager shareRtc] makeCoHost:userModel.mic == UserMicOn];
-                    break;
-                }
-            }
-            
         } else if ([type isEqualToString:@"exit"]) {
             [self hangUp:NO];
         } else {
@@ -570,7 +567,7 @@
 
 - (void)addIMMessage:(BOOL)isJoin
            userModel:(VoiceChatUserModel *)userModel {
-    NSString *unitStr = isJoin ? @"加入了房间" : @"离开房间";
+    NSString *unitStr = isJoin ? @"加入了房间" : @"退出了房间";
     BaseIMModel *imModel = [[BaseIMModel alloc] init];
     imModel.message = [NSString stringWithFormat:@"%@ %@", userModel.name, unitStr];
     [self.imComponent addIM:imModel];

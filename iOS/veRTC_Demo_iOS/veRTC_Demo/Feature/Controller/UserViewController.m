@@ -91,7 +91,7 @@
         } else if ([model.title isEqualToString:@"关联方SDK列表"]) {
             [self jumpToWeb:@"https://www.volcengine.com/docs/6348/133654"];
         } else if ([model.title isEqualToString:@"权限申请清单"]) {
-            [self jumpToWeb:@"https://www.volcengine.com/docs/6348/71438"];
+            [self jumpToWeb:@"https://www.volcengine.com/docs/6348/155009"];
         } else {
             
         }

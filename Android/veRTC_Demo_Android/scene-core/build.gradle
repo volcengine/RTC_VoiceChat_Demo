@@ -13,8 +13,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        ensureProperty('LOGIN_URL')
-        buildConfigField('String', 'LOGIN_URL', "\"${project.LOGIN_URL}\"")
+        ensureProperty('HEAD_URL')
+        buildConfigField('String', 'HEAD_URL', "\"${project.HEAD_URL}\"")
     }
 
     buildTypes {

@@ -26,6 +26,9 @@
         case RTMStatusCodeUserNotFound:
             message = @"用户不存在";
             break;
+        case RTMStatusCodeUserIsInactive:
+            message = @"用户已离开房间";
+            break;
         case RTMStatusCodeOverRoomLimit:
             message = @"房间人数超过限制";
             break;

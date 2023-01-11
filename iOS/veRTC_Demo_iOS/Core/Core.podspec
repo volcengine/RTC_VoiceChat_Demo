@@ -12,6 +12,7 @@ Pod::Spec.new do |spec|
   
   spec.prefix_header_contents = '#import "Constants.h"'
   
+  spec.pod_target_xcconfig = {'CODE_SIGN_IDENTITY' => ''}
   spec.source_files = '**/*.{h,m}'
   spec.dependency 'Masonry'
   spec.dependency 'YYModel'

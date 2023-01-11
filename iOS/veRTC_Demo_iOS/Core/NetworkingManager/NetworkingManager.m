@@ -3,7 +3,7 @@
 //  veRTC_Demo
 //
 //  Created by on 2021/12/16.
-//  
+//
 //
 
 #import <AFNetworking/AFNetworking.h>
@@ -49,20 +49,22 @@
                  block:(void (^)(NetworkingResponse * _Nonnull))block {
     NSDictionary *content = @{@"user_name" : userName ?: @"",
                               @"login_token" : loginToken ?: @""};
-    [self postWithEventName:@"changeUserName" content:content block:block];
+    [self postWithEventName:@"changeUserName" space:@"login" content:content block:block];
 }
 
 #pragma mark -
 
 + (void)postWithEventName:(NSString *)eventName
+                    space:(NSString *)space
                   content:(NSDictionary *)content
                     block:(void (^ __nullable)(NetworkingResponse *response))block {
     NSString *appid = [PublicParameterComponent share].appId;
     NSDictionary *parameters = @{@"event_name" : eventName ?: @"",
                                  @"content" : [content yy_modelToJSONString] ?: @{},
                                  @"device_id" : [NetworkingTool getDeviceId] ?: @"",
-                                 @"app_id" : appid ?: @""};
-    [[self shareManager].sessionManager POST:LoginUrl
+                                 @"app_id" : appid ? appid : @""};
+    NSString *URLString = [NSString stringWithFormat:@"%@/%@",HeadUrl, space];
+    [[self shareManager].sessionManager POST:URLString
                                   parameters:parameters
                                      headers:nil
                                     progress:nil

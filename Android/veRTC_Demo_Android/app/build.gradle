@@ -32,8 +32,8 @@ android {
         buildConfigField('String', 'URL_USER_AGREEMENT', '"https://www.volcengine.com/docs/6348/128955"')
         buildConfigField('String', 'URL_DISCLAIMER', '"https://www.volcengine.com/docs/6348/68916"')
         buildConfigField('String', 'URL_SERVICE_AGREEMENT', '"https://www.volcengine.com/docs/6348/68917"')
-        buildConfigField('String', 'URL_USED_PERMISSIONS', '"https://www.volcengine.com/docs/6348/71438"')
-        buildConfigField('String', 'URL_SDK_LIST', '"https://www.volcengine.com/docs/6348/66812"')
+        buildConfigField('String', 'URL_USED_PERMISSIONS', '"https://www.volcengine.com/docs/6348/155009"')
+        buildConfigField('String', 'URL_SDK_LIST', '"https://www.volcengine.com/docs/6348/133654"')
         buildConfigField('String', 'SOLUTION_ORDER', "\"${project.SOLUTION_ORDER}\"")
     }
 

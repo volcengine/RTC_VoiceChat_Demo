@@ -24,8 +24,6 @@ import com.ss.video.rtc.demo.basic_module.utils.SafeToast;
 import com.volcengine.vertcdemo.common.IAction;
 import com.volcengine.vertcdemo.core.SolutionDataManager;
 
-// import com.volcengine.vertcdemo.feedshare.feature.FeedShareEntryActivity;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collections;

@@ -33,6 +33,17 @@ public class Utils {
         }
     }
 
+    public static void removeFromParent(View view) {
+        if (view == null) {
+            return;
+        }
+        ViewParent viewParent = view.getParent();
+        if (viewParent != null && viewParent instanceof ViewGroup) {
+            ViewGroup parent = (ViewGroup) viewParent;
+            parent.removeView(view);
+        }
+    }
+
     /**
      * 用于将子View绑定到ViewGroup，避免强制移除和添加控件引起的闪烁现象（默认使用 ）
      *

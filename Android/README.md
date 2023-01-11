@@ -32,43 +32,23 @@
 
 ### 步骤 3：构建工程
 
-1. 使用 Android Studio 打开该项目的`RTC_VoiceChat_Demo-main/Android/veRTC_Demo_Android` 文件夹
-	
+1. 使用 Android Studio 打开该项目的`RTC_VoiceChat_Demo/Android/veRTC_Demo_Android` 文件夹
 
-2. 填写 **LoginUrl。** 
-	
-
-进入 `scene-core/gradle.properties` 文件，填写 **LoginUrl**。
-
-当前你可以使用 **`https://common.rtc.volcvideo.com/rtc_demo_special/login`** 作为测试服务器域名，仅提供跑通测试服务，无法保障正式需求。
-
-<img src="https://lf3-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_5267a0ed9024d308c687fb5e70c0c0a5" width="500px" >
+2. 填写 **HEAD_URL。** <br>
+    进入 `scene-core/gradle.properties` 文件，填写 **HEAD_URL**。<br>
+    当前你可以使用 **`https://common.rtc.volcvideo.com/rtc_demo_special`** 作为测试服务器域名，仅提供跑通测试服务，无法保障正式需求。<br>
+        <img src="https://portal.volccdn.com/obj/volcfe/cloud-universal-doc/upload_15703882819ea292a62bd928120e3047.png" width="500px" >
 
 3. **填写 APPID、APPKey、AccessKeyID、SecretAccessKey**
-	
-
-进入 `component/joinrtsparams` 目录下 `gradle.properties`文件，使用从火山引擎控制台获取的 **APPID、APPKey、AccessKeyID、SecretAccessKey 填写到该文件相应位置。** 
-<br>
-
-> ACCOUNT\_ID 和 VOD\_SPACE 为录制相关功能配置参数，此 Demo 无录制功能，填 `1` 即可。
-
-<img src="https://lf3-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_f4267cf5d85af43dafb3fcbf28eb360a" width="500px" >
-
+	进入 `component/joinrtsparams` 目录下 `gradle.properties`文件，使用从火山引擎控制台获取的 **APPID、APPKey、AccessKeyID、SecretAccessKey 填写到该文件相应位置。** <br>
+    <img src="https://portal.volccdn.com/obj/volcfe/cloud-universal-doc/upload_7de621528819a3a73e847b48f1ff8cee.png" width="500px" >
 ### 步骤 4：编译运行
 
-1. 将手机连接到电脑，并在开发者选项中打开调试功能。连接成功后，设备名称会出现在界面右上方。
-	
+1. 将手机连接到电脑，并在开发者选项中打开调试功能。连接成功后，设备名称会出现在界面右上方。<br>
 	<img src="https://lf3-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_3485f63885162b12708811a6c4f0cf4d" width="500px" >
-	
-
-<br>
 
 2. 选择**Run** -> **Run**，开始编译。编译成功后你的 Android 设备上会出现新应用。部分手机会出现二次确认，请选择确认安装。
-	
+	<img src="https://lf3-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_b882b65e75cc7406c1d8f2e2beebbf0a" width="500px" >
 
-<img src="https://lf3-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_b882b65e75cc7406c1d8f2e2beebbf0a" width="500px" >
-
-运行开始界面如下：
-<br>
-
+## 运行开始界面
 <img src="https://lf6-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_37abcf3600012d35d7b2e2b144fd35b0" width="200px" >

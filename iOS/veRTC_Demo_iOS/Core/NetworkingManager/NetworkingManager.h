@@ -3,7 +3,7 @@
 //  veRTC_Demo
 //
 //  Created by on 2021/12/16.
-//  
+//
 //
 
 #import <Foundation/Foundation.h>
@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Base
 
 + (void)postWithEventName:(NSString *)eventName
+                    space:(NSString *)space
                   content:(NSDictionary *)content
                     block:(void (^ __nullable)(NetworkingResponse *response))block;
 
