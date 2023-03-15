@@ -404,6 +404,14 @@
     [self.staticView updateParamInfoModel:model];
 }
 
+- (void)voiceChatRTCManager:(VoiceChatRTCManager *)voiceChatRTCManager reportLocalAudioVolume:(NSInteger)volume {
+    if ([self isHost]) {
+        [self.hostAvatarView updateHostVolume:@(volume)];
+    } else {
+        [self.seatComponent updateLocalSeatVolume:volume];
+    }
+}
+
 - (void)voiceChatRTCManager:(VoiceChatRTCManager *_Nonnull)voiceChatRTCManager reportAllAudioVolume:(NSDictionary<NSString *, NSNumber *> *_Nonnull)volumeInfo {
     if (volumeInfo.count > 0) {
         NSNumber *volumeValue = volumeInfo[self.roomModel.hostUid];

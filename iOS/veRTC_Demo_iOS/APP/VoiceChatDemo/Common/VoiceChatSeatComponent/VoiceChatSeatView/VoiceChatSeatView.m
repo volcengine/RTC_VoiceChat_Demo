@@ -16,7 +16,9 @@ static const NSInteger MaxNumber = 8;
 
 @property (nonatomic, strong) NSMutableArray<VoiceChatSeatItemView *> *itemViewLists;
 @property (nonatomic, strong) GCDTimer *timer;
-@property (nonatomic, copy) NSDictionary *volumeDic;
+@property (nonatomic, strong) NSMutableDictionary *volumeDic;
+@property (nonatomic, assign) NSInteger localUserVolume;
+
 @end
 
 @implementation VoiceChatSeatView
@@ -87,8 +89,15 @@ static const NSInteger MaxNumber = 8;
     }
 }
 
+- (void)updateLocalSeatVolume:(NSInteger)volume {
+    _localUserVolume = volume;
+    [_volumeDic setValue:@(volume) forKey:[LocalUserComponent userModel].uid];
+
+}
+
 - (void)updateSeatVolume:(NSDictionary *)volumeDic {
-    _volumeDic = volumeDic;
+    _volumeDic = volumeDic.mutableCopy;
+    [_volumeDic setValue:@(_localUserVolume) forKey:[LocalUserComponent userModel].uid];
 }
 
 #pragma mark - Private Action

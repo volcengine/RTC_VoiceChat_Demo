@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)updateSeatModel:(VoiceChatSeatModel *)seatModel;
 
+- (void)updateLocalSeatVolume:(NSInteger)volume;
+
 - (void)updateSeatVolume:(NSDictionary *)volumeDic;
 
 @end

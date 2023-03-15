@@ -59,6 +59,7 @@ import com.volcengine.vertcdemo.voicechat.core.VoiceChatDataManager;
 import com.volcengine.vertcdemo.voicechat.core.VoiceChatRTCManager;
 import com.volcengine.vertcdemo.voicechat.event.AudioStatsEvent;
 import com.volcengine.vertcdemo.voicechat.event.SDKAudioPropertiesEvent;
+import com.volcengine.vertcdemo.voicechat.event.VoiceChatReconnectToRoomEvent;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -430,6 +431,7 @@ public class VoiceChatRoomMainActivity extends BaseActivity {
         SolutionDemoEventManager.unregister(this);
         VoiceChatRTCManager.ins().leaveRoom();
         VoiceChatRTCManager.ins().stopAudioMixing();
+        VoiceChatRTCManager.ins().stopAudioCapture();
         if (mSelfUserInfo == null || mRoomInfo == null) {
             return;
         }
@@ -539,6 +541,11 @@ public class VoiceChatRoomMainActivity extends BaseActivity {
 
     private void hideTopTip() {
         mTopTip.setVisibility(View.GONE);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReconnectToRoom(VoiceChatReconnectToRoomEvent event) {
+        VoiceChatRTCManager.ins().getRTMClient().reconnectToServer(mReconnectCallback);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -723,7 +730,7 @@ public class VoiceChatRoomMainActivity extends BaseActivity {
         List<SDKAudioPropertiesEvent.SDKAudioProperties> infos = event.audioPropertiesList;
         if (infos != null && infos.size() != 0) {
             for (SDKAudioPropertiesEvent.SDKAudioProperties info : infos) {
-                mSeatsGroupLayout.onUserSpeaker(info.userId, 0);
+                mSeatsGroupLayout.onUserSpeaker(info.userId, info.audioPropertiesInfo.linearVolume);
             }
         }
     }

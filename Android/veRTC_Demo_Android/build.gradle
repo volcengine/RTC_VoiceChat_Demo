@@ -6,7 +6,7 @@ ext {
     minSdkVersion = 21
     targetSdkVersion = 29
 
-    VOLCENGINE = '3.45.201'
+    VOLCENGINE = '3.45.602'
 
     // region Third part libraries
     GlideVersion = '4.12.0'

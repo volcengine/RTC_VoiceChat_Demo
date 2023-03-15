@@ -175,6 +175,17 @@
     [self updateRoomParamInfoModel];
 }
 
+- (void)rtcEngine:(ByteRTCVideo *)engine onLocalAudioPropertiesReport:(NSArray<ByteRTCLocalAudioPropertiesInfo *> *)audioPropertiesInfos {
+    for (ByteRTCLocalAudioPropertiesInfo *info in audioPropertiesInfos) {
+        if (info.streamIndex == ByteRTCStreamIndexMain) {
+            if ([self.delegate respondsToSelector:@selector(voiceChatRTCManager:reportLocalAudioVolume:)]) {
+                [self.delegate voiceChatRTCManager:self reportLocalAudioVolume:info.audioPropertiesInfo.linearVolume];
+            }
+        }
+    }
+
+}
+
 - (void)rtcEngine:(ByteRTCVideo *)engine onRemoteAudioPropertiesReport:(NSArray<ByteRTCRemoteAudioPropertiesInfo *> *)audioPropertiesInfos totalRemoteVolume:(NSInteger)totalRemoteVolume {
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     for (int i = 0; i < audioPropertiesInfos.count; i++) {

@@ -29,6 +29,7 @@ import com.volcengine.vertcdemo.core.net.rts.RTCVideoEventHandlerWithRTS;
 import com.volcengine.vertcdemo.core.net.rts.RTSInfo;
 import com.volcengine.vertcdemo.voicechat.event.AudioStatsEvent;
 import com.volcengine.vertcdemo.voicechat.event.SDKAudioPropertiesEvent;
+import com.volcengine.vertcdemo.voicechat.event.VoiceChatReconnectToRoomEvent;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -71,6 +72,10 @@ public class VoiceChatRTCManager {
                     mLocalProperties = new SDKAudioPropertiesEvent.SDKAudioProperties(
                             SolutionDataManager.ins().getUserId(),
                             info.audioPropertiesInfo);
+
+                    List<SDKAudioPropertiesEvent.SDKAudioProperties> audioPropertiesList = new ArrayList<>();
+                    audioPropertiesList.add(mLocalProperties);
+                    SolutionDemoEventManager.post(new SDKAudioPropertiesEvent(audioPropertiesList));
                     return;
                 }
             }
@@ -91,7 +96,6 @@ public class VoiceChatRTCManager {
                     audioPropertiesList.add(new SDKAudioPropertiesEvent.SDKAudioProperties(
                             info.streamKey.getUserId(),
                             info.audioPropertiesInfo));
-                    return;
                 }
             }
             SolutionDemoEventManager.post(new SDKAudioPropertiesEvent(audioPropertiesList));
@@ -107,6 +111,9 @@ public class VoiceChatRTCManager {
         public void onRoomStateChanged(String roomId, String uid, int state, String extraInfo) {
             super.onRoomStateChanged(roomId, uid, state, extraInfo);
             Log.d(TAG, String.format("onRoomStateChanged: %s, %s, %d, %s", roomId, uid, state, extraInfo));
+            if (isReconnectSuccess(state, extraInfo)) {
+                SolutionDemoEventManager.post(new VoiceChatReconnectToRoomEvent());
+            }
         }
 
         @Override
@@ -219,6 +226,13 @@ public class VoiceChatRTCManager {
         if (mRTCRoom != null) {
             mRTCRoom.leaveRoom();
             mRTCRoom.destroy();
+        }
+    }
+
+    public void stopAudioCapture() {
+        Log.d(TAG, "stopAudioCapture");
+        if (mRTCVideo != null) {
+            mRTCVideo.stopAudioCapture();
         }
     }
 
