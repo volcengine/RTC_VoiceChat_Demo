@@ -1,3 +1,13 @@
+## 目录结构
+
+```
+RTC_VoiceChat_Demo
+├─ Android        // Android 端开源代码和跑通 Readme 
+├─ Server        // 服务端开源代码和跑通 Readme 
+├─ iOS        // iOS 端开源代码和跑通 Readme 
+└─ Readme // 场景介绍
+```
+
 ## **veRTC**
 
 [火山引擎实时音视频 veRTC](https://www.volcengine.com/products/rtc) 可以提供全球互联网范围内高质量、低延时的实时音视频通信能力，通过调用 veRTC API，可以帮助开发者快速构建语音通话、视频通话、互动直播、转推直播等丰富场景功能。
