@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/login_background_image" />
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#B3141C2C" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="108dp"
+    android:background="#F20E0825"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/option_interact"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/voice_chat_seat_option_interact_on"
+        android:gravity="center|bottom"
+        android:text="@string/invite_to_mic"
+        android:textColor="@color/white"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/option_mic_switch"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/voice_chat_seat_option_mic_on"
+        android:gravity="center|bottom"
+        android:text="@string/mute_mic"
+        android:textColor="@color/white"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/option_seat_lock"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/voice_chat_seat_option_locked"
+        android:gravity="center|bottom"
+        android:text="@string/lock_mic"
+        android:textColor="@color/white"
+        android:textSize="12dp" />
+
+</LinearLayout>

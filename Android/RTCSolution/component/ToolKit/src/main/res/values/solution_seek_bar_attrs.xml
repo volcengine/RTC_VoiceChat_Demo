@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SolutionSeekBar">
+        <attr name="thumb_color" format="color|reference" />
+        <attr name="thumb_radius" format="dimension|reference" />
+        <attr name="thumb_radius_on_dragging" format="dimension|reference" />
+        <attr name="progress_height" format="dimension|reference" />
+        <attr name="track_color" format="color|reference" />
+        <attr name="secondary_progress_color" format="color|reference" />
+        <attr name="background_progress_color" format="color|reference" />
+        <attr name="round_point_style" format="boolean" />
+    </declare-styleable>
+</resources>

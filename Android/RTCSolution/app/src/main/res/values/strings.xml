@@ -1,0 +1,20 @@
+<resources>
+    <string name="home">Home</string>
+    <string name="me">Me</string>
+    <string name="user_name">Username</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_service">Terms of Service</string>
+    <string name="agree_service_privacy">Agree to our Terms of Service and acknowledge that you have read our Privacy Policy</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="log_out">Log out</string>
+    <string name="change_user_name">Change your username</string>
+    <string name="log_in">Log in</string>
+    <string name="please_enter_user_nickname">Please enter your username</string>
+    <string name="user_agreement">User agreement</string>
+    <string name="related_party_sdk_list">Third-party SDKs</string>
+    <string name="permission_application_checklist">Permission application list</string>
+    <string name="cancel_account_alert_message">After deleting your account, all data of your account cannot be found back.</string>
+    <string name="app_version">App version</string>
+    <string name="sdk_version">SDK version</string>
+    <string name="cancel_account">Delete account</string>
+</resources>

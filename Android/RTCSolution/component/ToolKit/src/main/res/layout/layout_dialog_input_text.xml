@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F20E0825"
+    android:orientation="horizontal"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <EditText
+        android:id="@+id/input_dialog_et"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="88dp"
+        android:gravity="center_vertical"
+        android:hint="@string/say_something"
+        android:maxLines="1"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="12dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="#46FFFFFF"
+        android:textSize="14dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/option_input_bg"
+        app:layout_constraintLeft_toLeftOf="@id/input_dialog_et"
+        app:layout_constraintRight_toRightOf="@id/input_dialog_et"
+        app:layout_constraintTop_toTopOf="@id/input_dialog_et" />
+
+    <TextView
+        android:id="@+id/input_dialog_send"
+        android:layout_width="60dp"
+        android:layout_height="28dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="4dp"
+        android:background="#1664FF"
+        android:gravity="center"
+        android:text="@string/send"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@id/input_dialog_et"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/input_dialog_et" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

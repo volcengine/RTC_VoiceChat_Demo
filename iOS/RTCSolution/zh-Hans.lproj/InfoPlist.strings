@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  RTCSolution
+
+  Created by on 2023/2/8.
+  Copyright © 2023. All rights reserved.
+*/
+
+CFBundleDisplayName = "veRTC";
+
+NSCameraUsageDescription = "APP想访问你的摄像头，如果不允许，你将无法在APP中进行视频通话";
+NSMicrophoneUsageDescription = "APP想访问你的麦克风，如果不允许，你将无法在APP中进行语音通话";

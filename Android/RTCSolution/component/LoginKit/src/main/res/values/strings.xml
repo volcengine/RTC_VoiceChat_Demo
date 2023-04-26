@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="username">Username</string>
+    <string name="log_in">Log in</string>
+    <string name="login_privacy_policy">Privacy Policy</string>
+    <string name="login_terms_of_service">Terms of Service</string>
+    <string name="read_and_agree">Agree to our %s and acknowledge that you have read our %s</string>
+    <string name="app_version">App Version</string>
+    <string name="sdk_version">SDK Version</string>
+    <string name="content_limit">No more than %s characters with a mix of Chinese, letters &amp; numbers</string>
+    <string name="change_user_name">Change your username</string>
+    <string name="please_enter_user_nickname">Please enter your username</string>
+</resources>

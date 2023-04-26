@@ -1,0 +1,40 @@
+source 'https://cdn.cocoapods.org/'
+source 'https://github.com/volcengine/volcengine-specs.git'
+
+# RTC SDK
+pod 'VolcEngineRTC', '3.50.301'
+
+target 'RTCSolution' do
+  platform :ios, '12.0'
+  # 依赖 SDK
+  # Depends on SDK
+  pod 'Masonry'
+  pod 'YYModel'
+  pod 'AFNetworking', '~> 4.0'
+  
+  # 基础组件
+  pod 'ToolKit', :path => '../RTCSolution/APP/ToolKit'
+
+  # 场景化源码
+  # 登录
+  pod 'LoginKit', :path => '../RTCSolution/APP/LoginKit'
+
+  # 获取 RTS 登录信息
+  pod 'JoinRTSParamsKit', :path => '../RTCSolution/APP/JoinRTSParamsKit'
+    
+  # 语音聊天室
+  pod 'VoiceChatDemo', :path => '../RTCSolution/APP/VoiceChatDemo'
+  
+end
+
+post_install do |installer|
+  installer.generated_projects.each do |project|
+    project.targets.each do |target|
+      target.build_configurations.each do |config|
+        
+        config.build_settings['CODE_SIGN_IDENTITY'] = ''
+        
+      end
+    end
+  end
+end

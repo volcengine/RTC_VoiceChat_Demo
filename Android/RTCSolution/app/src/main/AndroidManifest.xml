@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.volcengine.vertcdemo">
+
+    <!--    MODIFY_AUDIO_SETTINGS、BLUETOOTH 权限对于音频的路由是必须的。没有BLUETOOTH权限会导致蓝牙耳机连接时，声音从外放播放而不是蓝牙耳机-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+
+    <application
+        android:name="com.volcengine.vertcdemo.SolutionApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon"
+        android:label="${appName}"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@drawable/app_icon"
+        tools:replace="android:supportsRtl,android:label"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:exported="true"
+            android:name="com.volcengine.vertcdemo.MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.volcengine.vertcdemo.login.EditProfileActivity"
+            android:screenOrientation="portrait" />
+
+    </application>
+
+</manifest>

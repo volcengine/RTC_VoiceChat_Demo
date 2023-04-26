@@ -1,0 +1,132 @@
+<resources>
+    <string-array name="video_resolution">
+        <item>160 * 160</item>
+        <item>180 * 320</item>
+        <item>240 * 320</item>
+        <item>360 * 640</item>
+        <item>480 * 480</item>
+        <item>480 * 640</item>
+        <item>540 * 960</item>
+        <item>720 * 1280</item>
+        <item>1080 * 1920</item>
+    </string-array>
+
+    <string-array name="video_frame_rate">
+        <item>15 / 20 / 24</item>
+        <item>15 / 20 / 24</item>
+        <item>15 / 20 / 24</item>
+        <item>15 / 20 / 24</item>
+        <item>15 / 20 / 24</item>
+        <item>15 / 20 / 24</item>
+        <item>15 / 20 / 24</item>
+        <item>15 / 20 / 24</item>
+        <item>15 / 20 / 24</item>
+    </string-array>
+
+    <string-array name="video_bit_rate">
+        <item>40 - 150</item>
+        <item>80 - 350</item>
+        <item>100 - 400</item>
+        <item>200 - 1000</item>
+        <item>200 - 1000</item>
+        <item>250 - 1000</item>
+        <item>400 - 1600</item>
+        <item>500 - 2000</item>
+        <item>800 - 3000</item>
+    </string-array>
+
+    <string name="server_error_message_unknown">未知错误</string>
+    <string name="server_error_message_success">成功</string>
+
+    <string name="app_version_vxxx">App版本%s</string>
+    <string name="sdk_version_vxxx">SDK版本%s</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="meeting">视频会议</string>
+    <string name="voice_salon">语音沙龙</string>
+    <string name="online_edu">在线课堂</string>
+    <string name="interactive_live">互动直播</string>
+    <string name="voice_chat">语音聊天室</string>
+    <string name="video_chat">视频互动</string>
+    <string name="ktv">在线KTV</string>
+    <string name="audio_video_calls">音视频通话</string>
+    <string name="available_update">应用有更新，
+立即去下载最新版本？</string>
+    <string name="settings">设置</string>
+    <string name="frame_rate">帧率</string>
+    <string name="resolution">分辨率</string>
+    <string name="bitrate">码率</string>
+    <string name="turn_off">无</string>
+    <string name="send">发送</string>
+    <string name="application_experiencing_xxx_title">本产品仅用于功能体验，单次直播时长不超%s分钟</string>
+    <string name="flip">翻转</string>
+    <string name="accept">接受</string>
+    <string name="decline">拒绝</string>
+    <string name="same_logged_in">相同ID用户已登录，您已被强制下线！</string>
+    <string name="joining_room_failed">加入房间失败，回到房间列表页</string>
+    <string name="name">名称</string>
+    <string name="live_ended">主播已关闭直播</string>
+    <string name="no_more_than_characters">输入长度不能超过18位</string>
+    <string name="connection_failed">连接失败</string>
+    <string name="camera">摄像头</string>
+    <string name="microphone">麦克风</string>
+    <string name="closed_terms_service">直播间内容违规，直播间已被关闭</string>
+    <string name="host">房主</string>
+    <string name="delay">延迟</string>
+    <string name="packet_loss">丢包率</string>
+    <string name="network_status">网络状态</string>
+    <string name="excellent">优秀</string>
+    <string name="good">良好</string>
+    <string name="stalled">卡顿</string>
+    <string name="more_scenarios">更多场景，敬请期待</string>
+    <string name="request_failed">服务请求失败，请重试</string>
+    <string name="failed_parse">解析失败</string>
+    <string name="enter_the_room">进入房间</string>
+    <string name="room_is_full">房间人数已满</string>
+    <string name="net_excellent">网络良好</string>
+    <string name="net_stuck_stopped">网络卡顿</string>
+    <string name="network_link_down">网络链接已断开，请检查设置</string>
+    <string name="minutes_error_message">本次体验时间已超过20分钟</string>
+    <string name="effect_button_message">美化</string>
+    <string name="operation_failed_message">操作失败，请重试</string>
+    <string name="network_message_1011">服务器数据异常</string>
+    <string name="network_message_101">服务请求失败</string>
+    <string name="network_message_400">请求数据无法正确解析</string>
+    <string name="network_message_404">用户不存在</string>
+    <string name="network_message_419">用户已离开房间</string>
+    <string name="network_message_406">房间人数超过限制</string>
+    <string name="network_message_416">没有操作权限</string>
+    <string name="network_message_418">断线时间过长，无法重连</string>
+    <string name="network_message_422">房间已经解散</string>
+    <string name="network_message_430">输入内容包含敏感词，请重新输入</string>
+    <string name="network_message_440">验证码过期，请重新发送验证码</string>
+    <string name="network_message_441">验证码不正确，请重新发送验证码</string>
+    <string name="network_message_450">登录已经过期，请重新登录</string>
+    <string name="network_message_500">系统繁忙，请稍后重试</string>
+    <string name="network_message_506">当前麦位已满</string>
+    <string name="network_message_504">移交主持人失败</string>
+    <string name="network_message_702">服务端Token生成失败，请重试</string>
+    <string name="network_message_472">连麦人数到达上限</string>
+    <string name="network_message_611">连麦已过期</string>
+    <string name="network_message_622">主播正在连线中</string>
+    <string name="network_message_632">主播正在发起双主播连线</string>
+    <string name="network_message_643">与观众连线中，无法发起主播连线</string>
+    <string name="network_message_644">主播连线中，无法发起主播连线</string>
+    <string name="network_message_645">正在等待被邀主播的应答</string>
+    <string name="network_message_801">setAppInfo接口错误，请检查配置信息</string>
+    <string name="network_message_802">触发限流，请稍后再试</string>
+    <string name="network_message_804">点播配置错误，请检查配置信息</string>
+    <string name="network_message_805">一起看配置错误，请检查配置信息</string>
+    <string name="network_message_806">BID配置错误，请检查配置信息</string>
+    <string name="camera_flip">镜头翻转</string>
+    <string name="experience_time_exceeded_xxx_minutes">本次体验时间已超过%s分钟</string>
+    <string name="chorus_ktv">双人合唱</string>
+    <string name="watch_live_together">一起看直播</string>
+    <string name="watch_video_together">一起看抖音</string>
+    <string name="game_room">游戏房</string>
+    <string name="say_something">说点什么</string>
+    <string name="send_empty_message_cannot_be_empty">发送空消息不能为空</string>
+    <string name="interactive_live_scenes">互动直播</string>
+    <string name="video_chat_scenes">视频互动</string>
+    <string name="language_code">chinese</string>
+</resources>

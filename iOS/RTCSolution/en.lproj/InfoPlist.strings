@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  RTCSolution
+
+  Created by on 2023/2/8.
+  Copyright © 2023. All rights reserved.
+*/
+
+CFBundleDisplayName = "veRTC";
+
+NSCameraUsageDescription = "APP Would Like to Access the Camera. You'll be able to make video calls.";
+NSMicrophoneUsageDescription = "APP Would like to Access the Microphone. You'll be able to make audio calls.";

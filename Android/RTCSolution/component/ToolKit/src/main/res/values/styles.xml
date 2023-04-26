@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="DialogInAndOutStyle">
+        <item name="android:windowEnterAnimation">@anim/dialog_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/dialog_out_bottom</item>
+    </style>
+
+    <style name="SolutionCommonDialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">#4D000000</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="transparentDialog" parent="android:Theme.DeviceDefault.Light.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="DividerLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#EBEBEB</item>
+    </style>
+
+    <style name="EditTextLg">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textColor">#666666</item>
+        <item name="android:textColorHint">#C1C1C1</item>
+        <item name="android:textCursorDrawable">@drawable/eitetext_lg_cursor</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="SwitchLg">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:thumb">@drawable/switch_lg_thumb</item>
+        <item name="android:track">@drawable/switch_lg_track_selector</item>
+    </style>
+</resources>

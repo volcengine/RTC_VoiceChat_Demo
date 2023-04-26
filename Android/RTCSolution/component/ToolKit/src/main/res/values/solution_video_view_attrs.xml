@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="ratioBy" format="enum">
+        <enum name="width" value="0" />
+        <enum name="height" value="1" />
+    </attr>
+    <attr name="enable_texture" format="boolean" />
+    <attr name="ratio" format="float" />
+    <declare-styleable name="SolutionVideoView">
+        <attr name="enable_texture" />
+        <attr name="ratio" />
+        <attr name="ratioBy" />
+    </declare-styleable>
+</resources>

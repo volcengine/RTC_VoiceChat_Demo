@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion project.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion project.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        ensureProperty('APP_ID')
+        buildConfigField('String', 'APP_ID', "\"${project.APP_ID}\"")
+
+        ensureProperty('APP_KEY')
+        buildConfigField('String', 'APP_KEY', "\"${project.APP_KEY}\"")
+
+        ensureProperty('VOLC_AK')
+        buildConfigField('String', 'VOLC_AK', "\"${project.VOLC_AK}\"")
+
+        ensureProperty('VOLC_SK')
+        buildConfigField('String', 'VOLC_SK', "\"${project.VOLC_SK}\"")
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation "androidx.appcompat:appcompat:$AppCompatVersion"
+    implementation "com.google.android.material:material:$MaterialVersion"
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation project(':component:ToolKit')
+
+
+    implementation "com.google.code.gson:gson:$GsonVersion"
+}
+
+private def ensureProperty(String propertyName) {
+    if (!project.hasProperty(propertyName) || project[propertyName].isEmpty()) {
+        throw new GradleException("NO ${propertyName} defined in gradle.properties!")
+    }
+}

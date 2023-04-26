@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="username">请输入用户昵称</string>
+    <string name="log_in">登录</string>
+    <string name="login_privacy_policy">《隐私权政策》</string>
+    <string name="login_terms_of_service">《服务协议》</string>
+    <string name="read_and_agree">已阅读并同意%s和%s</string>
+    <string name="app_version">App版本</string>
+    <string name="sdk_version">SDK版本</string>
+    <string name="content_limit">仅支持中文、字母、数字、1~%s位</string>
+    <string name="change_user_name">设置名称</string>
+    <string name="please_enter_user_nickname">请输入用户昵称</string>
+</resources>

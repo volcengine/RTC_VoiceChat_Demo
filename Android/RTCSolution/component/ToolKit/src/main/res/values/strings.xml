@@ -1,0 +1,131 @@
+<resources>
+   <string-array name="video_resolution">
+      <item>160 * 160</item>
+      <item>180 * 320</item>
+      <item>240 * 320</item>
+      <item>360 * 640</item>
+      <item>480 * 480</item>
+      <item>480 * 640</item>
+      <item>540 * 960</item>
+      <item>720 * 1280</item>
+      <item>1080 * 1920</item>
+   </string-array>
+
+   <string-array name="video_frame_rate">
+      <item>15 / 20 / 24</item>
+      <item>15 / 20 / 24</item>
+      <item>15 / 20 / 24</item>
+      <item>15 / 20 / 24</item>
+      <item>15 / 20 / 24</item>
+      <item>15 / 20 / 24</item>
+      <item>15 / 20 / 24</item>
+      <item>15 / 20 / 24</item>
+      <item>15 / 20 / 24</item>
+   </string-array>
+
+   <string-array name="video_bit_rate">
+      <item>40 - 150</item>
+      <item>80 - 350</item>
+      <item>100 - 400</item>
+      <item>200 - 1000</item>
+      <item>200 - 1000</item>
+      <item>250 - 1000</item>
+      <item>400 - 1600</item>
+      <item>500 - 2000</item>
+      <item>800 - 3000</item>
+   </string-array>
+
+   <string name="server_error_message_unknown">unknown error</string>
+   <string name="server_error_message_success">success</string>
+
+   <string name="app_version_vxxx">App Version %s</string>
+    <string name="sdk_version_vxxx">SDK Version %s</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="meeting">Video Conferencing</string>
+    <string name="voice_salon">Voice Salon</string>
+    <string name="online_edu">Online Class</string>
+    <string name="interactive_live">Interactive Live Streaming</string>
+    <string name="voice_chat">Chatting Room</string>
+    <string name="video_chat">Interactive Video Streaming</string>
+    <string name="ktv">Karaoke</string>
+    <string name="audio_video_calls">Video Call</string>
+    <string name="available_update">Available Update.\nGet the latest version?</string>
+    <string name="settings">Settings</string>
+    <string name="frame_rate">Frame rate</string>
+    <string name="resolution">Resolution</string>
+    <string name="bitrate">Bitrate</string>
+    <string name="turn_off">Turn off</string>
+    <string name="send">Send</string>
+    <string name="application_experiencing_xxx_title">This application is just used for experiencing. The duration of LIVE can\'t exceed %s minutes</string>
+    <string name="flip">Flip</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+    <string name="same_logged_in">A user with the same ID has logged in. You will be forced to log out.</string>
+    <string name="joining_room_failed">Joining the room failed. You will be taken to the list page.</string>
+    <string name="name">Name</string>
+    <string name="live_ended">Live has ended</string>
+    <string name="no_more_than_characters">No more than 18 characters</string>
+    <string name="connection_failed">Connection failed</string>
+    <string name="camera">Camera</string>
+    <string name="microphone">Mic</string>
+    <string name="closed_terms_service">Room has been closed due to violations of Terms of Service.</string>
+    <string name="host">Host</string>
+    <string name="delay">Latency</string>
+    <string name="packet_loss">Packet loss</string>
+    <string name="network_status">Network status</string>
+    <string name="excellent">Excellent</string>
+    <string name="good">Good</string>
+    <string name="stalled">Stalled</string>
+    <string name="more_scenarios">More scenarios are coming soon</string>
+    <string name="request_failed">Request failed. Please retry</string>
+    <string name="failed_parse">failed to parse</string>
+    <string name="enter_the_room">Join Room</string>
+    <string name="room_is_full">The room you are trying to join is full.</string>
+    <string name="net_excellent">Good connection</string>
+    <string name="net_stuck_stopped">Bad connection</string>
+    <string name="network_link_down">No internet connection. Connect to the internet and ty again.</string>
+    <string name="minutes_error_message">The duration of this experience has reached  20 minutes.</string>
+    <string name="effect_button_message">Beautify</string>
+    <string name="operation_failed_message">Please try again</string>
+    <string name="network_message_1011">Server data exception</string>
+    <string name="network_message_101">Service request failed</string>
+    <string name="network_message_400">Request data cannot be parsed correctly</string>
+    <string name="network_message_404">User does not exist</string>
+    <string name="network_message_419">User has left</string>
+    <string name="network_message_406">Number of users exceeded the limit</string>
+    <string name="network_message_416">Permission denied</string>
+    <string name="network_message_418">Long disconnection time. Unable to reconnect</string>
+    <string name="network_message_422">Room has been closed</string>
+    <string name="network_message_430">Your comment may be uncomfortable to others. Please rethink before posting</string>
+    <string name="network_message_440">Verification failed. Please click Resend and try again</string>
+    <string name="network_message_441">Wrong code. Please click Resend and try again</string>
+    <string name="network_message_450">Login has expired. Please try to log in again</string>
+    <string name="network_message_500">System busy. Please try again later</string>
+    <string name="network_message_506">All host seats have been filled up</string>
+    <string name="network_message_504">Pass host control failed</string>
+    <string name="network_message_702">Generating token failed. Please try again</string>
+    <string name="network_message_472">Number of co-hosts exceeded the limit</string>
+    <string name="network_message_611">Co-hosting has ended</string>
+    <string name="network_message_622">Host is busy</string>
+    <string name="network_message_632">Host is starting co-hosting</string>
+    <string name="network_message_643">A guest is in your room. Failed to add a host</string>
+    <string name="network_message_644">A host is in your room. Failed to add a guest</string>
+    <string name="network_message_645">Waiting for responding</string>
+    <string name="network_message_801">setAppInfo interface error. Please check configuration information.</string>
+    <string name="network_message_802">You have reached QPS limit. Please try later</string>
+    <string name="network_message_804">On-demand configuration is incorrect. Please check the configuration information</string>
+    <string name="network_message_805">Watch video together configuration is incorrect. Please check the configuration information</string>
+    <string name="network_message_806">BID configuration is incorrect. Please check the configuration information</string>
+    <string name="camera_flip">Flip</string>
+    <string name="experience_time_exceeded_xxx_minutes">The duration of this experience has reached %s minutes.</string>
+    <string name="chorus_ktv">Duet</string>
+    <string name="watch_live_together">Watch LIVE\nTogether</string>
+    <string name="watch_video_together">Watch Video\nTogether</string>
+    <string name="game_room">Game Room</string>
+    <string name="say_something">Add comment</string>
+    <string name="send_empty_message_cannot_be_empty">Add comment</string>
+    <string name="interactive_live_scenes">Interactive\nLive Streaming</string>
+    <string name="video_chat_scenes">Interactive\nVideo Streaming</string>
+    <string name="language_code">english</string>
+</resources>

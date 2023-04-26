@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    tools:background="#000000">
+
+    <TextView
+        android:id="@+id/voice_chat_main_option_input_btn"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginRight="12dp"
+        android:layout_weight="1"
+        android:background="@drawable/voice_chat_main_option_input_bg"
+        android:gravity="center_vertical"
+        android:paddingLeft="24dp"
+        android:text="@string/say_something"
+        android:textColor="#B3FFFFFF"
+        android:textSize="14dp" />
+
+    <ImageView
+        android:id="@+id/voice_chat_main_option_interact_btn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_weight="0"
+        android:src="@drawable/voice_chat_main_option_interact" />
+
+    <ImageView
+        android:id="@+id/voice_chat_main_option_bgm_btn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_weight="0"
+        android:src="@drawable/voice_chat_main_option_bgm" />
+
+    <ImageView
+        android:id="@+id/voice_chat_main_option_mic_on_btn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_weight="0"
+        android:src="@drawable/voice_chat_main_option_mic_on" />
+
+    <ImageView
+        android:id="@+id/voice_chat_main_option_finish_btn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="6dp"
+        android:layout_weight="0"
+        android:src="@drawable/voice_chat_main_option_finish" />
+</LinearLayout>

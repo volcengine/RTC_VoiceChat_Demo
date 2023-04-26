@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="142dp"
+        android:layout_gravity="bottom"
+        android:background="#272E3B">
+
+        <TextView
+            android:id="@+id/common_seekbar_setting_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="76dp"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/cancel"
+            android:textColor="#C9CDD4"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/common_seekbar_setting_title"
+            android:layout_width="wrap_content"
+            android:layout_height="76dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="标题"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/common_seekbar_setting_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="76dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/ok"
+            android:textColor="#4080FF"
+            android:textSize="15sp" />
+
+        <SeekBar
+            android:id="@+id/common_seekbar_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="120dp"
+            android:layout_marginBottom="40dp" />
+
+        <TextView
+            android:id="@+id/common_seekbar_setting_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="36dp"
+            android:layout_toLeftOf="@id/common_seekbar_setting_unit"
+            android:text="200"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/common_seekbar_setting_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="36dp"
+            android:text="Kbps"
+            android:textColor="#86909C"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+</FrameLayout>
