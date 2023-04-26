@@ -36,7 +36,7 @@
 
 2. 填写 **HEAD_URL。** <br>
     进入 `component/ToolKit` 目录下 `gradle.properties`文件，填写 **HEAD_URL**。<br>
-    当前你可以使用 **`https://common.rtc.volcvideo.com/rtc_demo_special`** 作为测试服务器域名，仅提供跑通测试服务，无法保障正式需求。<br>
+    当前你可以使用 **`https://common.rtc.volcvideo.com/rtc_demo_special/`** 作为测试服务器域名，仅提供跑通测试服务，无法保障正式需求。<br>
         <img src="https://lf3-static.bytednsdoc.com/obj/eden-cn/pkupenuhr/57bf4003-572d-42ac-bf6f-931ff053e842.png" width="500px" >
 
 3. **填写 APPID、APPKey、AccessKeyID、SecretAccessKey**
