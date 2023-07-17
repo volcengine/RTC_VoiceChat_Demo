@@ -260,10 +260,11 @@ public class SolutionBaseActivity extends AppCompatActivity {
         Log.d(TAG, "onNetworkUnavailable()");
         if (mTopTipView == null) {
             mTopTipView = new TopTipView(this);
-            ViewGroup rootView = ((ViewGroup) findViewById(android.R.id.content));
-            if (rootView != null) {
-                rootView.addView(mTopTipView);
-            }
+        }
+        
+        ViewGroup rootView = ((ViewGroup) findViewById(android.R.id.content));
+        if (rootView != null) {
+            rootView.addView(mTopTipView);
         }
         mTopTipView.setNetworkDisconnect();
         mTopTipView.bringToFront();

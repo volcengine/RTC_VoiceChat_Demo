@@ -193,7 +193,7 @@
     
     // 展示本地IM消息
     BaseIMModel *model = [[BaseIMModel alloc] init];
-    NSString *message = [NSString stringWithFormat:LocalizedString(@"%@_has_been_on_the_mic_message"),userModel.name];
+    NSString *message = [NSString stringWithFormat:LocalizedString(@"%@_has_dropped_the_mic_message"),userModel.name];
     model.message = message;
     model.backgroundColor = [UIColor colorFromRGBHexString:@"#FFFFFF" andAlpha:0.1 * 255];
     [self.imComponent addIM:model];

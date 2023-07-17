@@ -64,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C283E052995CC8C80A1AD5B /* Pods-MeetingScreenShare.appstore_volcengine.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingScreenShare.appstore_volcengine.xcconfig"; path = "Target Support Files/Pods-MeetingScreenShare/Pods-MeetingScreenShare.appstore_volcengine.xcconfig"; sourceTree = "<group>"; };
+		1C080DE615601AB1EE94D1D8 /* Pods-MeetingScreenShare.appstore_byteplus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingScreenShare.appstore_byteplus.xcconfig"; path = "Target Support Files/Pods-MeetingScreenShare/Pods-MeetingScreenShare.appstore_byteplus.xcconfig"; sourceTree = "<group>"; };
 		2B0019A52993AC04004A44B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2B0019A72993AC0D004A44B5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		2B1FCC7226FB1894004E286C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -113,12 +115,15 @@
 		2BEA42912499BDEE001C0A2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2BEFEB3026DC8734007B6C83 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		2BEFEB3226DC8739007B6C83 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		30CC13CD84A5DCEEDBB3E3E3 /* libPods-MeetingScreenShare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeetingScreenShare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		352B5B6B27AEEA0045A15727 /* Pods-RTCSolution.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RTCSolution.release.xcconfig"; path = "Target Support Files/Pods-RTCSolution/Pods-RTCSolution.release.xcconfig"; sourceTree = "<group>"; };
 		37D3031A8BE96B1EDD0DE309 /* Pods-veRTC_Demo.appstore_byteplus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-veRTC_Demo.appstore_byteplus.xcconfig"; path = "Target Support Files/Pods-veRTC_Demo/Pods-veRTC_Demo.appstore_byteplus.xcconfig"; sourceTree = "<group>"; };
 		39C246C1605CA0B6EAEA25CC /* Pods-RTCSolution.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RTCSolution.debug.xcconfig"; path = "Target Support Files/Pods-RTCSolution/Pods-RTCSolution.debug.xcconfig"; sourceTree = "<group>"; };
 		911A93E9E910D87F089E43EE /* Pods-veRTC_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-veRTC_Demo.debug.xcconfig"; path = "Target Support Files/Pods-veRTC_Demo/Pods-veRTC_Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		95BCBAFFF5535CF505E9D2A6 /* Pods-MeetingScreenShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingScreenShare.debug.xcconfig"; path = "Target Support Files/Pods-MeetingScreenShare/Pods-MeetingScreenShare.debug.xcconfig"; sourceTree = "<group>"; };
 		9945775EBAA19BFDDB0B03B2 /* Pods-veRTC_Demo.appstore_volcengine.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-veRTC_Demo.appstore_volcengine.xcconfig"; path = "Target Support Files/Pods-veRTC_Demo/Pods-veRTC_Demo.appstore_volcengine.xcconfig"; sourceTree = "<group>"; };
 		A627BAB67CAF5B239A99AFAE /* Pods-veRTC_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-veRTC_Demo.release.xcconfig"; path = "Target Support Files/Pods-veRTC_Demo/Pods-veRTC_Demo.release.xcconfig"; sourceTree = "<group>"; };
+		AB4EB99747F0BD10BD181C9D /* Pods-MeetingScreenShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetingScreenShare.release.xcconfig"; path = "Target Support Files/Pods-MeetingScreenShare/Pods-MeetingScreenShare.release.xcconfig"; sourceTree = "<group>"; };
 		B8D77B4008564196D8535646 /* Pods-veRTC_Demo-MeetingScreenShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-veRTC_Demo-MeetingScreenShare.release.xcconfig"; path = "Target Support Files/Pods-veRTC_Demo-MeetingScreenShare/Pods-veRTC_Demo-MeetingScreenShare.release.xcconfig"; sourceTree = "<group>"; };
 		BEF84D8819A8C418B2EFE4EB /* Pods-RTCSolution.appstore_byteplus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RTCSolution.appstore_byteplus.xcconfig"; path = "Target Support Files/Pods-RTCSolution/Pods-RTCSolution.appstore_byteplus.xcconfig"; sourceTree = "<group>"; };
 		C13928B29E2F2770F67878CC /* libPods-RTCSolution.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RTCSolution.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +272,10 @@
 				352B5B6B27AEEA0045A15727 /* Pods-RTCSolution.release.xcconfig */,
 				BEF84D8819A8C418B2EFE4EB /* Pods-RTCSolution.appstore_byteplus.xcconfig */,
 				F82176F9E73A9F55040E1C18 /* Pods-RTCSolution.appstore_volcengine.xcconfig */,
+				95BCBAFFF5535CF505E9D2A6 /* Pods-MeetingScreenShare.debug.xcconfig */,
+				AB4EB99747F0BD10BD181C9D /* Pods-MeetingScreenShare.release.xcconfig */,
+				1C080DE615601AB1EE94D1D8 /* Pods-MeetingScreenShare.appstore_byteplus.xcconfig */,
+				0C283E052995CC8C80A1AD5B /* Pods-MeetingScreenShare.appstore_volcengine.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -287,6 +296,7 @@
 				2BEFEB3026DC8734007B6C83 /* ReplayKit.framework */,
 				2B34BDF52840F88800E85418 /* UIKit.framework */,
 				C13928B29E2F2770F67878CC /* libPods-RTCSolution.a */,
+				30CC13CD84A5DCEEDBB3E3E3 /* libPods-MeetingScreenShare.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -500,6 +510,213 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2BC358D8298A4580002700EB /* Appstore_BytePlus */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "Appstore_BytePlus=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Appstore_BytePlus;
+		};
+		2BC358D9298A4580002700EB /* Appstore_BytePlus */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEF84D8819A8C418B2EFE4EB /* Pods-RTCSolution.appstore_byteplus.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 102;
+				DEVELOPMENT_TEAM = X46375UBYG;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = L5HCL383AF;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libs",
+					"$(PROJECT_DIR)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(SRCROOT)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/RTCSolution/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				MARKETING_VERSION = 3.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = vertc.veRTCDemo.ios.i18n;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = VERTCDemoInHouseDist;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "BytePlus RTC App Store 2022/08/16";
+				SWIFT_OBJC_BRIDGING_HEADER = "RTCSolution/SocketIOManager/RTCSolution-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Appstore_BytePlus;
+		};
+		2BC358DD298A4C00002700EB /* Appstore_Volcengine */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "Appstore_Volcengine=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Appstore_Volcengine;
+		};
+		2BC358DE298A4C00002700EB /* Appstore_Volcengine */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F82176F9E73A9F55040E1C18 /* Pods-RTCSolution.appstore_volcengine.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 102;
+				DEVELOPMENT_TEAM = X46375UBYG;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3XMD9D6A65;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libs",
+					"$(PROJECT_DIR)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(SRCROOT)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/RTCSolution/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				MARKETING_VERSION = 12.0.9;
+				PRODUCT_BUNDLE_IDENTIFIER = vertc.veRTCDemo.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = VERTCDemoInHouseDist;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = veRTC_AppStore_20210519;
+				SWIFT_OBJC_BRIDGING_HEADER = "RTCSolution/SocketIOManager/RTCSolution-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Appstore_Volcengine;
+		};
 		2BEA42A92499BDEE001C0A2D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -621,9 +838,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 102;
 				DEVELOPMENT_TEAM = 3XMD9D6A65;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -649,7 +867,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 12.0.5;
+				MARKETING_VERSION = 12.0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = vertc.veRTCDemo.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = veRTC_Development_20211117;
@@ -666,9 +884,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 102;
 				DEVELOPMENT_TEAM = X46375UBYG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -694,7 +913,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 12.0.5;
+				MARKETING_VERSION = 12.0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = rtc.veRTCDemo.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = VERTCDemoInHouseDist;
@@ -712,6 +931,8 @@
 			buildConfigurations = (
 				2BEA42A92499BDEE001C0A2D /* Debug */,
 				2BEA42AA2499BDEE001C0A2D /* Release */,
+				2BC358D8298A4580002700EB /* Appstore_BytePlus */,
+				2BC358DD298A4C00002700EB /* Appstore_Volcengine */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -721,6 +942,8 @@
 			buildConfigurations = (
 				2BEA42AC2499BDEE001C0A2D /* Debug */,
 				2BEA42AD2499BDEE001C0A2D /* Release */,
+				2BC358D9298A4580002700EB /* Appstore_BytePlus */,
+				2BC358DE298A4C00002700EB /* Appstore_Volcengine */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

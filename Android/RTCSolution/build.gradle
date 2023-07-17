@@ -4,8 +4,7 @@ ext {
     minSdkVersion = 21
     targetSdkVersion = 29
 
-    RTC_SDK = 'com.volcengine:VolcEngineRTC:3.50.301'
-
+    RTC_SDK = 'com.volcengine:VolcEngineRTC:3.52.106'
 
     GlideVersion = '4.12.0'
     GsonVersion = '2.8.5'
@@ -17,9 +16,7 @@ ext {
     RecyclerViewVersion = '1.2.1'
     MaterialVersion = '1.4.0'
 
-
     LOGIN_MODULE = 'LoginKit'
-
 
     JOIN_RTS_MODULE = 'JoinRTSParamsKit'
 }
@@ -38,9 +35,7 @@ buildscript {
 
 allprojects {
     repositories {
-
         maven { url 'https://artifact.bytedance.com/repository/Volcengine/' }
-
 
         google()
         mavenCentral()

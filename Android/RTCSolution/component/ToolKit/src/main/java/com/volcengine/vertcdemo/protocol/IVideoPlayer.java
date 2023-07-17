@@ -34,13 +34,17 @@ public interface IVideoPlayer {
      */
     void startWithConfiguration(Context context);
 
-    /**
-     * 设置播放地址、父视图
-     * @param url 拉流地址
-     * @param container 父类视图
-     * @param seiCallback SEI 回调
-     */
-    void setPlayerUrl(String url, View container, IAction<String> seiCallback);
+
+    void setSEICallback(IAction<String> SEICallback);
+
+
+        /**
+         * 设置播放地址、父视图
+         * @param url 拉流地址
+         * @param container 父类视图
+         * @param seiCallback SEI 回调
+         */
+    void setPlayerUrl(String url, View container);
 
     /**
      * 更新播放比例模式

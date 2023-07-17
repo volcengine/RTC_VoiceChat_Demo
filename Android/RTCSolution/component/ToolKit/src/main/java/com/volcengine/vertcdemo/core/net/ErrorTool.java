@@ -10,6 +10,7 @@ public class ErrorTool {
 
     public static final int ERROR_CODE_TOKEN_EXPIRED = 450; // token 过期，需要退出所有的业务页面，跳转到登录页面
     public static final int ERROR_CODE_TOKEN_EMPTY = 451; // token 为空，需要退出所有的业务页面，跳转到登录页面
+    public static final int ERROR_CODE_TOKEN_MISMATCH = 452; // token 不匹配
 
     public static String getErrorMessageByErrorCode(int errorCode, String serverMessage) {
         String message = serverMessage;
@@ -56,6 +57,7 @@ public class ErrorTool {
             case 441:
                 message = getString(R.string.network_message_441);
                 break;
+            case ERROR_CODE_TOKEN_MISMATCH:
             case ERROR_CODE_TOKEN_EXPIRED:
             case ERROR_CODE_TOKEN_EMPTY:
                 // 451是token为空，同450的处理

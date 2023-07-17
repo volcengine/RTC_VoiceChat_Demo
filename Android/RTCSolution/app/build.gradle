@@ -88,5 +88,6 @@ dependencies {
     implementation project(":component:$LOGIN_MODULE")
     implementation project(':component:ToolKit')
 
-    implementation project(':solutions:voicechat')
+    implementation project(":solutions:voicechat")
+
 }

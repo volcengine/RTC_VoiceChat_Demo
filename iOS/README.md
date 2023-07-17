@@ -39,7 +39,7 @@
 2. 执行 `pod install` 命令构建工程<br>
     <img src="https://lf3-static.bytednsdoc.com/obj/eden-cn/pkupenuhr/podinstall.jpg" width="500px" >
 3. 进入 `RTC_VoiceChat_Demo/iOS/RTCSolution` 根目录，使用 Xcode 打开 `RTCSolution.xcworkspace` <br>
-	<img src="https://lf3-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_b479ae8a464cf80f054ca9f9ac6bc2bc" width="500px" >
+	<img src="https://lf3-static.bytednsdoc.com/obj/eden-cn/pkupenuhr/RTCSolution.png" width="500px" >
 4. 在 Xcode 中打开 `Pods/Development Pods/Core/BuildConfig.h` 文件<br>
 
 5. 填写 **HeadUrl**<br>
@@ -55,7 +55,7 @@
 1. 将手机连接到电脑，在 `iOS Device` 选项中勾选您的 iOS 设备 <br>
 	<img src="https://lf3-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_c90035ea219af29f94677c0cd3fc0c12" width="500px" >
 2. 登录 Apple ID。<br>
-	2.1 选择 Xcode 页面左上角 **Xcode** > **Preferences**，或通过快捷键 **Command** + **,**  打开 Preferences。<br>
+	2.1 选择 Xcode 页面左上角 **Xcode** > **Settings**，或通过快捷键 **Command** + **,**  打开 Settings。<br>
 	2.2 选择 **Accounts**，点击左下部 **+**，选择 Apple ID 进行账号登录。<br>
 		<img src="https://lf3-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_fe1ce72f17db7eeae67a0952fb31c2df" width="500px" >
 
@@ -74,7 +74,7 @@
 
 选择 **Product** > **Run**， 开始编译。编译成功后你的 iOS 设备上会出现新应用。若为免费苹果账号，需先在`设置->通用-> VPN与设备管理 -> 描述文件与设备管理`中信任开发者 APP。
 
-<img src="https://lf6-volc-editor.volccdn.com/obj/volcfe/sop-public/upload_9d1fad791b3616428a3011837f148581" width="500px" >
+<img src="https://lf3-static.bytednsdoc.com/obj/eden-cn/lpqubqnuln/092f17e7-7668-479c-a09b-1fdd65d42a9c.png" width="500px" >
 
 ## 运行开始界面
 

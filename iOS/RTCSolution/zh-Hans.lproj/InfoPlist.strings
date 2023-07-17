@@ -3,7 +3,7 @@
   RTCSolution
 
   Created by on 2023/2/8.
-  Copyright © 2023. All rights reserved.
+  Copyright © 2023 bytedance. All rights reserved.
 */
 
 CFBundleDisplayName = "veRTC";

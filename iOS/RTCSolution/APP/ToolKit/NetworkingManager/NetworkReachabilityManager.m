@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) AFNetworkReachabilityManager *reachabilityManager;
 
+@property (nonatomic, assign) BOOL isMissConnect;
+
 @end
 
 @implementation NetworkReachabilityManager
@@ -32,6 +34,7 @@
     self = [super init];
     if (self) {
         self.reachabilityManager = [AFNetworkReachabilityManager manager];
+        self.isMissConnect = NO;
         __weak typeof(self) weak_self = self;
         [self.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
             [weak_self onReachabilityStatusChanged:status];
@@ -78,13 +81,19 @@
 
 - (void)showSocketIsDisconnect:(BOOL)isDisconnect {
     if (isDisconnect) {
+        self.isMissConnect = YES;
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
         [[ToastComponent shareToastComponent] showWithMessage:LocalizedStringFromBundle(@"network_link_down", @"ToolKit") view:keyWindow keep:YES block:^(BOOL result) {
             
         }];
     } else {
+        self.isMissConnect = NO;
         [[ToastComponent shareToastComponent] dismiss];
     }
+}
+
+-(BOOL)isDisconnect {
+    return self.isMissConnect;
 }
 
 @end

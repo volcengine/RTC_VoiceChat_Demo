@@ -102,9 +102,12 @@ public class HttpRequestHelper {
             final int code = json.optInt("code");
             final String message = json.optString("message");
 
-            if (code == ErrorTool.ERROR_CODE_TOKEN_EXPIRED || code == ErrorTool.ERROR_CODE_TOKEN_EMPTY) {
+            if (code == ErrorTool.ERROR_CODE_TOKEN_EXPIRED
+                    || code == ErrorTool.ERROR_CODE_TOKEN_EMPTY
+                    || code == ErrorTool.ERROR_CODE_TOKEN_MISMATCH) {
                 SolutionDataManager.ins().setToken("");
                 SolutionDemoEventManager.post(new AppTokenExpiredEvent());
+                throw new NetworkException(code, message);
             } else if (code != 200) {
                 throw new NetworkException(code, message);
             }

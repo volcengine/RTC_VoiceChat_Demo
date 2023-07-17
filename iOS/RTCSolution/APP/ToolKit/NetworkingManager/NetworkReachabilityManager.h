@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)getNetType;
 
+- (BOOL)isDisconnect;
+
 @end
 
 NS_ASSUME_NONNULL_END

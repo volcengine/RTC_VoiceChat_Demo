@@ -30,6 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        android:id="@+id/input_dialog_view"
         android:layout_width="0dp"
         android:layout_height="36dp"
         android:layout_marginBottom="10dp"
@@ -43,14 +44,14 @@
         android:layout_width="60dp"
         android:layout_height="28dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="0dp"
         android:background="#1664FF"
         android:gravity="center"
         android:text="@string/send"
         android:textColor="@color/white"
         android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="@id/input_dialog_et"
+        app:layout_constraintBottom_toBottomOf="@id/input_dialog_view"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/input_dialog_et" />
+        app:layout_constraintTop_toTopOf="@id/input_dialog_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

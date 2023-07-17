@@ -187,9 +187,20 @@
 }
 
 #pragma mark - ByteRTCVideoDelegate
+- (void)rtcEngine:(ByteRTCVideo *)engine onLocalAudioPropertiesReport:(NSArray<ByteRTCLocalAudioPropertiesInfo *> *)audioPropertiesInfos {
+    // 本端音量大小的回调
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    for (int i = 0; i < audioPropertiesInfos.count; i++) {
+        ByteRTCLocalAudioPropertiesInfo *model = audioPropertiesInfos[i];
+        [dic setValue:@(model.audioPropertiesInfo.linearVolume) forKey:[LocalUserComponent userModel].uid];
+    }
+    if ([self.delegate respondsToSelector:@selector(voiceChatRTCManager:reportAllAudioVolume:)]) {
+        [self.delegate voiceChatRTCManager:self reportAllAudioVolume:dic];
+    }
+}
 
 - (void)rtcEngine:(ByteRTCVideo *)engine onRemoteAudioPropertiesReport:(NSArray<ByteRTCRemoteAudioPropertiesInfo *> *)audioPropertiesInfos totalRemoteVolume:(NSInteger)totalRemoteVolume {
-    // 音量大小的回调
+    // 远端音量大小的回调
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     for (int i = 0; i < audioPropertiesInfos.count; i++) {
         ByteRTCRemoteAudioPropertiesInfo *model = audioPropertiesInfos[i];
