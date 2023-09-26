@@ -4,7 +4,7 @@ ext {
     minSdkVersion = 21
     targetSdkVersion = 29
 
-    RTC_SDK = 'com.volcengine:VolcEngineRTC:3.52.106'
+    RTC_SDK = 'com.volcengine:VolcEngineRTC:3.54.0.542800'
 
     GlideVersion = '4.12.0'
     GsonVersion = '2.8.5'

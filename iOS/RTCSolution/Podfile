@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/volcengine/volcengine-specs.git'
 
 # RTC SDK
-pod 'VolcEngineRTC', '3.52.109'
+pod 'VolcEngineRTC', '3.54.0.557200'
 
 target 'RTCSolution' do
   platform :ios, '12.0'
