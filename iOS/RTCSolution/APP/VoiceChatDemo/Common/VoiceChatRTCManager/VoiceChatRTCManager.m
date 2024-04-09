@@ -111,32 +111,32 @@
 
 - (void)startBackgroundMusic:(NSString *)filePath {
     // 开始背景音乐混音
-    ByteRTCAudioMixingManager *audioMixingManager = [self.rtcEngineKit getAudioMixingManager];
     
-    ByteRTCAudioMixingConfig *config = [[ByteRTCAudioMixingConfig alloc] init];
+    ByteRTCMediaPlayerConfig *config = [[ByteRTCMediaPlayerConfig alloc]init];
     config.type = ByteRTCAudioMixingTypePlayoutAndPublish;
     config.playCount = -1;
-    [audioMixingManager startAudioMixing:_audioMixingID filePath:filePath config:config];
+    config.autoPlay = YES;
+    
+    ByteRTCMediaPlayer *mediaPlayer = [self.rtcEngineKit getMediaPlayer:0];
+    [mediaPlayer open:filePath config:config];
 }
 
 - (void)stopBackgroundMusic {
     // 停止背景音乐混音
-    ByteRTCAudioMixingManager *audioMixingManager = [self.rtcEngineKit getAudioMixingManager];
-    [audioMixingManager stopAudioMixing:_audioMixingID];
+    ByteRTCMediaPlayer *mediaPlayer = [self.rtcEngineKit getMediaPlayer:0];
+    [mediaPlayer stop];
 }
 
 - (void)pauseBackgroundMusic {
     // 暂停背景音乐混音
-    ByteRTCAudioMixingManager *audioMixingManager = [self.rtcEngineKit getAudioMixingManager];
-    
-    [audioMixingManager pauseAudioMixing:_audioMixingID];
+    ByteRTCMediaPlayer *mediaPlayer = [self.rtcEngineKit getMediaPlayer:0];
+    [mediaPlayer pause];
 }
 
 - (void)resumeBackgroundMusic {
     // 继续背景音乐混音
-    ByteRTCAudioMixingManager *audioMixingManager = [self.rtcEngineKit getAudioMixingManager];
-    
-    [audioMixingManager resumeAudioMixing:_audioMixingID];
+    ByteRTCMediaPlayer *mediaPlayer = [self.rtcEngineKit getMediaPlayer:0];
+    [mediaPlayer resume];
 }
 
 - (void)setRecordingVolume:(NSInteger)volume {
@@ -146,9 +146,8 @@
 
 - (void)setMusicVolume:(NSInteger)volume {
     // 设置混音音乐音量
-    ByteRTCAudioMixingManager *audioMixingManager = [self.rtcEngineKit getAudioMixingManager];
-    
-    [audioMixingManager setAudioMixingVolume:_audioMixingID volume:(int)volume type:ByteRTCAudioMixingTypePlayoutAndPublish];
+    ByteRTCMediaPlayer *mediaPlayer = [self.rtcEngineKit getMediaPlayer:0];
+    [mediaPlayer setVolume:volume type:ByteRTCAudioMixingTypePlayoutAndPublish];
 }
 
 #pragma mark - ByteRTCRoomDelegate
