@@ -12,9 +12,12 @@ import com.ss.bytertc.engine.RTCRoom;
 import com.ss.bytertc.engine.RTCRoomConfig;
 import com.ss.bytertc.engine.RTCVideo;
 import com.ss.bytertc.engine.UserInfo;
+import com.ss.bytertc.engine.audio.IMediaPlayer;
 import com.ss.bytertc.engine.data.AudioMixingConfig;
+import com.ss.bytertc.engine.data.AudioMixingType;
 import com.ss.bytertc.engine.data.AudioPropertiesConfig;
 import com.ss.bytertc.engine.data.LocalAudioPropertiesInfo;
+import com.ss.bytertc.engine.data.MediaPlayerConfig;
 import com.ss.bytertc.engine.data.RemoteAudioPropertiesInfo;
 import com.ss.bytertc.engine.data.StreamIndex;
 import com.ss.bytertc.engine.type.AudioScenarioType;
@@ -154,7 +157,7 @@ public class VoiceChatRTCManager {
         }
     };
 
-        public static VoiceChatRTCManager ins() {
+    public static VoiceChatRTCManager ins() {
         if (sInstance == null) {
             sInstance = new VoiceChatRTCManager();
         }
@@ -272,13 +275,12 @@ public class VoiceChatRTCManager {
     public void startAudioMixing(boolean isStart) {
         Log.d(TAG, String.format("startAudioMixing: %b", isStart));
         if (mRTCVideo != null) {
+            IMediaPlayer player = mRTCVideo.getMediaPlayer(0);
             if (isStart) {
                 String bgmPath = getExternalResourcePath() + "bgm/voicechat_bgm.mp3";
-                mRTCVideo.getAudioMixingManager().preloadAudioMixing(0, bgmPath);
-                AudioMixingConfig config = new AudioMixingConfig(AUDIO_MIXING_TYPE_PLAYOUT_AND_PUBLISH, -1);
-                mRTCVideo.getAudioMixingManager().startAudioMixing(0, bgmPath, config);
+                player.open(bgmPath, new MediaPlayerConfig(AUDIO_MIXING_TYPE_PLAYOUT_AND_PUBLISH, -1));
             } else {
-                mRTCVideo.getAudioMixingManager().stopAudioMixing(0);
+                player.stop();
             }
         }
     }
@@ -286,28 +288,28 @@ public class VoiceChatRTCManager {
     public void resumeAudioMixing() {
         Log.d(TAG, "resumeAudioMixing");
         if (mRTCVideo != null) {
-            mRTCVideo.getAudioMixingManager().resumeAudioMixing(0);
+            mRTCVideo.getMediaPlayer(0).resume();
         }
     }
 
     public void pauseAudioMixing() {
         Log.d(TAG, "pauseAudioMixing");
         if (mRTCVideo != null) {
-            mRTCVideo.getAudioMixingManager().pauseAudioMixing(0);
+            mRTCVideo.getMediaPlayer(0).pause();
         }
     }
 
     public void stopAudioMixing() {
         Log.d(TAG, "stopAudioMixing");
         if (mRTCVideo != null) {
-            mRTCVideo.getAudioMixingManager().stopAudioMixing(0);
+            mRTCVideo.getMediaPlayer(0).stop();
         }
     }
 
     public void adjustBGMVolume(int progress) {
         Log.d(TAG, String.format("adjustBGMVolume: %d", progress));
         if (mRTCVideo != null) {
-            mRTCVideo.getAudioMixingManager().setAudioMixingVolume(0, progress, AUDIO_MIXING_TYPE_PLAYOUT_AND_PUBLISH);
+            mRTCVideo.getMediaPlayer(0).setVolume(progress,AUDIO_MIXING_TYPE_PLAYOUT_AND_PUBLISH);
         }
     }
 
