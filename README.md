@@ -3,7 +3,6 @@
 ```
 RTC_VoiceChat_Demo
 ├─ Android        // Android 端开源代码和跑通 Readme 
-├─ Server        // 服务端开源代码和跑通 Readme 
 ├─ iOS        // iOS 端开源代码和跑通 Readme 
 └─ Readme // 场景介绍
 ```
