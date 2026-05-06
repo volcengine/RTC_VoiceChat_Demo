@@ -79,3 +79,7 @@ Demo 下载地址参看[下载和体验场景化 Demo](https://www.volcengine.co
 
 - [视频会议](https://github.com/volcengine/RTC_Meeting_Demo)<br>
     视频会议是指一对一和多人纯语音或音视频通话。用户可以随时随地通过网络加入会议，进行实时互动。
+
+## Security and privacy
+This project takes security seriously. 
+For vulnerability reporting and supported versions, see [SECURITY.md](SECURITY.md)
